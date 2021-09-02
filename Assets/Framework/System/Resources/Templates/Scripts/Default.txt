@@ -1,0 +1,7 @@
+﻿using UnityEngine;
+#DIRECTIVES#
+
+namespace #NAMESPACE#
+{
+	public class #SCRIPTNAME# {}
+}

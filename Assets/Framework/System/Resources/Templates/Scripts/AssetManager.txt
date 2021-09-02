@@ -1,0 +1,10 @@
+﻿using UnityEngine;
+#DIRECTIVES#
+
+namespace #NAMESPACE#
+{
+    public class #SCRIPTNAME# : AssetManager<#SCRIPTNAME#>
+    {
+        public #SCRIPTNAME#() { Instance = this; }
+    }
+}

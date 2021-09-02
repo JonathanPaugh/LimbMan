@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceeac25a63b0acd4396ee870728fd44a, type: 3}
+  m_Name: Framework
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  ids:
+  - properties: {fileID: 0}
+    value: Test 1_2b2b836d6c2366c41961e01b45bdadb1
+    name: New Game Object
+    map:
+      sceneAsset: {fileID: 102900000, guid: 6616e0049f52b0142a9abdf6a4f3ebd1, type: 3}
+      scenePath: Assets/Game/Scenes/Test 1.unity
+  - properties: {fileID: 0}
+    value: Test_9a3ccc5c190107247b343d49dd660a3b
+    name: New Game Object
+    map:
+      sceneAsset: {fileID: 102900000, guid: d3d1cb4f03ebe334297fad7d296189fd, type: 3}
+      scenePath: Assets/Game/Scenes/Test.unity
+  frameworkSettings: {fileID: 11400000, guid: 72e688c9038dae149b4cd88bd0c67448, type: 2}
+  editorSettings: {fileID: 11400000, guid: 6bb947f842b284341a9a4c2739573457, type: 2}

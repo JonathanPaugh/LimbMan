@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 747a1806394790c479d3a82cd29c4a4f, type: 3}
+  m_Name: Jump
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  mode: 0
+  loop: 0
+  sounds:
+  - clips:
+    - audio: {fileID: 8300000, guid: 2a6d154671b700a4cb360579945cda50, type: 3}
+      volume: 100
+      speed: 1
+    - audio: {fileID: 8300000, guid: 5c67bbae5f50e8e45ad4260c74d62bdf, type: 3}
+      volume: 100
+      speed: 1
+    - audio: {fileID: 8300000, guid: c1399c279b4479b4ab6e6845fd76403e, type: 3}
+      volume: 100
+      speed: 1
+    volume: 25
+    delay: 0

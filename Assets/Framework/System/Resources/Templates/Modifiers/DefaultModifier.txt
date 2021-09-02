@@ -1,0 +1,10 @@
+#DIRECTIVES#
+
+namespace #NAMESPACE#
+{
+    public class #SCRIPTNAME# : #INJECT0#
+    {
+        protected override void OnInflicted() {}
+        protected override void OnDestroyed() {}
+    }
+}

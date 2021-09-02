@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d034e9c404ed0bb4cbd2e77cd7c9395a, type: 3}
+  m_Name: NetSettings
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  masterServerIp: 143.198.49.211
+  masterServerPort: 80
+  serverName: JapetheapeFrameworkServer
+  serverIp: 127.0.0.1
+  serverPort: 1337
+  serverWebPort: 80
+  databaseIp: 143.198.49.211
+  databasePort: 1434
+  maxPlayers: 10
+  bufferSize: 4096
+  clientStreamRate: 1
+  serverStreamRate: 1

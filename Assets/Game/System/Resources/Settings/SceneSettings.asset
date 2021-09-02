@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b4762b8d0da47f4e9eceb859e688678, type: 3}
+  m_Name: SceneSettings
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  sceneFade: 0.8
+  baseMap:
+    sceneAsset: {fileID: 102900000, guid: 1dc46ba01c588194d82423ef523e62c3, type: 3}
+    scenePath: Assets/Framework/Scenes/Base.unity
+  loadingScreens: []
+  defaultLoadingScreen:
+    sceneAsset: {fileID: 0}
+    scenePath: 

@@ -1,0 +1,10 @@
+﻿using UnityEngine;
+#DIRECTIVES#
+
+namespace #NAMESPACE#
+{
+    public sealed class #SCRIPTNAME# : Manager<#SCRIPTNAME#> 
+    {
+        private new static bool InitOnLoad => true;
+    }
+}

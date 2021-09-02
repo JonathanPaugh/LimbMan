@@ -1,0 +1,1869 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf9d8b0521300f5409180919c48f01de, type: 3}
+  m_Name: Database
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 0
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  mode: 1
+  items:
+  - name: Icons
+    resourceType: 1
+    path: 
+    ext: 
+    type: 
+  - name: Sub
+    resourceType: 1
+    path: Icons
+    ext: 
+    type: 
+  - name: IconAtom
+    resourceType: 2
+    path: Icons/Sub
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconPhysics
+    resourceType: 2
+    path: Icons/Sub
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: Skybox
+    resourceType: 1
+    path: 
+    ext: 
+    type: 
+  - name: GrimmNight
+    resourceType: 1
+    path: Skybox
+    ext: 
+    type: 
+  - name: SkyboxGrimmNight
+    resourceType: 2
+    path: Skybox/GrimmNight
+    ext: mat
+    type: UnityEngine.Material, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: SkyboxGrimmNight_Back
+    resourceType: 2
+    path: Skybox/GrimmNight
+    ext: tga
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: SkyboxGrimmNight_Down
+    resourceType: 2
+    path: Skybox/GrimmNight
+    ext: tga
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: SkyboxGrimmNight_Front
+    resourceType: 2
+    path: Skybox/GrimmNight
+    ext: tga
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: SkyboxGrimmNight_Left
+    resourceType: 2
+    path: Skybox/GrimmNight
+    ext: tga
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: SkyboxGrimmNight_Right
+    resourceType: 2
+    path: Skybox/GrimmNight
+    ext: tga
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: SkyboxGrimmNight_Up
+    resourceType: 2
+    path: Skybox/GrimmNight
+    ext: tga
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: StormyDays
+    resourceType: 1
+    path: Skybox
+    ext: 
+    type: 
+  - name: SkyboxStormyDays
+    resourceType: 2
+    path: Skybox/StormyDays
+    ext: mat
+    type: UnityEngine.Material, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: SkyboxStormyDays_Back
+    resourceType: 2
+    path: Skybox/StormyDays
+    ext: tga
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: SkyboxStormyDays_Down
+    resourceType: 2
+    path: Skybox/StormyDays
+    ext: tga
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: SkyboxStormyDays_Front
+    resourceType: 2
+    path: Skybox/StormyDays
+    ext: tga
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: SkyboxStormyDays_Left
+    resourceType: 2
+    path: Skybox/StormyDays
+    ext: tga
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: SkyboxStormyDays_Right
+    resourceType: 2
+    path: Skybox/StormyDays
+    ext: tga
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: SkyboxStormyDays_Up
+    resourceType: 2
+    path: Skybox/StormyDays
+    ext: tga
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: Icons
+    resourceType: 1
+    path: 
+    ext: 
+    type: 
+  - name: Badges
+    resourceType: 1
+    path: Icons
+    ext: 
+    type: 
+  - name: IconAdd
+    resourceType: 2
+    path: Icons/Badges
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconView
+    resourceType: 2
+    path: Icons/Badges
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: Entities
+    resourceType: 1
+    path: Icons
+    ext: 
+    type: 
+  - name: IconAlternator
+    resourceType: 2
+    path: Icons/Entities
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconAudio
+    resourceType: 2
+    path: Icons/Entities
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconAuto
+    resourceType: 2
+    path: Icons/Entities
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconBranch
+    resourceType: 2
+    path: Icons/Entities
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconCase
+    resourceType: 2
+    path: Icons/Entities
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconEmitter
+    resourceType: 2
+    path: Icons/Entities
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconEntity
+    resourceType: 2
+    path: Icons/Entities
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconFunc
+    resourceType: 2
+    path: Icons/Entities
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconGate
+    resourceType: 2
+    path: Icons/Entities
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconInfo
+    resourceType: 2
+    path: Icons/Entities
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconInput
+    resourceType: 2
+    path: Icons/Entities
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconLogic
+    resourceType: 2
+    path: Icons/Entities
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconMath
+    resourceType: 2
+    path: Icons/Entities
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconOperator
+    resourceType: 2
+    path: Icons/Entities
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconPrefab
+    resourceType: 2
+    path: Icons/Entities
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconRandom
+    resourceType: 2
+    path: Icons/Entities
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconRelay
+    resourceType: 2
+    path: Icons/Entities
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconTarget
+    resourceType: 2
+    path: Icons/Entities
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconTeleport
+    resourceType: 2
+    path: Icons/Entities
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconTimer
+    resourceType: 2
+    path: Icons/Entities
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconTrack
+    resourceType: 2
+    path: Icons/Entities
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconTrain
+    resourceType: 2
+    path: Icons/Entities
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconTransform
+    resourceType: 2
+    path: Icons/Entities
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconTransition
+    resourceType: 2
+    path: Icons/Entities
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: Tools
+    resourceType: 1
+    path: Icons
+    ext: 
+    type: 
+  - name: IconBehaviour
+    resourceType: 2
+    path: Icons/Tools
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconBuild
+    resourceType: 2
+    path: Icons/Tools
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconCollider
+    resourceType: 2
+    path: Icons/Tools
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconData
+    resourceType: 2
+    path: Icons/Tools
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconDevelop
+    resourceType: 2
+    path: Icons/Tools
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconElement
+    resourceType: 2
+    path: Icons/Tools
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconGameObject
+    resourceType: 2
+    path: Icons/Tools
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconPaint
+    resourceType: 2
+    path: Icons/Tools
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconPointEntity
+    resourceType: 2
+    path: Icons/Tools
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconScript
+    resourceType: 2
+    path: Icons/Tools
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconSettings
+    resourceType: 2
+    path: Icons/Tools
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconShape
+    resourceType: 2
+    path: Icons/Tools
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconSprite
+    resourceType: 2
+    path: Icons/Tools
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconTrigger
+    resourceType: 2
+    path: Icons/Tools
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconWorldEntity
+    resourceType: 2
+    path: Icons/Tools
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconDelete
+    resourceType: 2
+    path: Icons
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconDown
+    resourceType: 2
+    path: Icons
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconFolder
+    resourceType: 2
+    path: Icons
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconLink
+    resourceType: 2
+    path: Icons
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconNetwork
+    resourceType: 2
+    path: Icons
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconPick
+    resourceType: 2
+    path: Icons
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconProperty
+    resourceType: 2
+    path: Icons
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconUnity
+    resourceType: 2
+    path: Icons
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconUnlink
+    resourceType: 2
+    path: Icons
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconUp
+    resourceType: 2
+    path: Icons
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: Materials
+    resourceType: 1
+    path: 
+    ext: 
+    type: 
+  - name: Collider
+    resourceType: 2
+    path: Materials
+    ext: mat
+    type: UnityEngine.Material, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: Default
+    resourceType: 2
+    path: Materials
+    ext: mat
+    type: UnityEngine.Material, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: Default2D
+    resourceType: 2
+    path: Materials
+    ext: mat
+    type: UnityEngine.Material, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: Develop
+    resourceType: 2
+    path: Materials
+    ext: mat
+    type: UnityEngine.Material, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: Develop2
+    resourceType: 2
+    path: Materials
+    ext: mat
+    type: UnityEngine.Material, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: Gradient
+    resourceType: 2
+    path: Materials
+    ext: mat
+    type: UnityEngine.Material, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: GradientHard
+    resourceType: 2
+    path: Materials
+    ext: mat
+    type: UnityEngine.Material, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: Trigger
+    resourceType: 2
+    path: Materials
+    ext: mat
+    type: UnityEngine.Material, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: Unlit
+    resourceType: 2
+    path: Materials
+    ext: mat
+    type: UnityEngine.Material, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: UnlitShadow
+    resourceType: 2
+    path: Materials
+    ext: mat
+    type: UnityEngine.Material, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: Shaders
+    resourceType: 1
+    path: 
+    ext: 
+    type: 
+  - name: UnlitShadow
+    resourceType: 2
+    path: Shaders
+    ext: shader
+    type: UnityEngine.Shader, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: Sprites
+    resourceType: 1
+    path: 
+    ext: 
+    type: 
+  - name: SpriteDefault0
+    resourceType: 2
+    path: Sprites
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: SpriteDefault100
+    resourceType: 2
+    path: Sprites
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: SpriteDefault25
+    resourceType: 2
+    path: Sprites
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: SpriteDefault50
+    resourceType: 2
+    path: Sprites
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: SpriteDefault75
+    resourceType: 2
+    path: Sprites
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: Textures
+    resourceType: 1
+    path: 
+    ext: 
+    type: 
+  - name: TextureCollider
+    resourceType: 2
+    path: Textures
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: TextureDefault0
+    resourceType: 2
+    path: Textures
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: TextureDefault100
+    resourceType: 2
+    path: Textures
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: TextureDefault25
+    resourceType: 2
+    path: Textures
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: TextureDefault50
+    resourceType: 2
+    path: Textures
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: TextureDefault75
+    resourceType: 2
+    path: Textures
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: TextureDevelop
+    resourceType: 2
+    path: Textures
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: TextureGradient
+    resourceType: 2
+    path: Textures
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: TextureGradientHard
+    resourceType: 2
+    path: Textures
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: TextureTrigger
+    resourceType: 2
+    path: Textures
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: CameraFramework
+    resourceType: 2
+    path: 
+    ext: prefab
+    type: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: OverlayFramework
+    resourceType: 2
+    path: 
+    ext: prefab
+    type: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: Behaviours
+    resourceType: 1
+    path: 
+    ext: 
+    type: 
+  - name: GuiButton
+    resourceType: 1
+    path: Behaviours
+    ext: 
+    type: 
+  - name: Collider
+    resourceType: 2
+    path: Behaviours/GuiButton
+    ext: asset
+    type: Jape.Behaviour, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Developer
+    resourceType: 2
+    path: Behaviours/GuiButton
+    ext: asset
+    type: Jape.Behaviour, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: GameObject
+    resourceType: 2
+    path: Behaviours/GuiButton
+    ext: asset
+    type: Jape.Behaviour, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: PointEntity
+    resourceType: 2
+    path: Behaviours/GuiButton
+    ext: asset
+    type: Jape.Behaviour, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Poly
+    resourceType: 2
+    path: Behaviours/GuiButton
+    ext: asset
+    type: Jape.Behaviour, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Shape
+    resourceType: 2
+    path: Behaviours/GuiButton
+    ext: asset
+    type: Jape.Behaviour, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Sprite
+    resourceType: 2
+    path: Behaviours/GuiButton
+    ext: asset
+    type: Jape.Behaviour, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Trigger
+    resourceType: 2
+    path: Behaviours/GuiButton
+    ext: asset
+    type: Jape.Behaviour, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: WorldEntity
+    resourceType: 2
+    path: Behaviours/GuiButton
+    ext: asset
+    type: Jape.Behaviour, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: BehaviourTypes
+    resourceType: 1
+    path: 
+    ext: 
+    type: 
+  - name: GuiButton
+    resourceType: 2
+    path: BehaviourTypes
+    ext: asset
+    type: Jape.BehaviourType, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Denums
+    resourceType: 1
+    path: 
+    ext: 
+    type: 
+  - name: Outputs
+    resourceType: 1
+    path: Denums
+    ext: 
+    type: 
+  - name: AutoOutputs
+    resourceType: 2
+    path: Denums/Outputs
+    ext: asset
+    type: Jape.Denum, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: BaseOutputs
+    resourceType: 2
+    path: Denums/Outputs
+    ext: asset
+    type: Jape.Denum, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: BranchOutputs
+    resourceType: 2
+    path: Denums/Outputs
+    ext: asset
+    type: Jape.Denum, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: CaseOutputs
+    resourceType: 2
+    path: Denums/Outputs
+    ext: asset
+    type: Jape.Denum, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: ChanceOutputs
+    resourceType: 2
+    path: Denums/Outputs
+    ext: asset
+    type: Jape.Denum, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: GateOutputs
+    resourceType: 2
+    path: Denums/Outputs
+    ext: asset
+    type: Jape.Denum, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: InputOutputs
+    resourceType: 2
+    path: Denums/Outputs
+    ext: asset
+    type: Jape.Denum, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: TimerOutputs
+    resourceType: 2
+    path: Denums/Outputs
+    ext: asset
+    type: Jape.Denum, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: TrackOutputs
+    resourceType: 2
+    path: Denums/Outputs
+    ext: asset
+    type: Jape.Denum, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Dimension
+    resourceType: 2
+    path: Denums
+    ext: asset
+    type: Jape.Denum, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: EntityType
+    resourceType: 2
+    path: Denums
+    ext: asset
+    type: Jape.Denum, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Positioning
+    resourceType: 2
+    path: Denums
+    ext: asset
+    type: Jape.Denum, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Primitive
+    resourceType: 2
+    path: Denums
+    ext: asset
+    type: Jape.Denum, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Scripts
+    resourceType: 1
+    path: 
+    ext: 
+    type: 
+  - name: '- Default -'
+    resourceType: 2
+    path: Scripts
+    ext: asset
+    type: Jape.Script, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: AssetManager
+    resourceType: 2
+    path: Scripts
+    ext: asset
+    type: Jape.Script, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Attribute
+    resourceType: 2
+    path: Scripts
+    ext: asset
+    type: Jape.Script, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: AttributeDrawer
+    resourceType: 2
+    path: Scripts
+    ext: asset
+    type: Jape.Script, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: AttributeProcessor
+    resourceType: 2
+    path: Scripts
+    ext: asset
+    type: Jape.Script, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: BehaviourType
+    resourceType: 2
+    path: Scripts
+    ext: asset
+    type: Jape.Script, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Client
+    resourceType: 2
+    path: Scripts
+    ext: asset
+    type: Jape.Script, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Data - Game
+    resourceType: 2
+    path: Scripts
+    ext: asset
+    type: Jape.Script, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Data - Settings
+    resourceType: 2
+    path: Scripts
+    ext: asset
+    type: Jape.Script, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Data - System
+    resourceType: 2
+    path: Scripts
+    ext: asset
+    type: Jape.Script, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: DataType
+    resourceType: 2
+    path: Scripts
+    ext: asset
+    type: Jape.Script, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Denum
+    resourceType: 2
+    path: Scripts
+    ext: asset
+    type: Jape.Script, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Drawer
+    resourceType: 2
+    path: Scripts
+    ext: asset
+    type: Jape.Script, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Element
+    resourceType: 2
+    path: Scripts
+    ext: asset
+    type: Jape.Script, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Enum
+    resourceType: 2
+    path: Scripts
+    ext: asset
+    type: Jape.Script, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Extension
+    resourceType: 2
+    path: Scripts
+    ext: asset
+    type: Jape.Script, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Manager
+    resourceType: 2
+    path: Scripts
+    ext: asset
+    type: Jape.Script, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: ModifierType
+    resourceType: 2
+    path: Scripts
+    ext: asset
+    type: Jape.Script, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: NetElement - Client
+    resourceType: 2
+    path: Scripts
+    ext: asset
+    type: Jape.Script, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: NetElement - Server
+    resourceType: 2
+    path: Scripts
+    ext: asset
+    type: Jape.Script, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: NetElement
+    resourceType: 2
+    path: Scripts
+    ext: asset
+    type: Jape.Script, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: PointEntity - Func
+    resourceType: 2
+    path: Scripts
+    ext: asset
+    type: Jape.Script, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: PointEntity - Info
+    resourceType: 2
+    path: Scripts
+    ext: asset
+    type: Jape.Script, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: PointEntity - Logic
+    resourceType: 2
+    path: Scripts
+    ext: asset
+    type: Jape.Script, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: PointEntity - Math
+    resourceType: 2
+    path: Scripts
+    ext: asset
+    type: Jape.Script, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: RequestBody - Client
+    resourceType: 2
+    path: Scripts
+    ext: asset
+    type: Jape.Script, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: RequestBody - Datacache
+    resourceType: 2
+    path: Scripts
+    ext: asset
+    type: Jape.Script, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: RequestBody - Server
+    resourceType: 2
+    path: Scripts
+    ext: asset
+    type: Jape.Script, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: RequestBody
+    resourceType: 2
+    path: Scripts
+    ext: asset
+    type: Jape.Script, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: ResponseBody
+    resourceType: 2
+    path: Scripts
+    ext: asset
+    type: Jape.Script, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Server
+    resourceType: 2
+    path: Scripts
+    ext: asset
+    type: Jape.Script, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Static
+    resourceType: 2
+    path: Scripts
+    ext: asset
+    type: Jape.Script, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Window
+    resourceType: 2
+    path: Scripts
+    ext: asset
+    type: Jape.Script, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: WorldEntity
+    resourceType: 2
+    path: Scripts
+    ext: asset
+    type: Jape.Script, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: SpriteShape
+    resourceType: 1
+    path: 
+    ext: 
+    type: 
+  - name: Collider
+    resourceType: 2
+    path: SpriteShape
+    ext: asset
+    type: UnityEngine.U2D.SpriteShape, Unity.2D.SpriteShape.Runtime, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  - name: Default
+    resourceType: 2
+    path: SpriteShape
+    ext: asset
+    type: UnityEngine.U2D.SpriteShape, Unity.2D.SpriteShape.Runtime, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  - name: Trigger
+    resourceType: 2
+    path: SpriteShape
+    ext: asset
+    type: UnityEngine.U2D.SpriteShape, Unity.2D.SpriteShape.Runtime, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  - name: Tags
+    resourceType: 1
+    path: 
+    ext: 
+    type: 
+  - name: Camera
+    resourceType: 2
+    path: Tags
+    ext: asset
+    type: Jape.Tag, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Instantiated
+    resourceType: 2
+    path: Tags
+    ext: asset
+    type: Jape.Tag, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: World
+    resourceType: 2
+    path: Tags
+    ext: asset
+    type: Jape.Tag, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Templates
+    resourceType: 1
+    path: 
+    ext: 
+    type: 
+  - name: Behaviours
+    resourceType: 1
+    path: Templates
+    ext: 
+    type: 
+  - name: DefaultBehaviour
+    resourceType: 2
+    path: Templates/Behaviours
+    ext: txt
+    type: UnityEngine.TextAsset, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: GuiButton
+    resourceType: 2
+    path: Templates/Behaviours
+    ext: txt
+    type: UnityEngine.TextAsset, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: Modifiers
+    resourceType: 1
+    path: Templates
+    ext: 
+    type: 
+  - name: DefaultModifier
+    resourceType: 2
+    path: Templates/Modifiers
+    ext: txt
+    type: UnityEngine.TextAsset, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: Scripts
+    resourceType: 1
+    path: Templates
+    ext: 
+    type: 
+  - name: AssetManager
+    resourceType: 2
+    path: Templates/Scripts
+    ext: txt
+    type: UnityEngine.TextAsset, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: Attribute
+    resourceType: 2
+    path: Templates/Scripts
+    ext: txt
+    type: UnityEngine.TextAsset, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: AttributeDrawer
+    resourceType: 2
+    path: Templates/Scripts
+    ext: txt
+    type: UnityEngine.TextAsset, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: AttributeProcessor
+    resourceType: 2
+    path: Templates/Scripts
+    ext: txt
+    type: UnityEngine.TextAsset, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: BehaviourType
+    resourceType: 2
+    path: Templates/Scripts
+    ext: txt
+    type: UnityEngine.TextAsset, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: ClientBody
+    resourceType: 2
+    path: Templates/Scripts
+    ext: txt
+    type: UnityEngine.TextAsset, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: ClientElement
+    resourceType: 2
+    path: Templates/Scripts
+    ext: txt
+    type: UnityEngine.TextAsset, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: DataCacheBody
+    resourceType: 2
+    path: Templates/Scripts
+    ext: txt
+    type: UnityEngine.TextAsset, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: DataType
+    resourceType: 2
+    path: Templates/Scripts
+    ext: txt
+    type: UnityEngine.TextAsset, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: Default
+    resourceType: 2
+    path: Templates/Scripts
+    ext: txt
+    type: UnityEngine.TextAsset, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: Denum
+    resourceType: 2
+    path: Templates/Scripts
+    ext: txt
+    type: UnityEngine.TextAsset, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: Drawer
+    resourceType: 2
+    path: Templates/Scripts
+    ext: txt
+    type: UnityEngine.TextAsset, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: Element
+    resourceType: 2
+    path: Templates/Scripts
+    ext: txt
+    type: UnityEngine.TextAsset, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: Enum
+    resourceType: 2
+    path: Templates/Scripts
+    ext: txt
+    type: UnityEngine.TextAsset, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: GameData
+    resourceType: 2
+    path: Templates/Scripts
+    ext: txt
+    type: UnityEngine.TextAsset, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: Manager
+    resourceType: 2
+    path: Templates/Scripts
+    ext: txt
+    type: UnityEngine.TextAsset, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: ModifierType
+    resourceType: 2
+    path: Templates/Scripts
+    ext: txt
+    type: UnityEngine.TextAsset, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: NetElement
+    resourceType: 2
+    path: Templates/Scripts
+    ext: txt
+    type: UnityEngine.TextAsset, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: PointEntity
+    resourceType: 2
+    path: Templates/Scripts
+    ext: txt
+    type: UnityEngine.TextAsset, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: RequestBody
+    resourceType: 2
+    path: Templates/Scripts
+    ext: txt
+    type: UnityEngine.TextAsset, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: ResponseBody
+    resourceType: 2
+    path: Templates/Scripts
+    ext: txt
+    type: UnityEngine.TextAsset, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: ServerBody
+    resourceType: 2
+    path: Templates/Scripts
+    ext: txt
+    type: UnityEngine.TextAsset, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: ServerElement
+    resourceType: 2
+    path: Templates/Scripts
+    ext: txt
+    type: UnityEngine.TextAsset, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: SettingsData
+    resourceType: 2
+    path: Templates/Scripts
+    ext: txt
+    type: UnityEngine.TextAsset, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: Static
+    resourceType: 2
+    path: Templates/Scripts
+    ext: txt
+    type: UnityEngine.TextAsset, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: SystemData
+    resourceType: 2
+    path: Templates/Scripts
+    ext: txt
+    type: UnityEngine.TextAsset, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: Window
+    resourceType: 2
+    path: Templates/Scripts
+    ext: txt
+    type: UnityEngine.TextAsset, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: WorldEntity
+    resourceType: 2
+    path: Templates/Scripts
+    ext: txt
+    type: UnityEngine.TextAsset, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: Todos
+    resourceType: 1
+    path: 
+    ext: 
+    type: 
+  - name: FrameworkTodo1
+    resourceType: 2
+    path: Todos
+    ext: asset
+    type: Jape.Todo, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: FrameworkTodo2
+    resourceType: 2
+    path: Todos
+    ext: asset
+    type: Jape.Todo, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: FrameworkTodo3
+    resourceType: 2
+    path: Todos
+    ext: asset
+    type: Jape.Todo, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: FrameworkTodo4
+    resourceType: 2
+    path: Todos
+    ext: asset
+    type: Jape.Todo, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: ToolButtons
+    resourceType: 1
+    path: 
+    ext: 
+    type: 
+  - name: '- Separator -'
+    resourceType: 2
+    path: ToolButtons
+    ext: asset
+    type: Jape.ToolButton, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Behaviour
+    resourceType: 2
+    path: ToolButtons
+    ext: asset
+    type: Jape.ToolButton, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Collider
+    resourceType: 2
+    path: ToolButtons
+    ext: asset
+    type: Jape.ToolButton, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Data
+    resourceType: 2
+    path: ToolButtons
+    ext: asset
+    type: Jape.ToolButton, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Developer
+    resourceType: 2
+    path: ToolButtons
+    ext: asset
+    type: Jape.ToolButton, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Element
+    resourceType: 2
+    path: ToolButtons
+    ext: asset
+    type: Jape.ToolButton, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: GameObject
+    resourceType: 2
+    path: ToolButtons
+    ext: asset
+    type: Jape.ToolButton, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Paint
+    resourceType: 2
+    path: ToolButtons
+    ext: asset
+    type: Jape.ToolButton, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: PointEntity
+    resourceType: 2
+    path: ToolButtons
+    ext: asset
+    type: Jape.ToolButton, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Poly
+    resourceType: 2
+    path: ToolButtons
+    ext: asset
+    type: Jape.ToolButton, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Prefab
+    resourceType: 2
+    path: ToolButtons
+    ext: asset
+    type: Jape.ToolButton, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Script
+    resourceType: 2
+    path: ToolButtons
+    ext: asset
+    type: Jape.ToolButton, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Settings
+    resourceType: 2
+    path: ToolButtons
+    ext: asset
+    type: Jape.ToolButton, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Shape
+    resourceType: 2
+    path: ToolButtons
+    ext: asset
+    type: Jape.ToolButton, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: WorldEntity
+    resourceType: 2
+    path: ToolButtons
+    ext: asset
+    type: Jape.ToolButton, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Camera
+    resourceType: 1
+    path: 
+    ext: 
+    type: 
+  - name: Camera
+    resourceType: 2
+    path: Camera
+    ext: prefab
+    type: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: CameraBasic
+    resourceType: 2
+    path: Camera
+    ext: asset
+    type: Jape.Global, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Music
+    resourceType: 1
+    path: 
+    ext: 
+    type: 
+  - name: Tower
+    resourceType: 2
+    path: Music
+    ext: asset
+    type: Jape.SoundClip, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Particles
+    resourceType: 1
+    path: 
+    ext: 
+    type: 
+  - name: ParticleDeath
+    resourceType: 2
+    path: Particles
+    ext: prefab
+    type: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: ParticleSmoke
+    resourceType: 2
+    path: Particles
+    ext: prefab
+    type: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: ParticleSteam
+    resourceType: 2
+    path: Particles
+    ext: prefab
+    type: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: ParticleTrail
+    resourceType: 2
+    path: Particles
+    ext: prefab
+    type: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: Player
+    resourceType: 1
+    path: 
+    ext: 
+    type: 
+  - name: Animation
+    resourceType: 1
+    path: Player
+    ext: 
+    type: 
+  - name: Cast
+    resourceType: 1
+    path: Player/Animation
+    ext: 
+    type: 
+  - name: GenericCast
+    resourceType: 2
+    path: Player/Animation/Cast
+    ext: anim
+    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  - name: Movement
+    resourceType: 1
+    path: Player/Animation
+    ext: 
+    type: 
+  - name: Crouch
+    resourceType: 2
+    path: Player/Animation/Movement
+    ext: anim
+    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  - name: Crouched
+    resourceType: 2
+    path: Player/Animation/Movement
+    ext: anim
+    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  - name: Dash
+    resourceType: 2
+    path: Player/Animation/Movement
+    ext: anim
+    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  - name: Dodge
+    resourceType: 2
+    path: Player/Animation/Movement
+    ext: anim
+    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  - name: DodgeReverse
+    resourceType: 2
+    path: Player/Animation/Movement
+    ext: anim
+    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  - name: Kneel
+    resourceType: 2
+    path: Player/Animation/Movement
+    ext: anim
+    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  - name: Move
+    resourceType: 2
+    path: Player/Animation/Movement
+    ext: anim
+    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  - name: Slide
+    resourceType: 2
+    path: Player/Animation/Movement
+    ext: anim
+    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  - name: Uncrouch
+    resourceType: 2
+    path: Player/Animation/Movement
+    ext: anim
+    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  - name: Unslide
+    resourceType: 2
+    path: Player/Animation/Movement
+    ext: anim
+    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  - name: Parry
+    resourceType: 1
+    path: Player/Animation
+    ext: 
+    type: 
+  - name: Parry
+    resourceType: 2
+    path: Player/Animation/Parry
+    ext: anim
+    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  - name: ParryStop
+    resourceType: 2
+    path: Player/Animation/Parry
+    ext: anim
+    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  - name: Swing
+    resourceType: 1
+    path: Player/Animation
+    ext: 
+    type: 
+  - name: BigSwing
+    resourceType: 2
+    path: Player/Animation/Swing
+    ext: anim
+    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  - name: ChainSwing
+    resourceType: 2
+    path: Player/Animation/Swing
+    ext: anim
+    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  - name: CrossCut
+    resourceType: 2
+    path: Player/Animation/Swing
+    ext: anim
+    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  - name: CrouchSwing
+    resourceType: 2
+    path: Player/Animation/Swing
+    ext: anim
+    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  - name: DoubleStab
+    resourceType: 2
+    path: Player/Animation/Swing
+    ext: anim
+    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  - name: Grinder
+    resourceType: 2
+    path: Player/Animation/Swing
+    ext: anim
+    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  - name: HammerSwing
+    resourceType: 2
+    path: Player/Animation/Swing
+    ext: anim
+    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  - name: QuickSword1
+    resourceType: 2
+    path: Player/Animation/Swing
+    ext: anim
+    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  - name: QuickSword2
+    resourceType: 2
+    path: Player/Animation/Swing
+    ext: anim
+    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  - name: QuickSword3
+    resourceType: 2
+    path: Player/Animation/Swing
+    ext: anim
+    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  - name: ScepterSwing
+    resourceType: 2
+    path: Player/Animation/Swing
+    ext: anim
+    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  - name: SmallSwing
+    resourceType: 2
+    path: Player/Animation/Swing
+    ext: anim
+    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  - name: StabStab
+    resourceType: 2
+    path: Player/Animation/Swing
+    ext: anim
+    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  - name: SunSwing
+    resourceType: 2
+    path: Player/Animation/Swing
+    ext: anim
+    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  - name: Swing
+    resourceType: 2
+    path: Player/Animation/Swing
+    ext: anim
+    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  - name: Whip
+    resourceType: 2
+    path: Player/Animation/Swing
+    ext: anim
+    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  - name: Action
+    resourceType: 2
+    path: Player/Animation
+    ext: anim
+    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  - name: Base
+    resourceType: 2
+    path: Player/Animation
+    ext: controller
+    type: UnityEditor.Animations.AnimatorController, UnityEditor.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  - name: Idle
+    resourceType: 2
+    path: Player/Animation
+    ext: anim
+    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  - name: Toggle
+    resourceType: 2
+    path: Player/Animation
+    ext: anim
+    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  - name: Render
+    resourceType: 1
+    path: Player
+    ext: 
+    type: 
+  - name: BaseHeadRender
+    resourceType: 2
+    path: Player/Render
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: BaseLeftArmRender
+    resourceType: 2
+    path: Player/Render
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: BaseLeftLegRender
+    resourceType: 2
+    path: Player/Render
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: BaseRightArmRender
+    resourceType: 2
+    path: Player/Render
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: BaseRightLegRender
+    resourceType: 2
+    path: Player/Render
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: BaseTorsoRender
+    resourceType: 2
+    path: Player/Render
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: BaseRender
+    resourceType: 2
+    path: Player
+    ext: psb
+    type: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: Player
+    resourceType: 2
+    path: Player
+    ext: prefab
+    type: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: Sounds
+    resourceType: 1
+    path: 
+    ext: 
+    type: 
+  - name: Explosion
+    resourceType: 2
+    path: Sounds
+    ext: asset
+    type: Jape.SoundClip, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Footstep
+    resourceType: 2
+    path: Sounds
+    ext: asset
+    type: Jape.SoundClip, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Jump
+    resourceType: 2
+    path: Sounds
+    ext: asset
+    type: Jape.SoundClip, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Wind
+    resourceType: 2
+    path: Sounds
+    ext: asset
+    type: Jape.SoundClip, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Die
+    resourceType: 2
+    path: 
+    ext: prefab
+    type: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: Laser
+    resourceType: 2
+    path: 
+    ext: prefab
+    type: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: Spawn
+    resourceType: 2
+    path: 
+    ext: prefab
+    type: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: ColorPalettes
+    resourceType: 1
+    path: 
+    ext: 
+    type: 
+  - name: Default
+    resourceType: 2
+    path: ColorPalettes
+    ext: asset
+    type: UnityEngine.ProBuilder.ColorPalette, Unity.ProBuilder, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  - name: Inputs
+    resourceType: 1
+    path: 
+    ext: 
+    type: 
+  - name: Input
+    resourceType: 2
+    path: Inputs
+    ext: asset
+    type: Jape.Input, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Levels
+    resourceType: 1
+    path: 
+    ext: 
+    type: 
+  - name: Area1
+    resourceType: 2
+    path: Levels
+    ext: asset
+    type: Game.Level, Game.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Area2
+    resourceType: 2
+    path: Levels
+    ext: asset
+    type: Game.Level, Game.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: MaterialPalettes
+    resourceType: 1
+    path: 
+    ext: 
+    type: 
+  - name: Default
+    resourceType: 2
+    path: MaterialPalettes
+    ext: asset
+    type: UnityEditor.ProBuilder.MaterialPalette, Unity.ProBuilder.Editor, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  - name: Settings
+    resourceType: 1
+    path: 
+    ext: 
+    type: 
+  - name: CacheSettings
+    resourceType: 2
+    path: Settings
+    ext: asset
+    type: Jape.CacheSettings, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: EditorSettings
+    resourceType: 2
+    path: Settings
+    ext: asset
+    type: Jape.EditorSettings, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: FrameworkSettings
+    resourceType: 2
+    path: Settings
+    ext: asset
+    type: Jape.FrameworkSettings, Jape.Engine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: GameSettings
+    resourceType: 2
+    path: Settings
+    ext: asset
+    type: Game.GameSettings, Game.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: NetSettings
+    resourceType: 2
+    path: Settings
+    ext: asset
+    type: Jape.NetSettings, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: SaveSettings
+    resourceType: 2
+    path: Settings
+    ext: asset
+    type: Jape.SaveSettings, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: SceneSettings
+    resourceType: 2
+    path: Settings
+    ext: asset
+    type: Jape.SceneSettings, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: SerializerSettings
+    resourceType: 2
+    path: Settings
+    ext: asset
+    type: Jape.SerializerSettings, Jape.Engine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: TimeSettings
+    resourceType: 2
+    path: Settings
+    ext: asset
+    type: Jape.TimeSettings, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: UserSettings
+    resourceType: 2
+    path: Settings
+    ext: asset
+    type: Game.UserSettings, Game.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: WorldSettings
+    resourceType: 2
+    path: Settings
+    ext: asset
+    type: Jape.WorldSettings, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Tags
+    resourceType: 1
+    path: 
+    ext: 
+    type: 
+  - name: Player
+    resourceType: 2
+    path: Tags
+    ext: asset
+    type: Jape.Tag, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Teams
+    resourceType: 1
+    path: 
+    ext: 
+    type: 
+  - name: Team1
+    resourceType: 2
+    path: Teams
+    ext: asset
+    type: Jape.Team, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Team2
+    resourceType: 2
+    path: Teams
+    ext: asset
+    type: Jape.Team, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Database
+    resourceType: 2
+    path: 
+    ext: asset
+    type: Jape.Database, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: DenumManager
+    resourceType: 2
+    path: 
+    ext: asset
+    type: Jape.DenumManager, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Editor
+    resourceType: 2
+    path: 
+    ext: asset
+    type: JapeEditor.Editor, Jape.Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Framework
+    resourceType: 2
+    path: 
+    ext: asset
+    type: Jape.Framework, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Ids
+    resourceType: 2
+    path: 
+    ext: asset
+    type: Jape.Ids, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  fileCount: 287
+  folderCount: 45

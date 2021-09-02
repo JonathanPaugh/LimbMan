@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 747a1806394790c479d3a82cd29c4a4f, type: 3}
+  m_Name: Footstep
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  mode: 0
+  loop: 0
+  sounds:
+  - clips:
+    - audio: {fileID: 8300000, guid: 3d92032e563586149ba5ad13f6cc4b86, type: 3}
+      volume: 100
+      speed: 1
+    - audio: {fileID: 8300000, guid: 5cdc8e0c590c78d4a87b16b1ff2af3a2, type: 3}
+      volume: 100
+      speed: 1
+    - audio: {fileID: 8300000, guid: 2bdc3af762dd30242bdc4dc8415d6e6f, type: 3}
+      volume: 100
+      speed: 1
+    - audio: {fileID: 8300000, guid: 4f480bbf10b2d24418f1d118bdbb3331, type: 3}
+      volume: 100
+      speed: 1
+    volume: 25
+    delay: 0

@@ -1,0 +1,10 @@
+﻿using UnityEngine;
+#DIRECTIVES#
+
+namespace #NAMESPACE#
+{
+    public class #SCRIPTNAME# : SystemData
+    {
+        protected new static string Path => "System/Resources/#SCRIPTNAME#s";
+    }
+}

@@ -1,0 +1,13 @@
+﻿using UnityEngine;
+#DIRECTIVES#
+
+namespace #NAMESPACE#
+{
+    public class #SCRIPTNAME# : Drawer<>
+    {
+        protected override void Draw(GUIContent label) 
+        {
+            if (label != null) { EditorGUILayout.PrefixLabel(label); }
+        }
+    }
+}
