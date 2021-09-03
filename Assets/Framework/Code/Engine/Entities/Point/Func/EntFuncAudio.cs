@@ -122,7 +122,7 @@ namespace Jape
         {
             EntFuncAudio entity = Game.CreateEntity<EntFuncAudio>();
             entity.transform.SetParent(parent);
-            entity.Position = position;
+            entity.transform.position = position;
 
             entity.soundClip = soundClip;
 

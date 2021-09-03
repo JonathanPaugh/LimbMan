@@ -109,7 +109,7 @@ namespace Jape
                 current.Pass();
             }
 
-            void Move() { Position = Vector3.Lerp(current.transform.position, target.transform.position, timer.Progress()); }
+            void Move() { transform.position = Vector3.Lerp(current.transform.position, target.transform.position, timer.Progress()); }
         }
     }
 }

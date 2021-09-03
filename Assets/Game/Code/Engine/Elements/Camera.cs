@@ -30,7 +30,7 @@ namespace Game
         public float CameraSpeed;
         public float CameraZoom;
         public float CameraScale;
-        public Global CameraBasic;
+        public bool CameraBasic;
 
         [Space(16)]
 
@@ -65,7 +65,7 @@ namespace Game
         {
             if (CameraTarget == null) { return; }
 
-            if ((bool)CameraBasic.GetValue())
+            if (CameraBasic)
             {
                 transform.position = new Vector3(CameraTarget.transform.position.x, CameraTarget.transform.position.y, -100); 
                 return;

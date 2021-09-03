@@ -344,8 +344,8 @@ namespace JapeNet
                                 client,
                                 syncedInstance.Key,
                                 syncedInstance.Prefab,
-                                syncedInstance.Instance.Position(),
-                                syncedInstance.Instance.Rotation(),
+                                syncedInstance.Instance.transform.position,
+                                syncedInstance.Instance.transform.rotation,
                                 syncedInstance.Instance.transform.parent,
                                 syncedInstance.Instance.gameObject.Player(),
                                 syncedInstance.Instance.activeSelf

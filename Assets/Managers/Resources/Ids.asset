@@ -23,125 +23,6 @@ MonoBehaviour:
     SerializationNodes: []
   ids:
   - properties: {fileID: 0}
-    position: {x: 110.5, y: 24, z: 0}
-    value: caa59e47-aa63-4591-a7c7-46632b9ac058
-    name: Mesh
-    map:
-      sceneAsset: {fileID: 102900000, guid: 0e9fbeaaa71819443b2b2b1d47dd892b, type: 3}
-      scenePath: Assets/Game/Scenes/Area1_1b.unity
-  - properties: {fileID: 0}
-    position: {x: 225, y: 30.5, z: 0}
-    value: 7c6c3214-2448-437e-b7ef-2dcd4730a3ab
-    name: InfoTrack
-    map:
-      sceneAsset: {fileID: 102900000, guid: 0e9fbeaaa71819443b2b2b1d47dd892b, type: 3}
-      scenePath: Assets/Game/Scenes/Area1_1b.unity
-  - properties: {fileID: 0}
-    position: {x: 146.5, y: 24, z: 0}
-    value: 5d7b7487-bbe0-4488-8974-3a5b0f5346ce
-    name: Mesh
-    map:
-      sceneAsset: {fileID: 102900000, guid: 0e9fbeaaa71819443b2b2b1d47dd892b, type: 3}
-      scenePath: Assets/Game/Scenes/Area1_1b.unity
-  - properties: {fileID: 0}
-    position: {x: 146, y: 28, z: 0}
-    value: 52381da3-f332-4564-8629-c28b314aebd7
-    name: Wheel (4)
-    map:
-      sceneAsset: {fileID: 102900000, guid: 0e9fbeaaa71819443b2b2b1d47dd892b, type: 3}
-      scenePath: Assets/Game/Scenes/Area1_1b.unity
-  - properties: {fileID: 0}
-    position: {x: 110, y: 28, z: 0}
-    value: 618e72fa-8fa5-41f1-8293-f659068dd16e
-    name: Wheel (1)
-    map:
-      sceneAsset: {fileID: 102900000, guid: 0e9fbeaaa71819443b2b2b1d47dd892b, type: 3}
-      scenePath: Assets/Game/Scenes/Area1_1b.unity
-  - properties: {fileID: 0}
-    position: {x: 295, y: 30.5, z: 0}
-    value: 829c4015-0ed4-46c2-973c-e454aeff47da
-    name: InfoTrack
-    map:
-      sceneAsset: {fileID: 102900000, guid: 0e9fbeaaa71819443b2b2b1d47dd892b, type: 3}
-      scenePath: Assets/Game/Scenes/Area1_1b.unity
-  - properties: {fileID: 0}
-    position: {x: 11, y: 51, z: 0}
-    value: 0e03b1f0-9009-42e3-a838-2f329edfdd2c
-    name: New Game Object
-    map:
-      sceneAsset: {fileID: 102900000, guid: 0e9fbeaaa71819443b2b2b1d47dd892b, type: 3}
-      scenePath: Assets/Game/Scenes/Area1_1b.unity
-  - properties: {fileID: 0}
-    position: {x: 225, y: 30.5, z: 0}
-    value: 5277cd60-e6ba-44ec-9612-ed184707f6a8
-    name: MovingPlatform
-    map:
-      sceneAsset: {fileID: 102900000, guid: 0e9fbeaaa71819443b2b2b1d47dd892b, type: 3}
-      scenePath: Assets/Game/Scenes/Area1_1b.unity
-  - properties: {fileID: 0}
-    position: {x: -32, y: 48, z: 0}
-    value: 5dd5253b-b882-4864-8870-b8dd3eebcf2e
-    name: Room
-    map:
-      sceneAsset: {fileID: 102900000, guid: 0e9fbeaaa71819443b2b2b1d47dd892b, type: 3}
-      scenePath: Assets/Game/Scenes/Area1_1b.unity
-  - properties: {fileID: 0}
-    position: {x: 4.5, y: 40.5, z: 0}
-    value: a09f2763-b450-49dd-be04-51a9688ea94a
-    name: Fade (1)
-    map:
-      sceneAsset: {fileID: 102900000, guid: 0e9fbeaaa71819443b2b2b1d47dd892b, type: 3}
-      scenePath: Assets/Game/Scenes/Area1_1b.unity
-  - properties: {fileID: 0}
-    position: {x: 70.5, y: 24, z: 0}
-    value: 7b86c358-3394-4e71-860f-12c5944ee51b
-    name: Mesh
-    map:
-      sceneAsset: {fileID: 102900000, guid: 0e9fbeaaa71819443b2b2b1d47dd892b, type: 3}
-      scenePath: Assets/Game/Scenes/Area1_1b.unity
-  - properties: {fileID: 0}
-    position: {x: 221, y: 31, z: 0}
-    value: d064f79c-e833-42b1-9866-95521354f908
-    name: Platform
-    map:
-      sceneAsset: {fileID: 102900000, guid: 0e9fbeaaa71819443b2b2b1d47dd892b, type: 3}
-      scenePath: Assets/Game/Scenes/Area1_1b.unity
-  - properties: {fileID: 0}
-    position: {x: 11, y: 21, z: 0}
-    value: f6694c60-a065-4194-aa2b-e23b461fa9c8
-    name: New Game Object (1)
-    map:
-      sceneAsset: {fileID: 102900000, guid: 0e9fbeaaa71819443b2b2b1d47dd892b, type: 3}
-      scenePath: Assets/Game/Scenes/Area1_1b.unity
-  - properties: {fileID: 0}
-    position: {x: 158, y: 28, z: 0}
-    value: 39f52154-f858-4fcd-a4da-c5ef41548168
-    name: Wheel (3)
-    map:
-      sceneAsset: {fileID: 102900000, guid: 0e9fbeaaa71819443b2b2b1d47dd892b, type: 3}
-      scenePath: Assets/Game/Scenes/Area1_1b.unity
-  - properties: {fileID: 0}
-    position: {x: -9, y: 21, z: 0}
-    value: 4feffca3-d343-47cb-bb1e-856796c8f26b
-    name: New Game Object (2)
-    map:
-      sceneAsset: {fileID: 102900000, guid: 0e9fbeaaa71819443b2b2b1d47dd892b, type: 3}
-      scenePath: Assets/Game/Scenes/Area1_1b.unity
-  - properties: {fileID: 0}
-    position: {x: 158.5, y: 24, z: 0}
-    value: d29afe01-4804-47e7-8594-03f40765c47d
-    name: Mesh
-    map:
-      sceneAsset: {fileID: 102900000, guid: 0e9fbeaaa71819443b2b2b1d47dd892b, type: 3}
-      scenePath: Assets/Game/Scenes/Area1_1b.unity
-  - properties: {fileID: 0}
-    position: {x: 70, y: 28, z: 0}
-    value: 3ca10a44-ca00-42f3-ae49-df08940cd2f2
-    name: Wheel
-    map:
-      sceneAsset: {fileID: 102900000, guid: 0e9fbeaaa71819443b2b2b1d47dd892b, type: 3}
-      scenePath: Assets/Game/Scenes/Area1_1b.unity
-  - properties: {fileID: 0}
     position: {x: 611, y: -33.75, z: 0}
     value: bea7b832-927b-4830-b7c7-79eb9c9258bc
     name: Particle
@@ -1458,13 +1339,6 @@ MonoBehaviour:
       sceneAsset: {fileID: 102900000, guid: 43efe485d3c965d428f9a8ff907cde85, type: 3}
       scenePath: Assets/Game/Scenes/Area1_2.unity
   - properties: {fileID: 0}
-    position: {x: 214.75, y: 42.5, z: 0}
-    value: 980471f6-8749-44b8-9a75-84945406df0c
-    name: Die
-    map:
-      sceneAsset: {fileID: 102900000, guid: 43efe485d3c965d428f9a8ff907cde85, type: 3}
-      scenePath: Assets/Game/Scenes/Area1_2.unity
-  - properties: {fileID: 0}
     position: {x: 635.5497, y: 17.509747, z: 0}
     value: 18b25b5b-3aa3-4d20-935a-3849f878ebe7
     name: Part
@@ -1640,174 +1514,6 @@ MonoBehaviour:
       sceneAsset: {fileID: 102900000, guid: 43efe485d3c965d428f9a8ff907cde85, type: 3}
       scenePath: Assets/Game/Scenes/Area1_2.unity
   - properties: {fileID: 0}
-    position: {x: 301.25, y: -31.25, z: 0}
-    value: 29f6dfa1-9cc3-4aeb-8489-dc6dd266bedc
-    name: BrokenBuilding
-    map:
-      sceneAsset: {fileID: 102900000, guid: 3a2d89637aed73746b82ea4c01c3db14, type: 3}
-      scenePath: Assets/Game/Scenes/Area1_3.unity
-  - properties: {fileID: 0}
-    position: {x: -9, y: 71, z: 0}
-    value: 595024fd-c5ea-4e8d-ad95-e1c952f0b17e
-    name: Side
-    map:
-      sceneAsset: {fileID: 102900000, guid: 3a2d89637aed73746b82ea4c01c3db14, type: 3}
-      scenePath: Assets/Game/Scenes/Area1_3.unity
-  - properties: {fileID: 0}
-    position: {x: 364.90527, y: -12.936258, z: 0}
-    value: 46c2dbc9-4f61-4730-a0cf-1c6b2bd801a0
-    name: Side
-    map:
-      sceneAsset: {fileID: 102900000, guid: 3a2d89637aed73746b82ea4c01c3db14, type: 3}
-      scenePath: Assets/Game/Scenes/Area1_3.unity
-  - properties: {fileID: 0}
-    position: {x: 112.25, y: -24.75, z: 1}
-    value: 02aa8ee5-0543-4fb6-8298-9036f1b8ccc1
-    name: Toxic
-    map:
-      sceneAsset: {fileID: 102900000, guid: 3a2d89637aed73746b82ea4c01c3db14, type: 3}
-      scenePath: Assets/Game/Scenes/Area1_3.unity
-  - properties: {fileID: 0}
-    position: {x: 287.64954, y: 44.909554, z: 0}
-    value: 9f1edf39-4837-4bc0-9ef9-ede72174c0a1
-    name: Side (1)
-    map:
-      sceneAsset: {fileID: 102900000, guid: 3a2d89637aed73746b82ea4c01c3db14, type: 3}
-      scenePath: Assets/Game/Scenes/Area1_3.unity
-  - properties: {fileID: 0}
-    position: {x: 305.0982, y: 25.536018, z: 0}
-    value: 5e942af8-d0bd-4c12-b179-8c340aa8449b
-    name: Building1 (2)
-    map:
-      sceneAsset: {fileID: 102900000, guid: 3a2d89637aed73746b82ea4c01c3db14, type: 3}
-      scenePath: Assets/Game/Scenes/Area1_3.unity
-  - properties: {fileID: 0}
-    position: {x: 96, y: 57, z: 0}
-    value: 53c5339b-ca3d-4d31-aa52-8b8dc073f248
-    name: Side
-    map:
-      sceneAsset: {fileID: 102900000, guid: 3a2d89637aed73746b82ea4c01c3db14, type: 3}
-      scenePath: Assets/Game/Scenes/Area1_3.unity
-  - properties: {fileID: 0}
-    position: {x: 2.5, y: 70.5, z: 0}
-    value: 10924092-9583-40f4-b7e9-656c1be8a90a
-    name: Fade (1)
-    map:
-      sceneAsset: {fileID: 102900000, guid: 3a2d89637aed73746b82ea4c01c3db14, type: 3}
-      scenePath: Assets/Game/Scenes/Area1_3.unity
-  - properties: {fileID: 0}
-    position: {x: 0, y: 0, z: 0}
-    value: 956c366e-e8b3-4f5e-bf6b-8e92a03d7322
-    name: Building1
-    map:
-      sceneAsset: {fileID: 102900000, guid: 3a2d89637aed73746b82ea4c01c3db14, type: 3}
-      scenePath: Assets/Game/Scenes/Area1_3.unity
-  - properties: {fileID: 0}
-    position: {x: 10, y: 71, z: 0}
-    value: 1ae4201c-a322-4598-a242-59180ba4dd41
-    name: Side (1)
-    map:
-      sceneAsset: {fileID: 102900000, guid: 3a2d89637aed73746b82ea4c01c3db14, type: 3}
-      scenePath: Assets/Game/Scenes/Area1_3.unity
-  - properties: {fileID: 0}
-    position: {x: 389.10504, y: -25.560509, z: 0}
-    value: 11191387-ec46-4164-8968-3a31d1a50b6c
-    name: Background (1)
-    map:
-      sceneAsset: {fileID: 102900000, guid: 3a2d89637aed73746b82ea4c01c3db14, type: 3}
-      scenePath: Assets/Game/Scenes/Area1_3.unity
-  - properties: {fileID: 0}
-    position: {x: 0, y: 0, z: 0}
-    value: c299f1bc-1775-46c0-bc57-4bbd4f7d1355
-    name: World
-    map:
-      sceneAsset: {fileID: 102900000, guid: 3a2d89637aed73746b82ea4c01c3db14, type: 3}
-      scenePath: Assets/Game/Scenes/Area1_3.unity
-  - properties: {fileID: 0}
-    position: {x: 153.75, y: -29.75, z: 0}
-    value: 8caf8c45-ec1e-4f64-a5cf-50236e32a819
-    name: Platform
-    map:
-      sceneAsset: {fileID: 102900000, guid: 3a2d89637aed73746b82ea4c01c3db14, type: 3}
-      scenePath: Assets/Game/Scenes/Area1_3.unity
-  - properties: {fileID: 0}
-    position: {x: 274.17105, y: 41.1239, z: 0}
-    value: bcf95568-f964-489c-a6f8-f60212d002cf
-    name: Side (2)
-    map:
-      sceneAsset: {fileID: 102900000, guid: 3a2d89637aed73746b82ea4c01c3db14, type: 3}
-      scenePath: Assets/Game/Scenes/Area1_3.unity
-  - properties: {fileID: 0}
-    position: {x: -8, y: 98, z: 0}
-    value: cb5469f8-896b-4887-b4a0-951a69395f30
-    name: Background (1)
-    map:
-      sceneAsset: {fileID: 102900000, guid: 3a2d89637aed73746b82ea4c01c3db14, type: 3}
-      scenePath: Assets/Game/Scenes/Area1_3.unity
-  - properties: {fileID: 0}
-    position: {x: 110, y: 57, z: 0}
-    value: 61709ec3-e1e2-4201-a6d0-a6c6fa8ef1eb
-    name: Side (1)
-    map:
-      sceneAsset: {fileID: 102900000, guid: 3a2d89637aed73746b82ea4c01c3db14, type: 3}
-      scenePath: Assets/Game/Scenes/Area1_3.unity
-  - properties: {fileID: 0}
-    position: {x: 356.6809, y: -24.26586, z: 0}
-    value: c753739d-8f68-47c8-b63f-5388ade5bb0f
-    name: Side (1)
-    map:
-      sceneAsset: {fileID: 102900000, guid: 3a2d89637aed73746b82ea4c01c3db14, type: 3}
-      scenePath: Assets/Game/Scenes/Area1_3.unity
-  - properties: {fileID: 0}
-    position: {x: 274.17105, y: 41.1239, z: 0}
-    value: dbec86e5-cfbc-41fb-8730-10e250431e2c
-    name: Side
-    map:
-      sceneAsset: {fileID: 102900000, guid: 3a2d89637aed73746b82ea4c01c3db14, type: 3}
-      scenePath: Assets/Game/Scenes/Area1_3.unity
-  - properties: {fileID: 0}
-    position: {x: 297.2207, y: -26.149527, z: 0}
-    value: 3ff7e195-c627-4060-9a03-f39b54d6558f
-    name: Building1 (3)
-    map:
-      sceneAsset: {fileID: 102900000, guid: 3a2d89637aed73746b82ea4c01c3db14, type: 3}
-      scenePath: Assets/Game/Scenes/Area1_3.unity
-  - properties: {fileID: 0}
-    position: {x: -11, y: 0, z: 0}
-    value: 279d2093-24f7-4e2e-a813-aaa014572f8e
-    name: Ground
-    map:
-      sceneAsset: {fileID: 102900000, guid: 3a2d89637aed73746b82ea4c01c3db14, type: 3}
-      scenePath: Assets/Game/Scenes/Area1_3.unity
-  - properties: {fileID: 0}
-    position: {x: 263.01917, y: 66.03645, z: 0}
-    value: 0d47648f-f951-426e-968d-2f81b7613ac5
-    name: Background (1)
-    map:
-      sceneAsset: {fileID: 102900000, guid: 3a2d89637aed73746b82ea4c01c3db14, type: 3}
-      scenePath: Assets/Game/Scenes/Area1_3.unity
-  - properties: {fileID: 0}
-    position: {x: 100, y: -14, z: 0}
-    value: 182e3ba0-fb13-491f-99cd-8f7fc0f65e18
-    name: Building1 (1)
-    map:
-      sceneAsset: {fileID: 102900000, guid: 3a2d89637aed73746b82ea4c01c3db14, type: 3}
-      scenePath: Assets/Game/Scenes/Area1_3.unity
-  - properties: {fileID: 0}
-    position: {x: 92, y: 84, z: 0}
-    value: c4cbf0aa-5f10-49dd-8ed3-d3b8be41532d
-    name: Background (1)
-    map:
-      sceneAsset: {fileID: 102900000, guid: 3a2d89637aed73746b82ea4c01c3db14, type: 3}
-      scenePath: Assets/Game/Scenes/Area1_3.unity
-  - properties: {fileID: 0}
-    position: {x: 230, y: -24.75, z: 1}
-    value: f814fa6d-6289-4e4b-865e-adef9c2ca9f1
-    name: Toxic (1)
-    map:
-      sceneAsset: {fileID: 102900000, guid: 3a2d89637aed73746b82ea4c01c3db14, type: 3}
-      scenePath: Assets/Game/Scenes/Area1_3.unity
-  - properties: {fileID: 0}
     position: {x: 725.5, y: 85, z: 0}
     value: db410c41-1f26-434d-99a6-5ab4369545b6
     name: Particle
@@ -1881,13 +1587,6 @@ MonoBehaviour:
     position: {x: 183, y: 0, z: 0}
     value: 551998bd-3ed4-4024-8e69-01e155d1d5db
     name: Ground3
-    map:
-      sceneAsset: {fileID: 102900000, guid: b4c1911de578b6a4880e6a26388cf031, type: 3}
-      scenePath: Assets/Game/Scenes/Area1_1.unity
-  - properties: {fileID: 0}
-    position: {x: 820, y: 100.25, z: 0}
-    value: 94290f3b-2d85-4cb8-bcbb-5b4c963fba84
-    name: CameraGlobal
     map:
       sceneAsset: {fileID: 102900000, guid: b4c1911de578b6a4880e6a26388cf031, type: 3}
       scenePath: Assets/Game/Scenes/Area1_1.unity
@@ -2413,6 +2112,104 @@ MonoBehaviour:
     position: {x: 829, y: -52, z: 0}
     value: 53d08da1-265d-4568-9eca-6676e8579136
     name: Background
+    map:
+      sceneAsset: {fileID: 102900000, guid: 43efe485d3c965d428f9a8ff907cde85, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_2.unity
+  - properties: {fileID: 0}
+    position: {x: 315, y: 33, z: 0}
+    value: b67456d0-c00d-433e-9cd1-394df1942d33
+    name: Death
+    map:
+      sceneAsset: {fileID: 102900000, guid: 43efe485d3c965d428f9a8ff907cde85, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_2.unity
+  - properties: {fileID: 0}
+    position: {x: 263, y: 20, z: 0}
+    value: 6a300802-4896-4eae-8e37-ca005a71a1da
+    name: Death
+    map:
+      sceneAsset: {fileID: 102900000, guid: 43efe485d3c965d428f9a8ff907cde85, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_2.unity
+  - properties: {fileID: 0}
+    position: {x: 295, y: 20, z: 0}
+    value: e107feca-6f8f-4baa-95e3-ddb368824078
+    name: Death
+    map:
+      sceneAsset: {fileID: 102900000, guid: 43efe485d3c965d428f9a8ff907cde85, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_2.unity
+  - properties: {fileID: 0}
+    position: {x: 255, y: 33, z: -1}
+    value: ae1f1af3-0654-4157-809b-8bfeaef5934e
+    name: Death
+    map:
+      sceneAsset: {fileID: 102900000, guid: 43efe485d3c965d428f9a8ff907cde85, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_2.unity
+  - properties: {fileID: 0}
+    position: {x: 321, y: -49, z: 0}
+    value: 80888976-4c3f-4e17-b300-e6cdce8a0df6
+    name: Death
+    map:
+      sceneAsset: {fileID: 102900000, guid: 43efe485d3c965d428f9a8ff907cde85, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_2.unity
+  - properties: {fileID: 0}
+    position: {x: 141, y: -49, z: 0}
+    value: bb715b31-5f73-4f72-8517-3abdb976a7df
+    name: Death
+    map:
+      sceneAsset: {fileID: 102900000, guid: 43efe485d3c965d428f9a8ff907cde85, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_2.unity
+  - properties: {fileID: 0}
+    position: {x: 971.5, y: -98, z: -1}
+    value: da845b77-8994-45a7-943e-fe42b5487358
+    name: Death (1)
+    map:
+      sceneAsset: {fileID: 102900000, guid: b4c1911de578b6a4880e6a26388cf031, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_1.unity
+  - properties: {fileID: 0}
+    position: {x: 0, y: 0, z: -1}
+    value: 18fd379a-25af-4fb2-b523-aa142c62d4fb
+    name: Death
+    map:
+      sceneAsset: {fileID: 102900000, guid: 43efe485d3c965d428f9a8ff907cde85, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_2.unity
+  - properties: {fileID: 0}
+    position: {x: 263, y: 20, z: 0}
+    value: 5b6912e2-fc96-4787-a8b5-edf5c6bba722
+    name: Death
+    map:
+      sceneAsset: {fileID: 102900000, guid: 43efe485d3c965d428f9a8ff907cde85, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_2.unity
+  - properties: {fileID: 0}
+    position: {x: 260, y: 20, z: 0}
+    value: 7c928cdd-2bb6-48c3-9890-6577abb15a0e
+    name: Particle
+    map:
+      sceneAsset: {fileID: 102900000, guid: 43efe485d3c965d428f9a8ff907cde85, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_2.unity
+  - properties: {fileID: 0}
+    position: {x: 260.25, y: 20, z: 0}
+    value: bde110eb-fb6b-4c23-8287-f1917866e6bc
+    name: Laser (1)
+    map:
+      sceneAsset: {fileID: 102900000, guid: 43efe485d3c965d428f9a8ff907cde85, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_2.unity
+  - properties: {fileID: 0}
+    position: {x: 261, y: 20, z: 0}
+    value: e9509363-5a1b-405b-98f6-4cc55ac91265
+    name: Bottom
+    map:
+      sceneAsset: {fileID: 102900000, guid: 43efe485d3c965d428f9a8ff907cde85, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_2.unity
+  - properties: {fileID: 0}
+    position: {x: 260.25, y: 20, z: 0}
+    value: 3fd7f338-b71f-46a7-abd7-629307880b37
+    name: Alternator
+    map:
+      sceneAsset: {fileID: 102900000, guid: 43efe485d3c965d428f9a8ff907cde85, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_2.unity
+  - properties: {fileID: 0}
+    position: {x: 289, y: 19.999996, z: 0}
+    value: 6e89bb4f-6c14-411d-bddf-64d2bd889d68
+    name: Top
     map:
       sceneAsset: {fileID: 102900000, guid: 43efe485d3c965d428f9a8ff907cde85, type: 3}
       scenePath: Assets/Game/Scenes/Area1_2.unity

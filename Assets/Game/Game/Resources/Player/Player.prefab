@@ -481,8 +481,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 15
-  jumpSpeed: 8
+  jumpSpeed: 7.5
   jumpLimit: 1
+  JumpsRemaining: 0
+  dodgeLimit: 1
+  DodgeRemaining: 0
   input: {fileID: 11400000, guid: 6d1dbe5f4425b2449a78381502e4e66a, type: 2}
   MovementFilter:
     useTriggers: 0
@@ -499,7 +502,6 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   DebugMovement: 0
-  JumpsRemaining: 0
 --- !u!1 &4156553797890116632
 GameObject:
   m_ObjectHideFlags: 0

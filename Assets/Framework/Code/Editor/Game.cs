@@ -100,7 +100,7 @@ namespace JapeEditor
 
         public static Shape CreateShape()
         {
-            GameObject gameObject = CreateGameObject(null, typeof(EdgeCollider2D), typeof(SpriteShapeRenderer), typeof(SpriteShapeController));
+            GameObject gameObject = CreateGameObject(null, typeof(PolygonCollider2D), typeof(SpriteShapeRenderer), typeof(SpriteShapeController));
             SpriteShapeRenderer renderer = gameObject.GetComponent<SpriteShapeRenderer>();
             renderer.sharedMaterials = new Material[renderer.sharedMaterials.Length].Select(m => m = DefaultMaterial2D).ToArray();
             World.SetShapeProfile(gameObject, DefaultSpriteShape);

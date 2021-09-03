@@ -1338,11 +1338,6 @@ MonoBehaviour:
     ext: prefab
     type: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  - name: CameraBasic
-    resourceType: 2
-    path: Camera
-    ext: asset
-    type: Jape.Global, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   - name: Music
     resourceType: 1
     path: 
@@ -1392,17 +1387,6 @@ MonoBehaviour:
     path: Player
     ext: 
     type: 
-  - name: Cast
-    resourceType: 1
-    path: Player/Animation
-    ext: 
-    type: 
-  - name: GenericCast
-    resourceType: 2
-    path: Player/Animation/Cast
-    ext: anim
-    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   - name: Movement
     resourceType: 1
     path: Player/Animation
@@ -1465,124 +1449,6 @@ MonoBehaviour:
   - name: Unslide
     resourceType: 2
     path: Player/Animation/Movement
-    ext: anim
-    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  - name: Parry
-    resourceType: 1
-    path: Player/Animation
-    ext: 
-    type: 
-  - name: Parry
-    resourceType: 2
-    path: Player/Animation/Parry
-    ext: anim
-    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  - name: ParryStop
-    resourceType: 2
-    path: Player/Animation/Parry
-    ext: anim
-    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  - name: Swing
-    resourceType: 1
-    path: Player/Animation
-    ext: 
-    type: 
-  - name: BigSwing
-    resourceType: 2
-    path: Player/Animation/Swing
-    ext: anim
-    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  - name: ChainSwing
-    resourceType: 2
-    path: Player/Animation/Swing
-    ext: anim
-    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  - name: CrossCut
-    resourceType: 2
-    path: Player/Animation/Swing
-    ext: anim
-    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  - name: CrouchSwing
-    resourceType: 2
-    path: Player/Animation/Swing
-    ext: anim
-    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  - name: DoubleStab
-    resourceType: 2
-    path: Player/Animation/Swing
-    ext: anim
-    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  - name: Grinder
-    resourceType: 2
-    path: Player/Animation/Swing
-    ext: anim
-    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  - name: HammerSwing
-    resourceType: 2
-    path: Player/Animation/Swing
-    ext: anim
-    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  - name: QuickSword1
-    resourceType: 2
-    path: Player/Animation/Swing
-    ext: anim
-    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  - name: QuickSword2
-    resourceType: 2
-    path: Player/Animation/Swing
-    ext: anim
-    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  - name: QuickSword3
-    resourceType: 2
-    path: Player/Animation/Swing
-    ext: anim
-    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  - name: ScepterSwing
-    resourceType: 2
-    path: Player/Animation/Swing
-    ext: anim
-    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  - name: SmallSwing
-    resourceType: 2
-    path: Player/Animation/Swing
-    ext: anim
-    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  - name: StabStab
-    resourceType: 2
-    path: Player/Animation/Swing
-    ext: anim
-    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  - name: SunSwing
-    resourceType: 2
-    path: Player/Animation/Swing
-    ext: anim
-    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  - name: Swing
-    resourceType: 2
-    path: Player/Animation/Swing
-    ext: anim
-    type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  - name: Whip
-    resourceType: 2
-    path: Player/Animation/Swing
     ext: anim
     type: UnityEngine.AnimationClip, UnityEngine.AnimationModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
@@ -1688,7 +1554,7 @@ MonoBehaviour:
     path: Sounds
     ext: asset
     type: Jape.SoundClip, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  - name: Die
+  - name: Death
     resourceType: 2
     path: 
     ext: prefab
@@ -1865,5 +1731,5 @@ MonoBehaviour:
     path: 
     ext: asset
     type: Jape.Ids, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  fileCount: 287
-  folderCount: 45
+  fileCount: 267
+  folderCount: 42

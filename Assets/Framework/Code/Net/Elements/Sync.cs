@@ -212,11 +212,11 @@ namespace JapeNet
                 switch (position)
                 {
                     case SyncMode.Local: 
-                        PositionLocal = stream.StreamFirst<Vector3>(); 
+                        transform.localPosition = stream.StreamFirst<Vector3>(); 
                         break;
 
                     case SyncMode.Global: 
-                        Position = stream.StreamFirst<Vector3>(); 
+                        transform.position = stream.StreamFirst<Vector3>(); 
                         break;
                 }
             }
@@ -226,11 +226,11 @@ namespace JapeNet
                 switch (rotation)
                 {
                     case SyncMode.Local: 
-                        RotationLocal = stream.StreamFirst<Quaternion>(); 
+                        transform.localRotation = stream.StreamFirst<Quaternion>(); 
                         break;
 
                     case SyncMode.Global: 
-                        Rotation = stream.StreamFirst<Quaternion>(); 
+                        transform.rotation = stream.StreamFirst<Quaternion>(); 
                         break;
                 }
             }
@@ -240,7 +240,7 @@ namespace JapeNet
                 switch (scale)
                 {
                     case SyncScaleMode.Local: 
-                        ScaleLocal = stream.StreamFirst<Vector3>(); 
+                        transform.localScale = stream.StreamFirst<Vector3>(); 
                         break;
                 }
             }

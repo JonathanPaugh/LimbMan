@@ -71,22 +71,22 @@ namespace Jape
 
             if (anchorPosition) 
             { 
-                Position = new Vector3(Parent.transform.position.x + positionOffset.x, 
-                                       Parent.transform.position.y + positionOffset.y, 
-                                       Parent.transform.position.z + positionOffset.z);
+                transform.position = new Vector3(Parent.transform.position.x + positionOffset.x, 
+                                                 Parent.transform.position.y + positionOffset.y, 
+                                                 Parent.transform.position.z + positionOffset.z);
 
             }
 
             if (anchorRotation) 
             { 
-                Rotation = Quaternion.Euler(Parent.transform.eulerAngles.x + rotationOffset.x, 
-                                            Parent.transform.eulerAngles.y + rotationOffset.y, 
-                                            Parent.transform.eulerAngles.z + rotationOffset.z);
+                transform.rotation = Quaternion.Euler(Parent.transform.eulerAngles.x + rotationOffset.x, 
+                                                      Parent.transform.eulerAngles.y + rotationOffset.y, 
+                                                      Parent.transform.eulerAngles.z + rotationOffset.z);
             }
 
-            ScaleLocal = new Vector3(SetScale(scaleX, ScaleAxis.X), 
-                                     SetScale(scaleY, ScaleAxis.Y), 
-                                     SetScale(scaleZ, ScaleAxis.Z));
+            transform.localScale = new Vector3(SetScale(scaleX, ScaleAxis.X), 
+                                               SetScale(scaleY, ScaleAxis.Y), 
+                                               SetScale(scaleZ, ScaleAxis.Z));
         }
         
         private float SetScale(ScaleType scale, ScaleAxis axis)

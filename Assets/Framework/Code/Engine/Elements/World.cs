@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.ProBuilder;
 using UnityEngine.U2D;
@@ -12,12 +13,67 @@ namespace Jape
         private static WorldSettings settings;
         public static WorldSettings Settings => settings ?? (settings = Game.Settings<WorldSettings>());
 
+        [SerializeField]
+        private bool hide;
+
+        [SerializeField, ReadOnly]
+        protected bool IsCollider
+        {
+            get
+            {
+                if (!Game.IsRunning) { return false; }
+
+                if (IsPoly(gameObject))
+                {
+                    Material[] materials = gameObject.GetComponent<MeshRenderer>().sharedMaterials;
+                    Material collider = Database.GetAsset<Material>("Collider").Load<Material>();
+                    return materials.Contains(collider);
+                }
+
+                if (IsShape(gameObject))
+                {
+                    SpriteShape shape = gameObject.GetComponent<SpriteShapeController>().spriteShape;
+                    SpriteShape collider = Database.GetAsset<SpriteShape>("Collider").Load<SpriteShape>();
+                    return shape == collider;
+                }
+                return false;
+            }
+        }
+
+        [SerializeField, ReadOnly]
+        protected bool IsTrigger
+        {
+            get
+            {
+                if (!Game.IsRunning) { return false; }
+
+                if (IsPoly(gameObject))
+                {
+                    Material[] materials = gameObject.GetComponent<MeshRenderer>().sharedMaterials;
+                    Material trigger = Database.GetAsset<Material>("Trigger").Load<Material>();
+                    return materials.Contains(trigger);
+                }
+
+                if (IsShape(gameObject))
+                {
+                    SpriteShape shape = gameObject.GetComponent<SpriteShapeController>().spriteShape;
+                    SpriteShape trigger = Database.GetAsset<SpriteShape>("Trigger").Load<SpriteShape>();
+                    return shape == trigger;
+                }
+                return false;
+            }
+        }
+
         private List<GameObject> linkedPositions = new List<GameObject>();
 
         private Vector3 positionStored;
         private Vector3 positionDelta;
 
         private static List<Tag> GetLinkedPositionTags() { return Settings.linkPosition; }
+
+        public static bool IsWorld(GameObject gameObject) { return gameObject.HasComponent<World>(false); }
+        public static bool IsPoly(GameObject gameObject) { return gameObject.HasComponent<Poly>(false); }
+        public static bool IsShape(GameObject gameObject) { return gameObject.HasComponent<Shape>(false); }
 
         internal override void TouchLow(GameObject gameObject)
         {
@@ -32,6 +88,13 @@ namespace Jape
         internal override void Awake()
         {
             positionStored = gameObject.transform.position;
+
+            if (hide || IsCollider || IsTrigger)
+            {
+                Renderer renderer = GetComponent<Renderer>();
+                renderer.enabled = false;
+            }
+
             base.Awake();
         }
 
@@ -42,10 +105,6 @@ namespace Jape
             base.FixedUpdate();
             positionStored = gameObject.transform.position;
         }
-
-        public static bool IsWorld(GameObject gameObject) { return gameObject.HasComponent<World>(false); }
-        public static bool IsPoly(GameObject gameObject) { return gameObject.HasComponent<Poly>(false); }
-        public static bool IsShape(GameObject gameObject) { return gameObject.HasComponent<Shape>(false); }
 
         private void TryLinkPosition(GameObject gameObject)
         {
@@ -72,47 +131,49 @@ namespace Jape
 
         public static void ApplyColor(GameObject gameObject, Color color)
         {
-            if (IsWorld(gameObject))
+            if (!IsWorld(gameObject)) { return; }
+
+            if (IsPoly(gameObject))
             {
-                if (IsPoly(gameObject))
-                {
-                    Packages.ProBuilder.AccessVertexColor("SetFaceColors", Solver, color);
-                }
-                if (IsShape(gameObject))
-                {
-                    if (gameObject.TryGetComponent(out SpriteShapeRenderer spriteShape))
-                    {
-                        spriteShape.color = color;
-                    } 
-                }
+                Packages.ProBuilder.AccessVertexColor("SetFaceColors", Solver, color);
             }
+            if (IsShape(gameObject))
+            {
+                if (gameObject.TryGetComponent(out SpriteShapeRenderer spriteShape))
+                {
+                    spriteShape.color = color;
+                } 
+            }
+
             if (gameObject.TryGetComponent(out SpriteRenderer sprite)) { sprite.color = color; }
             MemberInfo Solver(MemberInfo[] members) { return members.First(m => ((MethodInfo)m).GetParameters().Any(p => p.ParameterType == typeof(Color))); }
         }
 
         public static void ApplyMaterial(GameObject gameObject, Material material)
         {
-            if (IsWorld(gameObject))
+            if (!IsWorld(gameObject)) { return; }
+
+            if (IsPoly(gameObject))
             {
-                if (IsPoly(gameObject))
+                Packages.ProBuilder.AccessMaterialEditor("ApplyMaterial", null, new List<ProBuilderMesh> { gameObject.GetComponent<ProBuilderMesh>() }, material);
+            }
+            if (IsShape(gameObject))
+            {
+                if (gameObject.TryGetComponent(out SpriteShapeRenderer spriteShape))
                 {
-                    Packages.ProBuilder.AccessMaterialEditor("ApplyMaterial", null, new List<ProBuilderMesh> { gameObject.GetComponent<ProBuilderMesh>() }, material);
-                }
-                if (IsShape(gameObject))
-                {
-                    if (gameObject.TryGetComponent(out SpriteShapeRenderer spriteShape))
-                    {
-                        spriteShape.material = material;
-                    }
+                    spriteShape.material = material;
                 }
             }
+
             if (gameObject.TryGetComponent(out SpriteRenderer sprite)) { sprite.material = material; }
         }
 
         public static void MakeTrigger(GameObject gameObject)
         {
             if (!IsWorld(gameObject)) { return; }
+
             ApplyColor(gameObject, Color.white);
+
             if (IsPoly(gameObject))
             {
                 ApplyMaterial(gameObject, Database.GetAsset<Material>("Trigger").Load<Material>());
@@ -120,12 +181,7 @@ namespace Jape
             if (IsShape(gameObject))
             {
                 SetShapeProfile(gameObject, Database.GetAsset<SpriteShape>("Trigger").Load<SpriteShape>());
-                gameObject.GetComponent<SpriteShapeController>().fillPixelsPerUnit = 512;
             }
-            if (gameObject.TryGetComponent(Packages.ProBuilder.ColliderBehaviour(), out Component component)) { DestroyImmediate(component); }
-            if (gameObject.TryGetComponent(Packages.ProBuilder.TriggerBehaviour(), out _)) { return; }
-
-            gameObject.AddComponent(Packages.ProBuilder.TriggerBehaviour()); 
             
             if (gameObject.TryGetComponent(out Collider collider))
             {
@@ -144,7 +200,9 @@ namespace Jape
         public static void MakeCollider(GameObject gameObject)
         {
             if (!IsWorld(gameObject)) { return; }
+
             ApplyColor(gameObject, Color.white);
+
             if (IsPoly(gameObject))
             {
                 ApplyMaterial(gameObject, Database.GetAsset<Material>("Collider").Load<Material>());
@@ -154,10 +212,6 @@ namespace Jape
                 SetShapeProfile(gameObject, Database.GetAsset<SpriteShape>("Collider").Load<SpriteShape>());
                 gameObject.GetComponent<SpriteShapeController>().fillPixelsPerUnit = 512;
             }
-            if (gameObject.TryGetComponent(Packages.ProBuilder.TriggerBehaviour(), out Component component)) { DestroyImmediate(component); }
-            if (gameObject.TryGetComponent(Packages.ProBuilder.ColliderBehaviour(), out _)) { return; }
-
-            gameObject.AddComponent(Packages.ProBuilder.ColliderBehaviour());
 
             if (gameObject.TryGetComponent(out Collider collider))
             {
@@ -167,6 +221,7 @@ namespace Jape
                     ((MeshCollider)collider).convex = false;
                 }
             }
+
             if (gameObject.TryGetComponent(out Collider2D collider2D))
             {
                 collider2D.isTrigger = false;

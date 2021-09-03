@@ -20,9 +20,11 @@ namespace Jape
 
         protected override void StayAction(GameObject gameObject)
         {
+            if (!gameObject.HasRigidbody()) { return; }
             switch(frontAxis)
             {
                 case Dimension.X:
+                    
                     gameObject.ApplyForce(transform.right * force, mode, false);
                     break;
                 case Dimension.Y:

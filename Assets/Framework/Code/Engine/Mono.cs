@@ -29,56 +29,10 @@ namespace Jape
             set => gameObject.SetTeam(value);
         }
 
-        public Vector3 Position
+        public void ApplyForce(Vector3 force, ForceMode mode, bool useMass = true)
         {
-            get => gameObject.Position();
-            set => gameObject.SetPosition(value);
+            gameObject.ApplyForce(force, mode, useMass);
         }
-
-        public Vector3 PositionLocal
-        {
-            get => gameObject.PositionLocal();
-            set => gameObject.SetPositionLocal(value);
-        }
-
-        public Quaternion Rotation
-        {
-            get => gameObject.Rotation();
-            set => gameObject.SetRotation(value);
-        } 
-
-        public Quaternion RotationLocal
-        {
-            get => gameObject.RotationLocal();
-            set => gameObject.SetRotationLocal(value);
-        } 
-
-        public Vector3 Scale
-        {
-            get => gameObject.Scale();
-        }
-
-        public Vector3 ScaleLocal
-        {
-            get => gameObject.ScaleLocal();
-            set => gameObject.SetScaleLocal(value);
-        }
-
-        public Vector3 Velocity
-        {
-            get => gameObject.Velocity();
-            set => gameObject.SetVelocity(value);
-        }
-
-        public void Move(Vector3 offset) { gameObject.Move(offset); }
-        public void MoveLocal(Vector3 offset) { gameObject.MoveLocal(offset); }
-
-        public void Rotate(Quaternion offset) { gameObject.Rotate(offset); }
-        public void RotateLocal(Quaternion offset) { gameObject.RotateLocal(offset); }
-
-        public void Rescale(Vector3 scale) { gameObject.ScaleLocal(scale); }
-
-        public void ApplyForce(Vector3 force, ForceMode mode, bool useMass = true) { gameObject.ApplyForce(force, mode, useMass); }
         
         /// <summary>
         /// Called when enabled

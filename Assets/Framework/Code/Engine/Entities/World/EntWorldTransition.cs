@@ -75,7 +75,7 @@ namespace Jape
             
             if (!Ids.Has(target)) { return; }
 
-            gameObject.SetPosition(Ids.Get(target).Position);
+            gameObject.transform.position = Ids.Get(target).Position;
         }
 
         #if UNITY_EDITOR

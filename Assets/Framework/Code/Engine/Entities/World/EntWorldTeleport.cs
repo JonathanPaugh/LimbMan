@@ -21,7 +21,7 @@ namespace Jape
 
         protected override void TouchAction(GameObject gameObject)
         {
-            gameObject.SetPosition(target.transform.position);
+            gameObject.transform.position = target.transform.position;
         }
 
         public void DrawLine()

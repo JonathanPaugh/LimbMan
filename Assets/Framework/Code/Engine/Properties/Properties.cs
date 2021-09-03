@@ -113,6 +113,12 @@ namespace Jape
         [HideInInspector]
         public Action<GameObject> OnDisabled = delegate {};
 
+        internal Rigidbody Rigidbody => GetComponent<Rigidbody>();
+        internal Rigidbody2D Rigidbody2D => GetComponent<Rigidbody2D>();
+
+        internal Collider[] Colliders => GetComponents<Collider>();
+        internal Collider2D[] Colliders2D => GetComponents<Collider2D>();
+
         private void SetSavedElements()
         {
             ValidateSaveElements();
@@ -125,247 +131,6 @@ namespace Jape
                     element = element,
                     save = true
                 });
-            }
-        }
-
-        private new Rigidbody rigidbody;
-        internal Rigidbody Rigidbody
-        {
-            get
-            {
-                if (rigidbody != null) { return rigidbody; }
-                rigidbody = GetComponent<Rigidbody>();
-                return rigidbody;
-            } 
-        }
-
-        private new Rigidbody2D rigidbody2D;
-        internal Rigidbody2D Rigidbody2D
-        {
-            get
-            {
-                if (rigidbody2D != null) { return rigidbody2D; }
-                rigidbody2D = GetComponent<Rigidbody2D>();
-                return rigidbody2D;
-            } 
-        }
-
-        private new Collider collider;
-        internal Collider Collider
-        {
-            get
-            {
-                if (collider != null) { return collider; }
-                collider = GetComponent<Collider>();
-                return collider;
-            } 
-        }
-
-        private new Collider2D collider2D;
-        internal Collider2D Collider2D
-        {
-            get
-            {
-                if (collider2D != null) { return collider2D; }
-                collider2D = GetComponent<Collider2D>();
-                return collider2D;
-            } 
-        }
-
-        internal new Vector3 Velocity()
-        {
-            if (Rigidbody != null) { return Rigidbody.velocity; }
-            if (Rigidbody2D != null) { return Rigidbody2D.velocity; }
-            return Vector3.zero;
-        }
-
-        internal void SetPosition(Vector3 position)
-        {
-            if (queryMovement)
-            {
-                if (Rigidbody != null)
-                {
-                    Rigidbody.position = position;
-                    return;
-                } 
-
-                if (Rigidbody2D != null)
-                {
-                    Rigidbody2D.position = position;
-                    return;
-                }
-            }
-
-            transform.position = position;
-        }
-
-        internal void SetPositionLocal(Vector3 position)
-        {
-            if (transform.parent == null) { SetPosition(position); return; }
-
-            if (queryMovement)
-            {
-                if (Rigidbody != null)
-                {
-                    Rigidbody.position = transform.parent.TransformPoint(position);
-                    return;
-                } 
-
-                if (Rigidbody2D != null)
-                {
-                    Rigidbody2D.position = transform.parent.TransformPoint(position);
-                    return;
-                }
-            }
-
-            transform.localPosition = position;
-        }
-
-        internal new void Move(Vector3 offset)
-        {
-            if (queryMovement)
-            {
-                if (Rigidbody != null)
-                {
-                    Rigidbody.MovePosition(Rigidbody.position + offset);
-                    return;
-                } 
-
-                if (Rigidbody2D != null)
-                {
-                    Rigidbody2D.MovePosition(Rigidbody2D.position + (Vector2)offset);
-                    return;
-                }
-            }
-
-            transform.position += offset;
-        }
-
-        internal new void MoveLocal(Vector3 offset)
-        {
-            if (transform.parent == null) { Move(offset); return; }
-
-            if (queryMovement)
-            {
-                if (Rigidbody != null)
-                {
-                    Rigidbody.MovePosition(Rigidbody.position + transform.parent.TransformDirection(offset));
-                    return;
-                } 
-
-                if (Rigidbody2D != null)
-                {
-                    Rigidbody2D.MovePosition(Rigidbody2D.position + (Vector2)transform.parent.TransformDirection(offset));
-                    return;
-                }
-            }
-
-            transform.localPosition += offset;
-        }
-
-        internal void SetRotation(Quaternion rotation)
-        {
-            if (queryMovement)
-            {
-                if (Rigidbody != null)
-                {
-                    Rigidbody.rotation = rotation;
-                    return;
-                } 
-
-                if (Rigidbody2D != null)
-                {
-                    Rigidbody2D.rotation = rotation.eulerAngles.z;
-                    return;
-                }
-            }
-
-            transform.rotation = rotation;
-        }
-
-        internal void SetRotationLocal(Quaternion rotation)
-        {
-            if (transform.parent == null) { SetRotation(rotation); return; }
-
-            if (queryMovement)
-            {
-                if (Rigidbody != null)
-                {
-                    Rigidbody.rotation = transform.parent.rotation * rotation;
-                    return;
-                } 
-
-                if (Rigidbody2D != null)
-                {
-                    Rigidbody2D.rotation = transform.rotation.eulerAngles.z + rotation.eulerAngles.z;
-                    return;
-                }
-            }
-
-            transform.localRotation = rotation;
-        }
-
-        internal new void Rotate(Quaternion offset)
-        {
-            if (queryMovement)
-            {
-                if (Rigidbody != null)
-                {
-                    Rigidbody.MoveRotation(offset * rigidbody.rotation);
-                    return;
-                }
-
-                if (Rigidbody2D != null)
-                {
-                    Rigidbody2D.MoveRotation(rigidbody2D.rotation + offset.eulerAngles.z);
-                    return;
-                }
-            }
-
-            transform.rotation = offset * transform.rotation;
-        }
-
-        internal new void RotateLocal(Quaternion offset)
-        {
-            if (transform.parent == null) { Rotate(offset); return; }
-
-            if (queryMovement)
-            {
-                if (Rigidbody != null)
-                {
-                    Rigidbody.MoveRotation(rigidbody.rotation * offset);
-                    return;
-                }
-            }
-
-            transform.rotation *= offset;
-        }
-
-        internal void SetScaleLocal(Vector3 scale)
-        {
-            transform.localScale = scale;
-        }
-
-        internal new void ScaleLocal(Vector3 offset)
-        {
-            transform.localScale += offset;
-        }
-
-        internal void SetVelocity(Vector3 velocity)
-        {
-            if (queryMovement)
-            {
-                if (Rigidbody != null)
-                {
-                    Rigidbody.velocity = velocity;
-                    return;
-                } 
-
-                if (Rigidbody2D != null)
-                {
-                    Rigidbody2D.velocity = velocity;
-                    return;
-                }
             }
         }
 
@@ -408,10 +173,9 @@ namespace Jape
                    Rigidbody2D != null;
         }
 
-        internal bool HasCollider()
+        internal int ColliderCount()
         {
-            return Collider != null || 
-                   Collider2D != null;
+            return Colliders.Length + Colliders2D.Length;
         }
 
         private bool NoPlayer() { return player == 0; }

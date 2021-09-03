@@ -1,9 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Codice.Client.Commands;
-using Jape;
+﻿using Jape;
 using UnityEngine;
-
 
 public class Spawn : Element
 {
