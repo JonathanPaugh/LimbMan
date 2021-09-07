@@ -41,7 +41,7 @@ namespace JapeEditor
                 {
                     if (!gameObject.HasComponent<Properties>(false))
                     {
-                        gameObject.AddComponent<Properties>();
+                        Properties.Create(gameObject);
                     }
                 }
             }

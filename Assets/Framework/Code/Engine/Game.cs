@@ -47,7 +47,8 @@ namespace Jape
 
         public static GameObject CreateGameObject(string name = null, params Type[] components)
         {
-            GameObject gameObject = new GameObject(name, components.Prepend(typeof(Properties)).ToArray());
+            GameObject gameObject = new GameObject(name, components.ToArray());
+            Properties.Create(gameObject);
             if (Application.isPlaying) { gameObject.AddTag(Tag.Find("Instantiated")); }
             return gameObject;
         }
@@ -87,14 +88,46 @@ namespace Jape
             EngineManager.ChangeScene(scenePath, null, onChange);
         }
 
-        public static void Save()
+        public static void Save(Action onSave = null)
         {
-            EngineManager.SaveGame();
+            EngineManager.SaveGame(onSave);
         }
 
         public static void Load(Action<bool> onLoad = null)
         {
             EngineManager.LoadGame(onLoad);
+        }
+
+        public static void Delete(Action onDelete = null)
+        {
+            EngineManager.DeleteGame(onDelete);
+        }
+
+        protected static float pauseTimescale = -1;
+        public static void Pause()
+        {
+            if (pauseTimescale > -1)
+            {
+                Log.Warning("Game is already paused");
+                return;
+            }
+
+            pauseTimescale = UnityEngine.Time.timeScale;
+
+            UnityEngine.Time.timeScale = 0f;
+        }
+
+        public static void Resume()
+        {
+            if (pauseTimescale < 0)
+            {
+                Log.Warning("Game is not paused");
+                return;
+            }
+
+            UnityEngine.Time.timeScale = pauseTimescale;
+
+            pauseTimescale = -1;
         }
 
         /// <summary>

@@ -7,8 +7,15 @@ namespace Jape
     {
         internal static Properties Properties(this GameObject gameObject)
         {
+            
             if (gameObject == null) { Log.Write("GameObject is null"); return null; }
-            return gameObject.TryGetComponent(out Properties properties) ? properties : gameObject.AddComponent<Properties>();
+
+            if (gameObject.TryGetComponent(out Properties properties))
+            {
+                return properties;
+            }
+
+            return Jape.Properties.Create(gameObject);
         }
 
         public static bool InScene(this GameObject gameObject) { return gameObject.scene.rootCount != 0; }
@@ -57,15 +64,15 @@ namespace Jape
         public static Rigidbody Rigidbody(this GameObject gameObject) { return gameObject.Properties().Rigidbody; }
         public static Rigidbody2D Rigidbody2D(this GameObject gameObject) { return gameObject.Properties().Rigidbody2D; }
 
+        public static int ColliderCount(this GameObject gameObject) { return gameObject.Properties().ColliderCount(); }
+
+        public static Collider[] Colliders(this GameObject gameObject) { return gameObject.Properties().Colliders; }
+        public static Collider2D[] Collider2D(this GameObject gameObject) { return gameObject.Properties().Colliders2D; }
+
         public static void ApplyForce(this GameObject gameObject, Vector3 force, ForceMode mode, bool useMass = true)
         {
             gameObject.Properties().ApplyForce(force, mode, useMass);
         }
-
-        public static int ColliderCount(this GameObject gameObject) { return gameObject.Properties().ColliderCount(); }
-
-        public static Collider[] Collider(this GameObject gameObject) { return gameObject.Properties().Colliders; }
-        public static Collider2D[] Collider2D(this GameObject gameObject) { return gameObject.Properties().Colliders2D; }
 
         public static bool HasComponent(this GameObject gameObject, System.Type type, bool includeChildren)
         {

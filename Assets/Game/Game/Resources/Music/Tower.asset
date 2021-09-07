@@ -25,7 +25,7 @@ MonoBehaviour:
   loop: 1
   sounds:
   - clips:
-    - audio: {fileID: 8300000, guid: 7929a054b243263479415317ff4e4a15, type: 3}
+    - audio: {fileID: 8300000, guid: cdc0f4c57d3df0e4589c6303e142d24c, type: 3}
       volume: 100
       speed: 1
     volume: 100

@@ -6,13 +6,14 @@ using UnityEngine;
 
 using Input = Jape.Input;
 using Math = Jape.Math;
+using Quaternion = UnityEngine.Quaternion;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 
 public class Movement : Element
 {
     public const float MoveSpeedRatio = 1;
-    public const float MaxFallSpeed = 20;
+    public const float MaxFallSpeed = 40;
 
     private const float JumpCooldownTime = 0.1f;
     private const float JumpTrajectoryTime = 1.2f;
@@ -22,6 +23,8 @@ public class Movement : Element
 
     private const float GroundingProtectionTime = 0.15f;
     private const float UngroundingTime = 0.15f;
+
+    public const float Friction = 0.4f;
 
     public float moveSpeed;
     public float jumpSpeed;
@@ -78,7 +81,9 @@ public class Movement : Element
     private Timer GroundingProtectionTimer;
     private Timer UngroundingTimer;
 
-    private Job dodgeJob;
+    private Activity dodge;
+
+    private PhysicsMaterial2D physicsMaterial;
 
     // UPDATE //
 
@@ -96,7 +101,18 @@ public class Movement : Element
         GroundingProtectionTimer = CreateTimer();
         UngroundingTimer = CreateTimer();
 
-        dodgeJob = CreateJob().Set(DodgeRoutine());
+        dodge = CreateActivity();
+
+        dodge.Setup(DodgeSetup);
+        dodge.Action(DodgeRoutine());
+        dodge.Cleanup(DodgeCleanup);
+
+        physicsMaterial = new PhysicsMaterial2D("Player")
+        {
+            friction = Friction,
+        };
+
+        Collider.sharedMaterial = physicsMaterial;
     }
 
     protected override void Enabled()
@@ -127,17 +143,26 @@ public class Movement : Element
 
     private void Input()
     {
-        inputHorizontal = input.GetAction("Horizontal").AxisStream() ?? 0;
-        ChangeDirection(inputHorizontal);
-        Move(inputHorizontal);
+        switch (Jape.Game.IsWeb)
+        {
+            case true:
+                inputHorizontal = input.GetAction("HorizontalGL").AxisStream() ?? 0;
+                inputVertical = input.GetAction("VerticalGL").AxisStream() ?? 0;
+                break;
 
-        inputVertical = input.GetAction("Vertical").AxisStream() ?? 0;
-        Crouch(inputVertical);
+            case false:
+                inputHorizontal = input.GetAction("Horizontal").AxisStream() ?? 0;
+                inputVertical = input.GetAction("Vertical").AxisStream() ?? 0;
+                break;
+        }
 
         inputJump = input.GetAction("Jump").ButtonStream();
-        Jump(inputJump);
-
         inputDodge = input.GetAction("Dodge").ButtonStream();
+
+        ChangeDirection(inputHorizontal);
+        Move(inputHorizontal);
+        Crouch(inputVertical);
+        Jump(inputJump);
         Dodge(inputDodge);
     }
 
@@ -354,17 +379,12 @@ public class Movement : Element
 
     public void Dodge(bool? input)
     {
-        if (input == null)
+        if (input != true)
         {
             return;
         }
 
-        if (input == false)
-        {
-            return;
-        }
-
-        if (dodgeJob.IsProcessing())
+        if (dodge.IsProcessing())
         {
             return;
         }
@@ -374,9 +394,19 @@ public class Movement : Element
             return;
         }
 
-        DodgeRemaining -= 1;
+        dodge.Start();
+    }
 
-        dodgeJob.Start();
+    private void DodgeSetup()
+    {
+        transform.rotation = Quaternion.identity;
+        Grounded.Restrict(GetType());
+    }
+
+    private void DodgeCleanup()
+    {
+        transform.rotation = Quaternion.identity;
+        Grounded.Unrestrict(GetType());
     }
 
     private IEnumerable DodgeRoutine()
@@ -387,16 +417,19 @@ public class Movement : Element
 
         Crouch(default, true);
 
+        AnimationClip clip = null;
         switch (FacingDirection())
         {
-            case Direction.Horizontal.Left:
-                GameAnimation.PlayOverride(Player, Database.GetAsset<AnimationClip>("DodgeReverse").Load<AnimationClip>(), "Action", 1);
+            case Direction.Horizontal.Right:
+                clip = Database.GetAsset<AnimationClip>("Dodge").Load<AnimationClip>();
                 break;
 
-            case Direction.Horizontal.Right:
-                GameAnimation.PlayOverride(Player, Database.GetAsset<AnimationClip>("Dodge").Load<AnimationClip>(), "Action", 1);
+            case Direction.Horizontal.Left:
+                clip = Database.GetAsset<AnimationClip>("DodgeReverse").Load<AnimationClip>();
                 break;
         }
+
+        GameAnimation.PlayOverride(Player, clip, "Action", 1);
 
         float horizontal = GameMath.FloatDirection(Player.rigidbody.velocity.x) != FacingDirection() ? 0 : Player.rigidbody.velocity.x;
         float vertical = Mathf.Clamp(Player.rigidbody.velocity.y, 0, Mathf.Infinity);
@@ -419,6 +452,8 @@ public class Movement : Element
             time -= 1;
             yield return Wait.Tick();
         }
+
+        DodgeRemaining -= 1;
     }
 
     public void ChangeDirection(float Input = 0, Direction.Horizontal ForceDirection = Direction.Horizontal.None)
@@ -456,6 +491,14 @@ public class Movement : Element
         if (transform.lossyScale.x > 0) { return Direction.Horizontal.Right; }
 
         return Direction.Horizontal.None;
+    }
+
+    private void ChangeFriction(float friction)
+    {
+        physicsMaterial.friction = friction;
+
+        Collider.enabled = false;
+        Collider.enabled = true;
     }
 
     private void UpdateAnimation()
@@ -505,7 +548,8 @@ public class Movement : Element
 
         if (this.Grounded.IsRestricted() || GroundingProtectionTimer.IsProcessing()) {
             if (ShowDebug) { Debug.DrawLine(AreaA, AreaB, Color.green); }
-            UngroundingTimer.Finish();
+            BecomeUngrounded = true;
+            UngroundingTimer.Stop();
             Ungrounded();
             return;
         }
@@ -548,6 +592,7 @@ public class Movement : Element
             if (this.Grounded == false)
             {
                 PlayFootstep();
+                ChangeFriction(Friction);
                 this.Grounded.Set(true);
             }
             
@@ -557,6 +602,7 @@ public class Movement : Element
         {
             if (this.Grounded == true)
             {
+                ChangeFriction(0);
                 this.Grounded.Set(false);
             }
         }

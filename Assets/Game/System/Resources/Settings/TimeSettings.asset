@@ -24,7 +24,6 @@ MonoBehaviour:
   vSync: 0
   frameRate: -1
   tickRate: 60
-  webRate: 60
   tickThreshold: 0.3
   webThreshold: 1.3
   particleThreshold: 0.1

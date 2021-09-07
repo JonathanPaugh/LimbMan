@@ -10,7 +10,7 @@ namespace Jape
         public void Apply()
         {
             QualitySettings.vSyncCount = vSync;
-            Application.targetFrameRate = Game.IsWeb ? webRate : frameRate;
+            Application.targetFrameRate = frameRate;
             UnityEngine.Time.fixedDeltaTime = Time.ConvertRate(tickRate);
             UnityEngine.Time.maximumParticleDeltaTime = particleThreshold;
             UnityEngine.Time.maximumDeltaTime = Game.IsWeb ? webThreshold : tickThreshold;
@@ -82,9 +82,6 @@ namespace Jape
 
         [SerializeField, HideInInspector]
         private int tickRate = 60;
-
-        [PropertyOrder(1)]
-        public int webRate = 60;
 
         [PropertySpace(4)]
 

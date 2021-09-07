@@ -10,6 +10,7 @@ namespace Jape
             if (!EngineManager.IsQuitting())
             {
                 EngineManager.Instance.OnGameInit += GameInit;
+                EngineManager.Instance.OnGameSave += OnGameSave;
                 EngineManager.Instance.OnGameLoad += OnGameLoad;
                 EngineManager.Instance.OnSceneChange += OnSceneChange;
                 EngineManager.Instance.OnSceneDestroy += OnSceneDestroy;
@@ -24,6 +25,7 @@ namespace Jape
             if (!EngineManager.IsQuitting())
             {
                 EngineManager.Instance.OnGameInit -= GameInit;
+                EngineManager.Instance.OnGameSave -= OnGameSave;
                 EngineManager.Instance.OnGameLoad -= OnGameLoad;
                 EngineManager.Instance.OnSceneChange -= OnSceneChange;
                 EngineManager.Instance.OnSceneDestroy -= OnSceneDestroy;
@@ -41,6 +43,8 @@ namespace Jape
         
         protected virtual void OnBuildInit() {}
         protected virtual void OnGameInit() {}
+
+        protected virtual void OnGameSave() {}
         protected virtual void OnGameLoad() {}
 
         protected virtual void OnSceneChange(Map map) {}

@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 using Damage = Game.Damage;
-using GameShell = Game.GameShell;
 using Random = Jape.Random;
 using Time = Jape.Time;
 
@@ -58,7 +57,7 @@ public class Player : Element
 
     public void Die()
     {
-        EntFuncAudio.Create(Database.GetAsset<SoundClip>("Explosion", true).Load<SoundClip>(), Vector3.zero, GameManager.Instance.transform);
+        EntFuncAudio explosion = EntFuncAudio.Create(Database.GetAsset<SoundClip>("Explosion", true).Load<SoundClip>(), Vector3.zero, GameManager.Instance.transform);
 
         Jape.Game.CloneGameObject(Database.GetAsset<GameObject>("ParticleDeath", true).Load<GameObject>(), transform.position); 
 
@@ -67,9 +66,11 @@ public class Player : Element
         DetachLimb("RenderLeftArm");
         DetachLimb("RenderRightArm");
 
-        Timer.Delay(0.5f, Time.Counter.Seconds, GameShell.Spawn);
-
         Destroy(gameObject);
+
+        GameManager.Instance.Timer.Stop();
+
+        Timer.Delay(0.5f, Time.Counter.Seconds, GameManager.Spawn);
 
         void DetachLimb(string name)
         {

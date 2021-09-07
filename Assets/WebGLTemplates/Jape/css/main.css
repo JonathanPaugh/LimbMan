@@ -1,10 +1,27 @@
 html, body {
 	margin: 0;
 	padding: 0;
+	font-size: 24pt;
+	font-family: 'Roboto', sans-serif;
 }
 
-.game {
+#game {
 	display: block;
 	width: 100vw;
 	height: 100vh;
+}
+
+#info {
+	display: block;
+	width: 80vw;
+	height: 80vh;
+	padding: 10vh 10vw 10vh 10vw;
+}
+
+#loader {
+	position: absolute;
+	top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+	content: url("../img/loader.gif");
 }

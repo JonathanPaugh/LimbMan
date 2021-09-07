@@ -9,7 +9,7 @@ namespace Game
     {
         protected new static string Path => "System/Resources/Levels";
 
-        public string name;
+        public new string name;
 
         [SerializeField]
         private Map map = null;

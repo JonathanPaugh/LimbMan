@@ -12,9 +12,11 @@ namespace Jape
 
         private bool saving;
         private bool loading;
+        private bool deleting;
         
         private Action onSaveResponse;
         private Action<byte[]> onLoadResponse;
+        private Action onDeleteResponse;
 
         private byte[] saveData;
         private byte[] socketData;
@@ -47,6 +49,12 @@ namespace Jape
                 loading = false;
                 onLoadResponse?.Invoke(saveData);
             }
+
+            if (deleting)
+            {
+                deleting = false;
+                onDeleteResponse?.Invoke();
+            }
         }
 
         [UsedImplicitly]
@@ -73,6 +81,9 @@ namespace Jape
         private static extern void WebSaveRequestLoad(int profile);
 
         [DllImport("__Internal")]
+        private static extern void WebSaveRequestDelete(int profile);
+
+        [DllImport("__Internal")]
         private static extern void WebSocketConnect(int ip1, int ip2, int ip3, int ip4, int port);
 
         [DllImport("__Internal")]
@@ -97,6 +108,12 @@ namespace Jape
                     return;
                 }
 
+                if (Instance.deleting)
+                {
+                    Log.Warning("Cannot save, already deleting");
+                    return;
+                }
+
                 Instance.saving = true;
                 Instance.onSaveResponse = onResponse;
                 WebSaveRequestSave(profile, data, data.Length);
@@ -116,9 +133,40 @@ namespace Jape
                     return;
                 }
 
+                if (Instance.deleting)
+                {
+                    Log.Warning("Cannot load, already deleting");
+                    return;
+                }
+
                 Instance.loading = true;
                 Instance.onLoadResponse = onResponse;
                 WebSaveRequestLoad(profile);
+            }
+
+            public static void RequestDelete(int profile, Action onResponse)
+            {
+                if (Instance.saving)
+                {
+                    Log.Warning("Cannot delete, already saving");
+                    return;
+                }
+
+                if (Instance.loading)
+                {
+                    Log.Warning("Cannot delete, already loading");
+                    return;
+                }
+
+                if (Instance.deleting)
+                {
+                    Log.Warning("Cannot delete, already deleting");
+                    return;
+                }
+
+                Instance.deleting = true;
+                Instance.onDeleteResponse = onResponse;
+                WebSaveRequestDelete(profile);
             }
         }
 

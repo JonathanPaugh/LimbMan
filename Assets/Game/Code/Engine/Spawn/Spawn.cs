@@ -28,6 +28,6 @@ public class Spawn : Element
 
     public Vector3 SpawnPosition()
     {
-        return transform.position + (Vector3.up * 5);
+        return transform.position + new Vector3(0, 2, 0);
     }
 }

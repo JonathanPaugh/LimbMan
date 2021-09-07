@@ -25,56 +25,55 @@ namespace Jape
 
         private static string GetFile() => $"{Application.persistentDataPath}/{FileName}{Settings.Profile}.{Extension}";
 
-        public void AutoSave()
-        {
-            if (Settings.autoSave)
-            {
-                Timer.CreateGlobal()
-                     .Set(Settings.interval)
-                     .ChangeMode(Timer.Mode.Loop)
-                     .IterationAction(SaveAction)
-                     .Start();
-            }
+        public AutoSaver AutoSave { get; private set; }
 
-            void SaveAction()
-            {
-                if (Settings.light) { SaveLight(); return; }
-                Save();
-            }
+        protected override void Init()
+        {
+            AutoSave = new AutoSaver();
         }
 
         /// <summary>
         /// Save to file without requesting data
         /// </summary>
-        internal static void Save()
+        internal static void Save(Action onSave)
         {
             if (!Settings.save) { return; }
             Instance.OnSaveRequest();
-            SaveLight();
+            SaveLight(onSave);
         }
 
         /// <summary>
         /// Save to file without requesting data
         /// </summary>
-        internal static void SaveLight()
+        internal static void SaveLight(Action onSave)
         {
             if (!Settings.save) { return; }
-            Write();
+            Write(onSave);
         }
 
-        /// <summary>
-        /// Load from file
-        /// </summary>
         internal static void Load(Action<bool> onLoad)
         {
             if (!Settings.load) { onLoad?.Invoke(false); return; }
             Read(onLoad);
         }
 
-        public static void Delete()
+        internal static void Delete(Action onDelete)
         {
-            if (!File.Exists(GetFile())) { Log.Write("Unable to find delete file"); return; }
-            File.Delete(GetFile());
+            if (Game.IsRunning)
+            {
+                Instance.data.Clear();
+            }
+            switch (Game.IsWeb)
+            {
+                case true:
+                    WebManager.Save.RequestDelete(Settings.Profile, onDelete);
+                    break;
+
+                case false:
+                    File.Delete(GetFile());
+                    onDelete?.Invoke();
+                    break;
+            }
         }
 
         public static void PushStatus<T>(string key, T status) where T : Status
@@ -107,19 +106,31 @@ namespace Jape
             return true;
         }
 
-        private static void Write()
+        public static void RemoveStatus(string key)
+        {
+            if (!Instance.data.ContainsKey(key))
+            {
+                Debug.LogWarning("Unable to remove status");
+                return;
+            }
+
+            Instance.data.Remove(key);
+        }
+
+        private static void Write(Action onWrite)
         {
             byte[] data = Serializer.Dynamic.WriteDictionary(Instance.data);
             switch (Game.IsWeb)
             {
                 case true:
                 {
-                    WebManager.Save.RequestSave(Settings.Profile, data, null); 
+                    WebManager.Save.RequestSave(Settings.Profile, data, onWrite); 
                     break;
                 }
                 case false:
                 {
                     File.WriteAllBytes(GetFile(), data); 
+                    onWrite?.Invoke();
                     break;
                 }
             }
@@ -167,6 +178,56 @@ namespace Jape
                 {
                     onRead?.Invoke(false);
                 }
+            }
+        }
+
+        public class AutoSaver
+        {
+            private readonly Timer timer;
+
+            private bool light;
+
+            public AutoSaver()
+            {
+                timer = Timer.CreateGlobal().ChangeMode(Timer.Mode.Loop).IterationAction(Save);
+            }
+
+            private void Save()
+            {
+                switch (light)
+                {
+                    case true:
+                        SaveManager.SaveLight(null);
+                        break;
+
+                    case false:
+                        SaveManager.Save(null);
+                        break;
+                }
+            }
+
+            public void Start(float interval, bool light = false)
+            {
+                if (timer.IsProcessing())
+                {
+                    this.Log().Response("Unable to start, already processing");
+                    return;
+                }
+
+                this.light = light;
+
+                timer.Set(interval).Start();
+            }
+
+            public void Stop()
+            {
+                if (!timer.IsProcessing())
+                {
+                    this.Log().Response("Unable to stop, not processing");
+                    return;
+                }
+
+                timer.Stop();
             }
         }
     }

@@ -9,6 +9,33 @@ namespace Jape
     {
         private OrderedDictionary metrics = new OrderedDictionary();
 
+        private Input input;
+
+        private bool active = Game.IsBuild ? false : true;
+
+        protected override void Init()
+        {
+            input = Database.GetAsset<Input>("System").Load<Input>();
+        }
+
+        protected override void Enabled()
+        {
+            input.Enable();
+        }
+
+        protected override void Disabled()
+        {
+            input.Disable();
+        }
+
+        protected override void Frame()
+        {
+            if (input.GetAction("Metrics").ButtonStream() == true)
+            {
+                active = !active;
+            }
+        }
+
         public static void Set(string metric, string value)
         {
             if (IsQuitting()) { return; }
@@ -49,6 +76,7 @@ namespace Jape
         private Vector2 size;
         protected override void Draw()
         {
+            if (!active) { return; }
             int i = -1;
             foreach (DictionaryEntry metric in metrics)
             {

@@ -93,7 +93,7 @@ namespace JapeEditor
             GameObject gameObject = mesh.gameObject;
             if (selection != null) { gameObject.transform.SetParent(selection, false); }
             else { PositionSceneGameObject(gameObject); }
-            gameObject.AddComponent<Properties>();
+            Properties.Create(gameObject);
             gameObject.AddTag(Tag.Find("World"));
             return gameObject.AddComponent<Poly>();
         }

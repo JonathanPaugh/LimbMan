@@ -21,5 +21,4 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  Preload:
-  - {fileID: 236802857189851163, guid: b051a879dee57a14d91aef46bfa51569, type: 3}
+  startingLevel: {fileID: 11400000, guid: 7eabb6fb72c1057419772f66c49b73ba, type: 2}

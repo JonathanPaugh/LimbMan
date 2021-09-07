@@ -57,7 +57,6 @@ MonoBehaviour:
   team: {fileID: 0}
   tags:
   - {fileID: 11400000, guid: ee0e4b33eee64d8469a56d0fde5997f6, type: 2}
-  queryMovement: 1
   save: 0
   savePosition: 1
   savedElements: []
@@ -126,14 +125,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 236802857189851161}
   overlayPrefab: {fileID: 7697416733754755373, guid: 859e9e68226960b4ca64c2b7e4b663c4, type: 3}
-  CameraOffset: {x: 0, y: 2}
-  CameraSmoothing: 10
-  CameraDrag: 8
-  CameraCatchup: 4
-  CameraFalling: 8.5
-  CameraFallingThreshold: 35
-  CameraSpeed: 4
-  CameraZoom: 16.875
-  CameraScale: 1.4
-  CameraBasic: {fileID: 11400000, guid: b5a5dcb6e430a124ba94b0c076aec71c, type: 2}
   CameraBounds: {fileID: 0}
+  CameraBasic: {fileID: 11400000, guid: aa1c351f471851d43b222132bbcc6a88, type: 2}
+  CameraOffset: {x: 0, y: 2}
+  CameraCatchup: {x: 4, y: 6}
+  CameraSmoothing: 100
+  CameraDrag: 8
+  CameraFalling: 12
+  CameraFallingThreshold: 40
+  CameraSpeed: 4
+  CameraZoomSpeed: 4
+  CameraZoom: 16.875
+  CameraScale: 1.6

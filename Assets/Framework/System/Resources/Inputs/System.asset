@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ca81c45e697683429bf28c73b546044, type: 3}
+  m_Name: System
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  map:
+    m_Name: Map
+    m_Id: 7d6cea05-f1f5-4cbe-bda1-990be34d872b
+    m_Asset: {fileID: 0}
+    m_Actions:
+    - m_Name: Metrics
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: d379cd90-a6da-4b83-81bf-7921c671cdab
+      m_Processors: 
+      m_Interactions: Press
+      m_SingletonActionBindings: []
+    - m_Name: Console
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: b99e2e2e-0fef-4db5-9e65-e7ed04c23c8e
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+    m_Bindings:
+    - m_Name: 
+      m_Id: 452051e3-7167-40b8-af06-1ede05e7640f
+      m_Path: <Keyboard>/f12
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Metrics
+      m_Flags: 0
+    - m_Name: 
+      m_Id: aba278c4-547c-40a1-9500-70097db2e4d4
+      m_Path: <Keyboard>/f11
+      m_Interactions: Press
+      m_Processors: 
+      m_Groups: 
+      m_Action: Console
+      m_Flags: 0

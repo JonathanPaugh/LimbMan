@@ -10,6 +10,7 @@ namespace Jape
         [SerializeField]
         [HideInPlayMode]
         protected new UnityEngine.Camera camera;
+        public UnityEngine.Camera UnityCamera => camera;
 
         [SerializeField]
         [HideInPlayMode]

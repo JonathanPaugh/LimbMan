@@ -6,5 +6,8 @@ using UnityEngine;
 
 namespace Game
 {
-    public class GameSettings : Jape.GameSettings {}
+    public class GameSettings : Jape.GameSettings
+    {
+        public Level startingLevel;
+    }
 }

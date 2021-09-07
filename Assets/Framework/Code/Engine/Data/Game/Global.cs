@@ -11,15 +11,9 @@ namespace Jape
 {
     public class Global : GameData
     {
-        private SuperArg arg;
-
         [SerializeField]
-        [HideLabel, HideReferenceObjectPicker, HideInPlayMode]
-        protected SuperArg Arg
-        {
-            get { return arg ?? (arg = new SuperArg()); }
-            set { arg = value; }
-        }
+        [Eject]
+        private Arg arg = null;
 
         [HideInEditorMode]
         [ShowInInspector]

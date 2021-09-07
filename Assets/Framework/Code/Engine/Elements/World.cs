@@ -87,12 +87,15 @@ namespace Jape
 
         internal override void Awake()
         {
-            positionStored = gameObject.transform.position;
-
-            if (hide || IsCollider || IsTrigger)
+            if (Game.IsRunning)
             {
-                Renderer renderer = GetComponent<Renderer>();
-                renderer.enabled = false;
+                positionStored = gameObject.transform.position;
+
+                if (hide || IsCollider || IsTrigger)
+                {
+                    Renderer renderer = GetComponent<Renderer>();
+                    renderer.enabled = false;
+                }
             }
 
             base.Awake();

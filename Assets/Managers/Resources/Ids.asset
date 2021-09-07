@@ -2213,3 +2213,94 @@ MonoBehaviour:
     map:
       sceneAsset: {fileID: 102900000, guid: 43efe485d3c965d428f9a8ff907cde85, type: 3}
       scenePath: Assets/Game/Scenes/Area1_2.unity
+  - properties: {fileID: 0}
+    position: {x: 0, y: 0, z: 0}
+    value: 96367fd6-e9df-4df3-a18b-0f70d9624639
+    name: Spawn
+    map:
+      sceneAsset: {fileID: 102900000, guid: b4c1911de578b6a4880e6a26388cf031, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_1.unity
+  - properties: {fileID: 0}
+    position: {x: 315, y: 40, z: 0}
+    value: 34af927e-334e-492d-b10d-09bac453fd33
+    name: Particle
+    map:
+      sceneAsset: {fileID: 102900000, guid: 43efe485d3c965d428f9a8ff907cde85, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_2.unity
+  - properties: {fileID: 0}
+    position: {x: 315, y: 40, z: 0}
+    value: d155bc2b-b59e-463f-bf06-87b9871993c1
+    name: ParticleSmokeCollide
+    map:
+      sceneAsset: {fileID: 102900000, guid: 43efe485d3c965d428f9a8ff907cde85, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_2.unity
+  - properties: {fileID: 0}
+    position: {x: 214, y: 36.875, z: 0}
+    value: 8ed5a3da-b8e1-48f0-aef0-7efa7cadad6e
+    name: Transition
+    map:
+      sceneAsset: {fileID: 102900000, guid: 43efe485d3c965d428f9a8ff907cde85, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_2.unity
+  - properties: {fileID: 0}
+    position: {x: 252, y: 32.875, z: 0}
+    value: da7a297a-57c7-4c8d-aafd-1a4ab3a6ed67
+    name: Transition
+    map:
+      sceneAsset: {fileID: 102900000, guid: 43efe485d3c965d428f9a8ff907cde85, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_2.unity
+  - properties: {fileID: 0}
+    position: {x: -4, y: 0, z: 0}
+    value: b02b1cb5-cfc9-4fd8-a65f-d0dda5a600f2
+    name: Transition
+    map:
+      sceneAsset: {fileID: 102900000, guid: 43efe485d3c965d428f9a8ff907cde85, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_2.unity
+  - properties: {fileID: 0}
+    position: {x: 312, y: 32.875, z: 0}
+    value: 751fdf75-03cc-4151-8e9d-c02cbc7aa216
+    name: Transition
+    map:
+      sceneAsset: {fileID: 102900000, guid: 43efe485d3c965d428f9a8ff907cde85, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_2.unity
+  - properties: {fileID: 0}
+    position: {x: 217, y: 38, z: 0}
+    value: 5977127f-959f-457a-af94-cf9b1d1f5728
+    name: Particle
+    map:
+      sceneAsset: {fileID: 102900000, guid: 43efe485d3c965d428f9a8ff907cde85, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_2.unity
+  - properties: {fileID: 0}
+    position: {x: 217, y: 38, z: 0}
+    value: 6a26c943-dff9-444a-9b20-4987c79ae794
+    name: ParticleSmoke
+    map:
+      sceneAsset: {fileID: 102900000, guid: 43efe485d3c965d428f9a8ff907cde85, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_2.unity
+  - properties: {fileID: 0}
+    position: {x: 255, y: 40, z: 0}
+    value: 0af7f7ea-059a-45d3-840a-03eabe049e88
+    name: Particle
+    map:
+      sceneAsset: {fileID: 102900000, guid: 43efe485d3c965d428f9a8ff907cde85, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_2.unity
+  - properties: {fileID: 0}
+    position: {x: 255, y: 40, z: 0}
+    value: 4f23e5a3-4488-42a2-9efe-915dc9d2fa3a
+    name: ParticleSmokeCollide
+    map:
+      sceneAsset: {fileID: 102900000, guid: 43efe485d3c965d428f9a8ff907cde85, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_2.unity
+  - properties: {fileID: 0}
+    position: {x: 834, y: 320.5, z: 0}
+    value: 365466c0-44f7-4456-a62a-e00f21abe370
+    name: Transition (1)
+    map:
+      sceneAsset: {fileID: 102900000, guid: b4c1911de578b6a4880e6a26388cf031, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_1.unity
+  - properties: {fileID: 0}
+    position: {x: 820, y: 100.25, z: 0}
+    value: dbd7fbb0-c989-490b-b212-1a24adbccd06
+    name: ElevatorGlobal
+    map:
+      sceneAsset: {fileID: 102900000, guid: b4c1911de578b6a4880e6a26388cf031, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_1.unity

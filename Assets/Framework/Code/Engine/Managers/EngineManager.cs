@@ -11,6 +11,8 @@ namespace Jape
     public sealed class EngineManager : Manager<EngineManager>
     {
         [NonSerialized] public Action OnGameInit = delegate {};
+
+        [NonSerialized] public Action OnGameSave = delegate {};
         [NonSerialized] public Action OnGameLoad = delegate {};
 
         [NonSerialized] public Action<Map> OnSceneChange = delegate {};
@@ -125,18 +127,27 @@ namespace Jape
             }
         }
 
-        internal static void SaveGame()
+        internal static void SaveGame(Action onSave)
         {
-            SaveManager.Save();
+            SaveManager.Save(() =>
+            {
+                onSave?.Invoke();
+                Instance.OnGameLoad.Invoke();
+            });
         }
 
         internal static void LoadGame(Action<bool> onLoad)
         {
-            SaveManager.Load(b =>
+            SaveManager.Load(l =>
             {
-                onLoad?.Invoke(b);
-                if (b) { Instance.OnGameLoad.Invoke(); }
+                onLoad?.Invoke(l);
+                if (l) { Instance.OnGameLoad.Invoke(); }
             });
+        }
+
+        internal static void DeleteGame(Action onDelete)
+        {
+            SaveManager.Delete(onDelete);
         }
 
         private bool changingScene;

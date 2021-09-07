@@ -551,6 +551,18 @@ MonoBehaviour:
     path: 
     ext: 
     type: 
+  - name: SpriteBorder
+    resourceType: 2
+    path: Sprites
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: SpriteBorderThin
+    resourceType: 2
+    path: Sprites
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   - name: SpriteDefault0
     resourceType: 2
     path: Sprites
@@ -798,6 +810,16 @@ MonoBehaviour:
     path: Denums
     ext: asset
     type: Jape.Denum, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Inputs
+    resourceType: 1
+    path: 
+    ext: 
+    type: 
+  - name: System
+    resourceType: 2
+    path: Inputs
+    ext: asset
+    type: Jape.Input, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   - name: Scripts
     resourceType: 1
     path: 
@@ -985,6 +1007,18 @@ MonoBehaviour:
     type: UnityEngine.U2D.SpriteShape, Unity.2D.SpriteShape.Runtime, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   - name: Default
+    resourceType: 2
+    path: SpriteShape
+    ext: asset
+    type: UnityEngine.U2D.SpriteShape, Unity.2D.SpriteShape.Runtime, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  - name: Gradient
+    resourceType: 2
+    path: SpriteShape
+    ext: asset
+    type: UnityEngine.U2D.SpriteShape, Unity.2D.SpriteShape.Runtime, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  - name: GradientHard
     resourceType: 2
     path: SpriteShape
     ext: asset
@@ -1227,26 +1261,6 @@ MonoBehaviour:
     path: 
     ext: 
     type: 
-  - name: FrameworkTodo1
-    resourceType: 2
-    path: Todos
-    ext: asset
-    type: Jape.Todo, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  - name: FrameworkTodo2
-    resourceType: 2
-    path: Todos
-    ext: asset
-    type: Jape.Todo, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  - name: FrameworkTodo3
-    resourceType: 2
-    path: Todos
-    ext: asset
-    type: Jape.Todo, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  - name: FrameworkTodo4
-    resourceType: 2
-    path: Todos
-    ext: asset
-    type: Jape.Todo, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   - name: ToolButtons
     resourceType: 1
     path: 
@@ -1338,6 +1352,11 @@ MonoBehaviour:
     ext: prefab
     type: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  - name: CameraBasic
+    resourceType: 2
+    path: Camera
+    ext: asset
+    type: Jape.Global, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   - name: Music
     resourceType: 1
     path: 
@@ -1360,6 +1379,12 @@ MonoBehaviour:
     type: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   - name: ParticleSmoke
+    resourceType: 2
+    path: Particles
+    ext: prefab
+    type: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: ParticleSmokeCollide
     resourceType: 2
     path: Particles
     ext: prefab
@@ -1554,6 +1579,17 @@ MonoBehaviour:
     path: Sounds
     ext: asset
     type: Jape.SoundClip, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: UI
+    resourceType: 1
+    path: 
+    ext: 
+    type: 
+  - name: UI
+    resourceType: 2
+    path: UI
+    ext: prefab
+    type: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   - name: Death
     resourceType: 2
     path: 
@@ -1567,6 +1603,12 @@ MonoBehaviour:
     type: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   - name: Spawn
+    resourceType: 2
+    path: 
+    ext: prefab
+    type: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: Transition
     resourceType: 2
     path: 
     ext: prefab
@@ -1731,5 +1773,74 @@ MonoBehaviour:
     path: 
     ext: asset
     type: Jape.Ids, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  fileCount: 267
-  folderCount: 42
+  - name: Fonts & Materials
+    resourceType: 1
+    path: 
+    ext: 
+    type: 
+  - name: LiberationSans SDF - Drop Shadow
+    resourceType: 2
+    path: Fonts & Materials
+    ext: mat
+    type: UnityEngine.Material, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: LiberationSans SDF - Fallback
+    resourceType: 2
+    path: Fonts & Materials
+    ext: asset
+    type: TMPro.TMP_FontAsset, Unity.TextMeshPro, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: LiberationSans SDF - Outline
+    resourceType: 2
+    path: Fonts & Materials
+    ext: mat
+    type: UnityEngine.Material, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: LiberationSans SDF
+    resourceType: 2
+    path: Fonts & Materials
+    ext: asset
+    type: TMPro.TMP_FontAsset, Unity.TextMeshPro, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: Sprite Assets
+    resourceType: 1
+    path: 
+    ext: 
+    type: 
+  - name: EmojiOne
+    resourceType: 2
+    path: Sprite Assets
+    ext: asset
+    type: TMPro.TMP_SpriteAsset, Unity.TextMeshPro, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: Style Sheets
+    resourceType: 1
+    path: 
+    ext: 
+    type: 
+  - name: Default Style Sheet
+    resourceType: 2
+    path: Style Sheets
+    ext: asset
+    type: TMPro.TMP_StyleSheet, Unity.TextMeshPro, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: LineBreaking Following Characters
+    resourceType: 2
+    path: 
+    ext: txt
+    type: UnityEngine.TextAsset, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: LineBreaking Leading Characters
+    resourceType: 2
+    path: 
+    ext: txt
+    type: UnityEngine.TextAsset, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: TMP Settings
+    resourceType: 2
+    path: 
+    ext: asset
+    type: TMPro.TMP_Settings, Unity.TextMeshPro, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  fileCount: 281
+  folderCount: 47

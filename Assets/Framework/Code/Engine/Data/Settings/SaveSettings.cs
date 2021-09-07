@@ -13,29 +13,6 @@ namespace Jape
         [PropertyOrder(-1)]
         public bool load;
 
-        [HorizontalGroup("Interval")]
-
-        [PropertyOrder(-1)]
-        [LabelText("Save Interval")]
-        public bool autoSave;
-
-        [HorizontalGroup("Interval")]
-
-        [PropertyOrder(-1)]
-        [ShowIf(nameof(autoSave))]
-        [DisableIf(Game.GameIsRunning)]
-        [HideLabel]
-        [SuffixLabel("Seconds", true)]
-        public uint interval;
-
-        [HorizontalGroup("Interval")]
-
-        [PropertyOrder(-1)]
-        [ShowIf(nameof(autoSave))]
-        [LabelWidth(32)]
-        [Tooltip("Does not request data before auto save")]
-        public bool light;
-
         [SerializeField, HideInInspector]
         private int profile;
 
@@ -56,7 +33,7 @@ namespace Jape
         [LabelText("Save")]
         private void SaveProfile()
         {
-            SaveManager.Save();
+            SaveManager.Save(null);
         }
 
         [HorizontalGroup("Buttons")]
@@ -76,7 +53,7 @@ namespace Jape
         [LabelText("Delete")]
         private void DeleteProfile()
         {
-            SaveManager.Delete();
+            SaveManager.Delete(null);
         }
     }
 }

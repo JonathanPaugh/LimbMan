@@ -84,11 +84,6 @@ namespace Jape
         [SerializeField]
         internal List<Tag> tags = new List<Tag>();
 
-        [TabGroup("Tabs", "Physics")]
-
-        [SerializeField]
-        internal bool queryMovement = false;
-
         [TabGroup("Tabs", "Save")]
 
         [SerializeField]
@@ -118,6 +113,33 @@ namespace Jape
 
         internal Collider[] Colliders => GetComponents<Collider>();
         internal Collider2D[] Colliders2D => GetComponents<Collider2D>();
+
+        internal static Properties Create(GameObject gameObject)
+        {
+            if (gameObject.TryGetComponent(out Properties properties))
+            {
+                return properties;
+            }
+
+            #if UNITY_EDITOR
+
+            if (UnityEditor.PrefabUtility.IsPartOfImmutablePrefab(gameObject))
+            {
+                Log.Warning("Cannot add properties to immutable prefab");
+                return null;
+            }
+
+            #endif
+
+            properties = gameObject.AddComponent<Properties>();
+
+            if (properties == null)
+            {
+                Log.Warning("Error Creating Properties");
+            }
+
+            return properties;
+        }
 
         private void SetSavedElements()
         {
@@ -319,7 +341,7 @@ namespace Jape
             #endif
         }
 
-        private bool IsPrefab()
+        internal bool IsPrefab()
         {
             #if UNITY_EDITOR
             return (UnityEditor.PrefabUtility.GetPrefabAssetType(gameObject) != UnityEditor.PrefabAssetType.NotAPrefab

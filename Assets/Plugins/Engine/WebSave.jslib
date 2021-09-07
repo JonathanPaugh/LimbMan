@@ -77,6 +77,21 @@
     	};
     },
 
+    $WebSaveDelete: function(callback) {
+    	store = WebSaveStore();
+    	request = store.delete(Save.profile);
+
+		request.onerror = function(event) {
+    		console.error(event);
+            callback(null);
+    	};
+
+    	request.onsuccess = function(event) {
+    		console.log("Game Deleted");
+            callback(null);
+    	};
+    },
+
     WebSaveRequestSave: function(profile, data, length) {
     	Save.profile = profile;
 	    Save.saveData = new Uint8Array(length);
@@ -109,8 +124,21 @@
         }
     },
 
-    $WebSaveReceive: function(data) {
+    WebSaveRequestDelete: function(profile) {
+    	Save.profile = profile;
 
+		if (Save.database == null) { 
+        	WebSaveConnect(function() {
+				WebSaveDelete(WebSaveReceive)
+        	});
+        }
+        else 
+        {
+        	WebSaveDelete(WebSaveReceive);
+        }
+    },
+
+    $WebSaveReceive: function(data) {
     	if (data == null) {
             SendMessage("WebManager", "WebSaveReceiveOpen", 0);
 			SendMessage("WebManager", "WebSaveReceiveClose");
@@ -130,6 +158,7 @@ autoAddDeps(webSave, "$WebSaveConnect");
 autoAddDeps(webSave, "$WebSaveStore");
 autoAddDeps(webSave, "$WebSaveSet");
 autoAddDeps(webSave, "$WebSaveGet");
+autoAddDeps(webSave, "$WebSaveDelete");
 autoAddDeps(webSave, "$WebSaveReceive");
 
 mergeInto(LibraryManager.library, webSave);

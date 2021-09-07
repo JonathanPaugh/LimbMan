@@ -27,6 +27,11 @@ namespace Jape
         /// </summary>
         protected virtual void OnLoad() {}
 
+        public bool Has(string key)
+        {
+            return data.ContainsKey(key);
+        }
+
         public virtual object Read(string key)
         {
             if (!data.TryGetValue(key, out object value)) { return default; }
@@ -37,6 +42,12 @@ namespace Jape
         {
             if (data.ContainsKey(key)) { data[key] = value; }
             else { data.Add(key, value); }
+        }
+
+        public virtual void Delete(string key)
+        {
+            if (!data.ContainsKey(key)) { return; }
+            data.Remove(key);
         }
 
         public void StreamRead(Action<DataStream> stream)

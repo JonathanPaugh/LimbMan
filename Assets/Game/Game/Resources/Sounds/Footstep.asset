@@ -25,16 +25,16 @@ MonoBehaviour:
   loop: 0
   sounds:
   - clips:
-    - audio: {fileID: 8300000, guid: 3d92032e563586149ba5ad13f6cc4b86, type: 3}
+    - audio: {fileID: 8300000, guid: 0e5cccf78ec242944b2b5617ab79227e, type: 3}
       volume: 100
       speed: 1
-    - audio: {fileID: 8300000, guid: 5cdc8e0c590c78d4a87b16b1ff2af3a2, type: 3}
+    - audio: {fileID: 8300000, guid: a63a74e6f64ba364e979f6b51cc9934f, type: 3}
       volume: 100
       speed: 1
-    - audio: {fileID: 8300000, guid: 2bdc3af762dd30242bdc4dc8415d6e6f, type: 3}
+    - audio: {fileID: 8300000, guid: 5af7bfaa72c82324199dcb49d4e01bc1, type: 3}
       volume: 100
       speed: 1
-    - audio: {fileID: 8300000, guid: 4f480bbf10b2d24418f1d118bdbb3331, type: 3}
+    - audio: {fileID: 8300000, guid: 037407102c81b324aa17aab6760e51c2, type: 3}
       volume: 100
       speed: 1
     volume: 25
