@@ -9,7 +9,7 @@
 		request = window.indexedDB.open("jape", 1);
 
 		request.onerror = function(event) {
-			console.log("IndexedDB could not be loaded");
+			console.error("IndexedDB could not be loaded");
 		};
 
 		request.onsuccess = function(event) {
@@ -29,11 +29,8 @@
 		transaction = Save.database.transaction(["save"], "readwrite");
 
     	transaction.onerror = function(event) {
+    		console.log("Transaction Error");
 			console.error(event);
-		};
-
-		transaction.oncomplete = function(event) {
-			console.log("Transaction Complete");
 		};
 
     	return transaction.objectStore("save");
@@ -44,16 +41,14 @@
     	request = store.get(Save.profile);
 
 		request.onerror = function(event) {
+			console.log("Transaction Request Error");
     		console.error(event);
     	};
 
     	request.onsuccess = function(event) {
-    		console.log(event);
-
     		result = request.result;
 
     		if (result) {
-    			console.log("Game Loaded");
     			callback(result.data);
     		} else {
     			console.log("Unable to get load data");
@@ -67,29 +62,29 @@
     	request = store.put({ profile: Save.profile, data: Save.saveData });
 
 		request.onerror = function(event) {
+			console.log("Transaction Request Error");
     		console.error(event);
             callback(null);
     	};
 
     	request.onsuccess = function(event) {
-    		console.log("Game Saved");
             callback(null);
     	};
     },
 
     $WebSaveDelete: function(callback) {
-    	store = WebSaveStore();
-    	request = store.delete(Save.profile);
+        store = WebSaveStore();
+        request = store.delete(Save.profile);
 
-		request.onerror = function(event) {
-    		console.error(event);
+        request.onerror = function(event) {
+            console.log("Transaction Request Error");
+            console.error(event);
             callback(null);
-    	};
+        };
 
-    	request.onsuccess = function(event) {
-    		console.log("Game Deleted");
+        request.onsuccess = function(event) {
             callback(null);
-    	};
+        };
     },
 
     WebSaveRequestSave: function(profile, data, length) {
@@ -125,20 +120,21 @@
     },
 
     WebSaveRequestDelete: function(profile) {
-    	Save.profile = profile;
+        Save.profile = profile;
 
-		if (Save.database == null) { 
-        	WebSaveConnect(function() {
-				WebSaveDelete(WebSaveReceive)
-        	});
+        if (Save.database == null) { 
+            WebSaveConnect(function() {
+                WebSaveDelete(WebSaveReceive)
+            });
         }
         else 
         {
-        	WebSaveDelete(WebSaveReceive);
+            WebSaveDelete(WebSaveReceive);
         }
     },
 
     $WebSaveReceive: function(data) {
+
     	if (data == null) {
             SendMessage("WebManager", "WebSaveReceiveOpen", 0);
 			SendMessage("WebManager", "WebSaveReceiveClose");

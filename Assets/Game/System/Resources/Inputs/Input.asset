@@ -205,7 +205,31 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Dodge
       m_Flags: 0
-    - m_Name: WebGL
+    - m_Name: Keyboard
+      m_Id: 4eabd06d-9e2e-467f-bb54-523f7c98c610
+      m_Path: 1DAxis
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: HorizontalGL
+      m_Flags: 4
+    - m_Name: negative
+      m_Id: 2dd733c7-079f-45eb-bdc6-44d047321f1f
+      m_Path: <Keyboard>/leftArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: HorizontalGL
+      m_Flags: 8
+    - m_Name: positive
+      m_Id: bfc0f7a0-97a2-47f8-832c-3d7fb6231df3
+      m_Path: <Keyboard>/rightArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: HorizontalGL
+      m_Flags: 8
+    - m_Name: Controller
       m_Id: c96f3190-da7e-4961-b789-d47bbefcac75
       m_Path: 1DAxis
       m_Interactions: 
@@ -229,7 +253,31 @@ MonoBehaviour:
       m_Groups: 
       m_Action: HorizontalGL
       m_Flags: 8
-    - m_Name: WebGL
+    - m_Name: Keyboard
+      m_Id: 8e03e052-a57b-495b-8774-e8156ef03302
+      m_Path: 1DAxis
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: VerticalGL
+      m_Flags: 4
+    - m_Name: negative
+      m_Id: 2fdcc442-3567-4bc0-bb16-61644a1d1f4d
+      m_Path: <Keyboard>/downArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: VerticalGL
+      m_Flags: 8
+    - m_Name: positive
+      m_Id: 6bb192fb-ca70-4723-b155-45657c7b91a6
+      m_Path: <Keyboard>/upArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: VerticalGL
+      m_Flags: 8
+    - m_Name: Controller
       m_Id: d3d07adb-4dc5-46f3-888e-b56a8c935cf2
       m_Path: 1DAxis
       m_Interactions: 

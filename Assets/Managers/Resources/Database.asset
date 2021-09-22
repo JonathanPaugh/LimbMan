@@ -810,6 +810,11 @@ MonoBehaviour:
     path: Denums
     ext: asset
     type: Jape.Denum, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Protocol
+    resourceType: 2
+    path: Denums
+    ext: asset
+    type: Jape.Denum, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   - name: Inputs
     resourceType: 1
     path: 
@@ -1596,6 +1601,12 @@ MonoBehaviour:
     ext: prefab
     type: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  - name: Finish
+    resourceType: 2
+    path: 
+    ext: prefab
+    type: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   - name: Laser
     resourceType: 2
     path: 
@@ -1842,5 +1853,5 @@ MonoBehaviour:
     ext: asset
     type: TMPro.TMP_Settings, Unity.TextMeshPro, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  fileCount: 281
+  fileCount: 283
   folderCount: 47

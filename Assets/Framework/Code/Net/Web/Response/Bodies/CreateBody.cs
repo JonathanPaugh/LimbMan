@@ -4,10 +4,10 @@ namespace JapeNet
 {
     public partial class Response
     {
-        public class InfoBody : Body
+        public class CreateBody : Body
         {
-            public string[] ips;
-            public string[] domains;
+            public string ip;
+            public string domain;
         }
     }
 }

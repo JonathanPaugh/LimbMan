@@ -2304,3 +2304,10 @@ MonoBehaviour:
     map:
       sceneAsset: {fileID: 102900000, guid: b4c1911de578b6a4880e6a26388cf031, type: 3}
       scenePath: Assets/Game/Scenes/Area1_1.unity
+  - properties: {fileID: 0}
+    position: {x: 0, y: 0, z: 0}
+    value: 9b045503-1cde-4d54-ba7d-b039dc75343f
+    name: New Game Object
+    map:
+      sceneAsset: {fileID: 102900000, guid: 43efe485d3c965d428f9a8ff907cde85, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_2.unity

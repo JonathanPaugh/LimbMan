@@ -14,6 +14,7 @@ namespace JapeNet
         private Request(UnityWebRequest request)
         {
             this.request = request;
+            request.certificateHandler = new Certificate();
         }
 
         private static Request BodyRequest(string url, string method, string data)
@@ -61,6 +62,14 @@ namespace JapeNet
         public void Dispose()
         {
             request.Dispose();
+        }
+
+        private class Certificate : CertificateHandler
+        {
+            protected override bool ValidateCertificate(byte[] certificateData)
+            {
+                return true;
+            }
         }
     }
 }

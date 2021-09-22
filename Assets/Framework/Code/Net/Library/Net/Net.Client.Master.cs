@@ -12,13 +12,13 @@ namespace JapeNet
         {
             public static class Master
             {
-                public static void ServerCreate(Action<string> response)
+                public static void ServerCreate(Action<Response.CreateBody> response)
                 {
                     switch (NetManager.GetMode())
                     {
                         case NetManager.Mode.Offline:
                         {
-                            JapeNet.Master.ServerCreate().Read(data =>
+                            JapeNet.Master.ServerCreate().ReadJson<Response.CreateBody>(data =>
                             {
                                 response?.Invoke(data);
                             });

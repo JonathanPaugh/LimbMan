@@ -9,22 +9,13 @@ namespace Jape
     {
         public string MasterServerKey()
         {
-            return "8733A5417F3398458B22632997B3D";
-            #if UNITY_STANDALONE_LINUX
+            #if UNITY_EDITOR || UNITY_STANDALONE_LINUX
             return "8733A5417F3398458B22632997B3D";
             #endif
             #pragma warning disable 162
             return null;
             #pragma warning restore 162
         }
-
-        [PropertyOrder(0)]
-        public string masterServerIp;
-
-        [PropertyOrder(0)]
-        public int masterServerPort;
-
-        [Space(8)]
 
         [PropertyOrder(1)]
         public string serverName;
@@ -60,27 +51,41 @@ namespace Jape
         [Space(8)]
 
         [PropertyOrder(3)]
-        public string databaseIp;
+        public Protocol masterServerProtocol;
 
         [PropertyOrder(3)]
+        public string masterServerIp;
+
+        [PropertyOrder(3)]
+        public int masterServerPort;
+
+        [Space(8)]
+
+        [PropertyOrder(4)]
+        public Protocol databaseProtocol;
+
+        [PropertyOrder(4)]
+        public string databaseIp;
+
+        [PropertyOrder(4)]
         public int databasePort;
 
         [Space(8)]
 
-        [PropertyOrder(4)]
+        [PropertyOrder(5)]
         public int maxPlayers;
 
         [Space(8)]
 
-        [PropertyOrder(4)]
+        [PropertyOrder(5)]
         public int bufferSize;
 
         [Space(32)]
 
-        [PropertyOrder(5)]
+        [PropertyOrder(6)]
         public int clientStreamRate = 1;
 
-        [PropertyOrder(5)]
+        [PropertyOrder(6)]
         public int serverStreamRate = 1;
 
         public bool IsClient()

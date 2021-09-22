@@ -84,7 +84,7 @@ namespace Jape
         private static extern void WebSaveRequestDelete(int profile);
 
         [DllImport("__Internal")]
-        private static extern void WebSocketConnect(int ip1, int ip2, int ip3, int ip4, int port);
+        private static extern void WebSocketConnect(string domain, int port);
 
         [DllImport("__Internal")]
         private static extern void WebSocketDisconnect();
@@ -172,11 +172,9 @@ namespace Jape
 
         public static class Socket
         {
-            public static void Connect(string ip, int port)
+            public static void Connect(string domain, int port)
             {
-                IPAddress address = IPAddress.Parse(ip);
-                byte[] bytes = address.GetAddressBytes();
-                WebSocketConnect(bytes[0], bytes[1], bytes[2], bytes[3], port);
+                WebSocketConnect(domain, port);
             }
 
             public static void Disconnect()

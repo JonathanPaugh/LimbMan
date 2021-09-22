@@ -44,7 +44,7 @@ namespace Game
 
         public void SetTime(float time)
         {
-            Timer.text = TimeSpan.FromSeconds(time).ToString("mm\\:ss\\:fff");
+            Timer.text = TimeSpan.FromSeconds(time).ToString("mm\\:ss\\:f");
         }
 
         public void SetRecord(float time)
