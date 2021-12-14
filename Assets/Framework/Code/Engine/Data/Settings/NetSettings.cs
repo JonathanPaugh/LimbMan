@@ -1,20 +1,35 @@
 using System;
 using Sirenix.OdinInspector;
-using UnityEditor;
 using UnityEngine;
 
 namespace Jape
 {
     public class NetSettings : SettingsData
     {
-        public string MasterServerKey()
+        public string MasterKey
         {
-            #if UNITY_EDITOR || UNITY_STANDALONE_LINUX
-            return "8733A5417F3398458B22632997B3D";
-            #endif
-            #pragma warning disable 162
-            return null;
-            #pragma warning restore 162
+            get
+            {
+                #if UNITY_EDITOR || UNITY_STANDALONE_LINUX
+                return Environment.GetEnvironmentVariable("API_JAPE_MASTER");
+                #endif
+                #pragma warning disable 162
+                return null;
+                #pragma warning restore 162
+            }
+        }
+
+        public string DatabaseKey
+        {
+            get
+            {
+                #if UNITY_EDITOR || UNITY_STANDALONE_LINUX
+                return Environment.GetEnvironmentVariable("API_JAPE_DATABASE");
+                #endif
+                #pragma warning disable 162
+                return null;
+                #pragma warning restore 162
+            }
         }
 
         [PropertyOrder(1)]
@@ -44,9 +59,6 @@ namespace Jape
 
         [PropertyOrder(2)]
         public int serverPort;
-
-        [PropertyOrder(2)]
-        public int serverWebPort;
 
         [Space(8)]
 

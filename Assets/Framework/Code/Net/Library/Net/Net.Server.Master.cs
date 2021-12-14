@@ -12,7 +12,7 @@ namespace JapeNet
         {
             public static class Master
             {
-                public static void ServerDestroy(Action response)
+                public static void ServerDestroy(Action response = null, Action error = null)
                 {
                     switch (NetManager.GetMode())
                     {
@@ -24,10 +24,9 @@ namespace JapeNet
 
                         case NetManager.Mode.Server:
                         {
-                            JapeNet.Master.ServerDestroy().Read(_ =>
-                            {
-                                response?.Invoke();
-                            });
+                            JapeNet.Master.ServerDestroy()
+                                          .Read(_ => response?.Invoke())
+                                          .Error(error);
                             return;
                         }
 

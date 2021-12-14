@@ -38,7 +38,7 @@ namespace JapeNet
             Request request = Request.Delete
             (
                 Url,
-                Settings.MasterServerKey()
+                Settings.MasterKey
             );
             return request.GetResponse();
         }

@@ -7,12 +7,12 @@ namespace JapeNet
             public class GetBody : DatastoreBody
             {
                 public string collection;
-                public string key;
+                public string id;
 
-                public GetBody(string store, string collection, string key) : base("Get", store)
+                public GetBody(string store, string collection, string id) : base("Get", store)
                 {
                     this.collection = collection;
-                    this.key = key;
+                    this.id = id;
                 }
             }
         }

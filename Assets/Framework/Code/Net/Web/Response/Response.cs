@@ -7,11 +7,17 @@ namespace JapeNet
 {
     public partial class Response
     {
-        private UnityWebRequestAsyncOperation request;
+        private enum Status { Incomplete, Success, Error }
+
+        private readonly UnityWebRequestAsyncOperation request;
+
+        private Status status;
+        private bool disposed;
 
         private string value;
-        private bool completed;
-        private bool disposed;
+
+        private Action onSuccess = delegate {};
+        private Action onError = delegate {};
 
         public Response(UnityWebRequestAsyncOperation request)
         {
@@ -20,49 +26,52 @@ namespace JapeNet
             Application.quitting += Abort;
         }
 
-        private void Completed(AsyncOperation _)
+        public Response Read(Action<string> response)
         {
-            request.completed -= Completed;
-            completed = true;
-            value = request.webRequest.downloadHandler.text;
-            Dispose();
-        }
+            if (status == Status.Success) { Respond(); }
+            else { onSuccess += Respond; }
+            return this;
 
-        public void Read(Action<string> response)
-        {
-            if (request.isDone)
+            void Respond()
             {
-                response.Invoke(value);
-            }
-            else
-            {
-                request.completed += delegate
-                {
-                    response.Invoke(disposed ? value : request.webRequest.downloadHandler.text);
-                };
+                onSuccess -= Respond;
+                response?.Invoke(value);
             }
         }
 
-        public void ReadJson<T>(Action<T> response)
+        public Response ReadJson<T>(Action<T> response)
         {
-            if (request.isDone)
+            if (status == Status.Success) { Respond(); }
+            else { onSuccess += Respond; }
+            return this;
+
+            void Respond()
             {
-                response.Invoke(JsonUtility.FromJson<T>(value));
-            }
-            else
-            {
-                request.completed += delegate
-                {
-                    response.Invoke(disposed ? JsonUtility.FromJson<T>(value) : JsonUtility.FromJson<T>(request.webRequest.downloadHandler.text));
-                };
+                onSuccess -= Respond;
+                response?.Invoke(JsonUtility.FromJson<T>(value));
             }
         }
 
-        private void Abort()
+        public Response Error(Action response)
         {
-            if (completed) { return; }
+            if (status == Status.Error) { Respond(); }
+            else { onError += Respond; }
+            return this;
+
+            void Respond()
+            {
+                onError -= Respond;
+                response?.Invoke();
+            }
+        }
+
+        public void Abort()
+        {
+            if (status != Status.Incomplete) { return; }
+
             request.completed -= Completed;
             request.webRequest?.Abort();
+
             Dispose();   
         }
 
@@ -70,7 +79,30 @@ namespace JapeNet
         {
             if (disposed) { return; }
             disposed = true;
-            request.webRequest.Dispose();
+            request.webRequest?.Dispose();
+        }
+
+        private void Completed(AsyncOperation _)
+        {
+            if (status != Status.Incomplete) { return; }
+
+            request.completed -= Completed;
+
+            switch (request.webRequest.result)
+            {
+                case UnityWebRequest.Result.Success:
+                    status = Status.Success;
+                    value = request.webRequest.downloadHandler.text;
+                    onSuccess.Invoke();
+                    break;
+
+                default:
+                    status = Status.Error;
+                    onError.Invoke();
+                    break;
+            }
+            
+            Dispose();
         }
     }
 }

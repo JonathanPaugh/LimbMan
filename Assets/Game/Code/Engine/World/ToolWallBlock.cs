@@ -4,44 +4,48 @@ using System.Collections.Generic;
 using Jape;
 using UnityEngine;
 
-
-public class ToolWallBlock : Element
+namespace Game
 {
-    [Space(10)]
-    [SerializeField] private MeshRenderer Mesh = default;
-
-    [HideInInspector] public List<GameObject> Targets = new List<GameObject>();
-
-    private void Start()
+    public class ToolWallBlock : Element
     {
-        Mesh.enabled = false;
-    }
+        [Space(10)]
+        [SerializeField] private MeshRenderer Mesh = default;
 
-    protected override void Touch(GameObject gameObject)
-    {
-        if (!gameObject.HasTag(Tag.Find("Player"))) { return; }
+        [HideInInspector] public List<GameObject> Targets = new List<GameObject>();
 
-        if (!Targets.Contains(gameObject)) {
-            if (gameObject.TryGetComponent(out Movement movement))
-            {
-                movement.Grounded.Restrict(GetType());
-                movement.Walled.Restrict(GetType());
-                Targets.Add(gameObject);
+        private void Start()
+        {
+            Mesh.enabled = false;
+        }
+
+        protected override void Touch(GameObject gameObject)
+        {
+            if (!gameObject.HasTag(Tag.Find("Player"))) { return; }
+
+            if (!Targets.Contains(gameObject)) {
+                if (gameObject.TryGetComponent(out Movement movement))
+                {
+                    movement.Grounded.Restrict(GetType());
+                    movement.Walled.Restrict(GetType());
+                    Targets.Add(gameObject);
+                }
             }
         }
-    }
 
-    protected override void Leave(GameObject gameObject)
-    {
-        if (!gameObject.HasTag(Tag.Find("Player"))) { return; }
+        protected override void Leave(GameObject gameObject)
+        {
+            if (!gameObject.HasTag(Tag.Find("Player"))) { return; }
 
-        if (Targets.Contains(gameObject)) {
-            if (gameObject.TryGetComponent(out Movement movement))
-            {
-                movement.Grounded.Unrestrict(GetType());
-                movement.Walled.Unrestrict(GetType());
-                Targets.Remove(gameObject);
+            if (Targets.Contains(gameObject)) {
+                if (gameObject.TryGetComponent(out Movement movement))
+                {
+                    movement.Grounded.Unrestrict(GetType());
+                    movement.Walled.Unrestrict(GetType());
+                    Targets.Remove(gameObject);
+                }
             }
         }
     }
 }
+
+

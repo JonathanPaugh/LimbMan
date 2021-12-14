@@ -144,9 +144,11 @@ namespace Jape
 
             public static byte[] Get(string value)
             {
-                switch (Settings.bitConverter)
+                switch (Settings.stringEncoding)
                 {
-                    case BitConverter.Default: return Encoding.UTF8.GetBytes(value);
+                    case StringEncoding.Ascii: return Encoding.ASCII.GetBytes(value);
+                    case StringEncoding.Utf8: return Encoding.UTF8.GetBytes(value);
+                    case StringEncoding.Utf32: return Encoding.UTF32.GetBytes(value);
                     default: throw new ArgumentOutOfRangeException();   
                 }
             }
@@ -280,9 +282,11 @@ namespace Jape
 
             public static string ToString(byte[] bytes, int length, int position = 4)
             {
-                switch (Settings.bitConverter)
+                switch (Settings.stringEncoding)
                 {
-                    case BitConverter.Default: return Encoding.UTF8.GetString(bytes, position, length);
+                    case StringEncoding.Ascii: return Encoding.ASCII.GetString(bytes, position, length);
+                    case StringEncoding.Utf8: return Encoding.UTF8.GetString(bytes, position, length);
+                    case StringEncoding.Utf32: return Encoding.UTF32.GetString(bytes, position, length);
                     default: throw new ArgumentOutOfRangeException();   
                 }
             }

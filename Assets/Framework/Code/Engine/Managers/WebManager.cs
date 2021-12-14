@@ -84,7 +84,7 @@ namespace Jape
         private static extern void WebSaveRequestDelete(int profile);
 
         [DllImport("__Internal")]
-        private static extern void WebSocketConnect(string domain, int port);
+        private static extern void WebSocketConnect(string domain);
 
         [DllImport("__Internal")]
         private static extern void WebSocketDisconnect();
@@ -172,9 +172,9 @@ namespace Jape
 
         public static class Socket
         {
-            public static void Connect(string domain, int port)
+            public static void Connect(string domain)
             {
-                WebSocketConnect(domain, port);
+                WebSocketConnect(domain);
             }
 
             public static void Disconnect()

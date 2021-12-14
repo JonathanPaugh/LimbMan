@@ -18,9 +18,9 @@ namespace Game
 
         protected override void OnSceneChange(Map map)
         {
-            GameManager.Instance.Timer.Log().ToggleDiagnostics();
-            GameManager.Instance.Timer.Pause();
-            GameManager.Instance.Timer.Log().ToggleDiagnostics();
+            Game.Timer.Log().ToggleDiagnostics();
+            Game.Timer.Pause();
+            Game.Timer.Log().ToggleDiagnostics();
         }
 
         protected override void OnSceneDestroy(Map map) {}
@@ -30,9 +30,9 @@ namespace Game
         {
             GameManager.MoveCameraToPlayer();
 
-            GameManager.Instance.Timer.Log().ToggleDiagnostics();
-            GameManager.Instance.Timer.Resume();
-            GameManager.Instance.Timer.Log().ToggleDiagnostics();
+            Game.Timer.Log().ToggleDiagnostics();
+            Game.Timer.Resume();
+            Game.Timer.Log().ToggleDiagnostics();
         }
 
         protected override void OnSceneLoad(Map map) {} 

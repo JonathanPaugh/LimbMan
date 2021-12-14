@@ -10,12 +10,12 @@ namespace JapeNet
             public class DeleteBody : DatastoreBody
             {
                 public string collection;
-                public string key;
+                public string id;
 
-                public DeleteBody(string store, string collection, string key) : base("Delete", store)
+                public DeleteBody(string store, string collection, string id) : base("Delete", store)
                 {
                     this.collection = collection;
-                    this.key = key;
+                    this.id = id;
                 }
             }
         }

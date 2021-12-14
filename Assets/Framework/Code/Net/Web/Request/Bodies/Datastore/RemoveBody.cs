@@ -10,13 +10,13 @@ namespace JapeNet
             public class RemoveBody : DatastoreBody
             {
                 public string collection;
-                public string key;
+                public string id;
                 public string[] data;
 
-                public RemoveBody(string store, string collection, string key, string[] data) : base("Remove", store)
+                public RemoveBody(string store, string collection, string id, string[] data) : base("Remove", store)
                 {
                     this.collection = collection;
-                    this.key = key;
+                    this.id = id;
                     this.data = data;
                 }
             }

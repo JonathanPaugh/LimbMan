@@ -1,0 +1,304 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ade102a10a3fc7c48927ceee29f151bf, type: 3}
+  m_Name: PlayerInput
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  map:
+    m_Name: Map
+    m_Id: 7313ea72-558b-4773-bd0e-1fc6e99d3691
+    m_Asset: {fileID: 0}
+    m_Actions:
+    - m_Name: HorizontalGL
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: 2dbce7f5-6cfe-4c4b-b42c-b963762b0a1d
+      m_Processors: 
+      m_Interactions: Press
+      m_SingletonActionBindings: []
+    - m_Name: VerticalGL
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: de4a5525-0c13-4013-befa-6bead76ac144
+      m_Processors: 
+      m_Interactions: Press
+      m_SingletonActionBindings: []
+    - m_Name: Horizontal
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: 456ddcad-ef91-4551-b46e-0a048dfca19d
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+    - m_Name: Vertical
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: 4cbb3700-32f3-42c2-8506-6c587273c76c
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+    - m_Name: Jump
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: 218e707b-7225-4911-83d9-bc6a4dad38f2
+      m_Processors: 
+      m_Interactions: Press
+      m_SingletonActionBindings: []
+    - m_Name: Dodge
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: 1fece26e-cf0f-431d-8023-d9e4f8c7306d
+      m_Processors: 
+      m_Interactions: Press
+      m_SingletonActionBindings: []
+    m_Bindings:
+    - m_Name: Keyboard
+      m_Id: 5fb6a155-17bd-4766-b5c5-2ddfe5f1c93c
+      m_Path: 1DAxis
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Horizontal
+      m_Flags: 4
+    - m_Name: negative
+      m_Id: 4ac9e072-b9a8-495c-bd1a-1b4be288ca74
+      m_Path: <Keyboard>/leftArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Horizontal
+      m_Flags: 8
+    - m_Name: positive
+      m_Id: f01196af-e175-4d34-8979-eb74bc187398
+      m_Path: <Keyboard>/rightArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Horizontal
+      m_Flags: 8
+    - m_Name: Controller
+      m_Id: 6d819974-b1a9-4368-a712-d16ffcdc540a
+      m_Path: 1DAxis
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Horizontal
+      m_Flags: 4
+    - m_Name: negative
+      m_Id: ce8337cc-8536-422e-998e-cdb814a10807
+      m_Path: <Gamepad>/leftStick/left
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Horizontal
+      m_Flags: 8
+    - m_Name: positive
+      m_Id: fe52df5e-5dc3-44a0-b049-c8e01639b9a4
+      m_Path: <Gamepad>/leftStick/right
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Horizontal
+      m_Flags: 8
+    - m_Name: 
+      m_Id: 51540bf5-3896-4753-9775-fac79cb41f7c
+      m_Path: <Keyboard>/space
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Jump
+      m_Flags: 0
+    - m_Name: 
+      m_Id: d78737f1-0097-491f-8d5b-dc433884a6ed
+      m_Path: <Gamepad>/buttonSouth
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Jump
+      m_Flags: 0
+    - m_Name: Keyboard
+      m_Id: 145f2c2c-1f96-42da-b973-f16c0f590b18
+      m_Path: 1DAxis
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Vertical
+      m_Flags: 4
+    - m_Name: negative
+      m_Id: fec9227f-184f-4b88-b16c-7651d91dc6dc
+      m_Path: <Keyboard>/downArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Vertical
+      m_Flags: 8
+    - m_Name: positive
+      m_Id: 2ff36242-9822-48ef-b931-578237db464d
+      m_Path: <Keyboard>/upArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Vertical
+      m_Flags: 8
+    - m_Name: Controller
+      m_Id: 07fd09fb-6a39-401e-a296-34f8ce6e8dec
+      m_Path: 1DAxis
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Vertical
+      m_Flags: 4
+    - m_Name: negative
+      m_Id: 957d5cb6-a9bc-4ab9-b30b-b391d8b3a79d
+      m_Path: <Gamepad>/leftStick/down
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Vertical
+      m_Flags: 8
+    - m_Name: positive
+      m_Id: 3ff5af03-8652-45fd-97fa-071e6f74f310
+      m_Path: <Gamepad>/leftStick/up
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Vertical
+      m_Flags: 8
+    - m_Name: 
+      m_Id: 923852ed-c69d-4aff-92d1-d22983683e50
+      m_Path: <Keyboard>/z
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Dodge
+      m_Flags: 0
+    - m_Name: 
+      m_Id: e965d509-2359-465c-bf39-dc5e6bc9ecce
+      m_Path: <Gamepad>/buttonEast
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Dodge
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 6f3b0c58-be27-49c4-8440-799068134da7
+      m_Path: <Gamepad>/buttonWest
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Dodge
+      m_Flags: 0
+    - m_Name: Keyboard
+      m_Id: 4eabd06d-9e2e-467f-bb54-523f7c98c610
+      m_Path: 1DAxis
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: HorizontalGL
+      m_Flags: 4
+    - m_Name: negative
+      m_Id: 2dd733c7-079f-45eb-bdc6-44d047321f1f
+      m_Path: <Keyboard>/leftArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: HorizontalGL
+      m_Flags: 8
+    - m_Name: positive
+      m_Id: bfc0f7a0-97a2-47f8-832c-3d7fb6231df3
+      m_Path: <Keyboard>/rightArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: HorizontalGL
+      m_Flags: 8
+    - m_Name: Controller
+      m_Id: c96f3190-da7e-4961-b789-d47bbefcac75
+      m_Path: 1DAxis
+      m_Interactions: 
+      m_Processors: AxisDeadzone
+      m_Groups: 
+      m_Action: HorizontalGL
+      m_Flags: 4
+    - m_Name: negative
+      m_Id: 58085474-2872-4e56-92c4-d5f600c83789
+      m_Path: <WebGLGamepad>/leftStick/left
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: HorizontalGL
+      m_Flags: 8
+    - m_Name: positive
+      m_Id: a7e7197e-f1ad-4151-a3ce-753b62246579
+      m_Path: <WebGLGamepad>/leftStick/right
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: HorizontalGL
+      m_Flags: 8
+    - m_Name: Keyboard
+      m_Id: 8e03e052-a57b-495b-8774-e8156ef03302
+      m_Path: 1DAxis
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: VerticalGL
+      m_Flags: 4
+    - m_Name: negative
+      m_Id: 2fdcc442-3567-4bc0-bb16-61644a1d1f4d
+      m_Path: <Keyboard>/downArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: VerticalGL
+      m_Flags: 8
+    - m_Name: positive
+      m_Id: 6bb192fb-ca70-4723-b155-45657c7b91a6
+      m_Path: <Keyboard>/upArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: VerticalGL
+      m_Flags: 8
+    - m_Name: Controller
+      m_Id: d3d07adb-4dc5-46f3-888e-b56a8c935cf2
+      m_Path: 1DAxis
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: VerticalGL
+      m_Flags: 4
+    - m_Name: negative
+      m_Id: 6536dde6-7c3b-48d3-9212-e752441ba164
+      m_Path: <WebGLGamepad>/leftStick/up
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: VerticalGL
+      m_Flags: 8
+    - m_Name: positive
+      m_Id: b8d54555-e1b6-4846-baf8-4049fd44bb8c
+      m_Path: <WebGLGamepad>/leftStick/down
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: VerticalGL
+      m_Flags: 8
+  useTouchControls: 1

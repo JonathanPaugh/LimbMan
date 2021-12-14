@@ -4,6 +4,10 @@ namespace Game
 {
 	public class Game : Jape.Game
     {
+        public static Player Player => GameManager.Instance.Player;
+        public static UI UI => GameManager.Instance.UI;
+        public static GameManager.SpeedTimer Timer => GameManager.Instance.Timer;
+
         public new static void Pause()
         {
             if (pauseTimescale > -1)
@@ -12,7 +16,7 @@ namespace Game
                 return;
             }
 
-            GameManager.Instance.Timer.Pause();
+            Timer.Pause();
             Jape.Game.Pause();
         }
 
@@ -25,7 +29,7 @@ namespace Game
             }
 
             Jape.Game.Resume();
-            GameManager.Instance.Timer.Resume();
+            Timer.Resume();
         }
     }
 }

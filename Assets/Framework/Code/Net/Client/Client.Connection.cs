@@ -434,7 +434,7 @@ namespace JapeNet.Client
 
                 public void Start()
                 {
-                    WebManager.Socket.Connect(NetManager.Settings.ServerIp, NetManager.Settings.serverWebPort);
+                    WebManager.Socket.Connect(NetManager.Settings.ServerIp);
                     receiveData = new Packet();
                 }
 

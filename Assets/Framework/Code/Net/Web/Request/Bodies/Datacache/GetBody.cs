@@ -6,11 +6,11 @@ namespace JapeNet
         {
             public class GetBody : DatacacheBody
             {
-                public string key;
+                public string id;
 
-                public GetBody(string key) : base("Get")
+                public GetBody(string id) : base("Get")
                 {
-                    this.key = key;
+                    this.id = id;
                 }
             }
         }

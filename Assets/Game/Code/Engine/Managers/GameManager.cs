@@ -11,14 +11,13 @@ namespace Game
     {
         private new static bool InitOnLoad => true;
 
-        private Player player;
-        private UI ui;
-
+        public Player Player { get; private set; }
+        public UI UI { get; private set; }
         public SpeedTimer Timer { get; private set; }
 
         public new static void Init()
         {
-            Instance.ui = UI.Create(Jape.Game.DefaultCamera);
+            Instance.UI = UI.Create(Jape.Game.DefaultCamera);
             Instance.Timer = new SpeedTimer();
             Instance.Timer.Log().ToggleDiagnostics();
             Jape.Game.Load(loaded =>
@@ -60,7 +59,7 @@ namespace Game
 
             if (SaveManager.PullStatus("Records", out Status statusRecords))
             {
-                Instance.ui.SetRecord((float)statusRecords.Read("Best"));
+                Instance.UI.SetRecord((float)statusRecords.Read("Best"));
             }
 
             Setup(() =>
@@ -102,7 +101,7 @@ namespace Game
 
             Status.Save(status);
 
-            Instance.ui.SetRecord(time);
+            Instance.UI.SetRecord(time);
 
 
             UnityEngine.Time.timeScale = 0.1f;
@@ -126,11 +125,11 @@ namespace Game
 
         public static void CreatePlayer()
         {
-            Player player = Instance.player;
+            Player player = Instance.Player;
             if (player != null) { Destroy(player.gameObject); }
             player = Jape.Game.CloneGameObject(Database.LoadPrefab("Player")).GetComponent<Player>();
             DontDestroyOnLoad(player);
-            Instance.player = player;
+            Instance.Player = player;
         }
 
         public static void Spawn()
@@ -154,7 +153,7 @@ namespace Game
 
         public static void MoveCameraToPlayer()
         {
-            Player player = Instance.player;
+            Player player = Instance.Player;
 
             if (player == null) { return; }
             if (Jape.Game.DefaultCamera == null) { return; }
@@ -164,7 +163,7 @@ namespace Game
 
         public static void MoveToSpawn(string id)
         {
-            Player player = Instance.player;
+            Player player = Instance.Player;
 
             if (player == null) { return; }
 
@@ -260,7 +259,7 @@ namespace Game
             {
                 count += Time.RealtimeCount() - current;
                 current = Time.RealtimeCount();
-                Instance.ui.SetTime(count);
+                Instance.UI.SetTime(count);
 
                 Status status = new Status
                 {

@@ -1266,6 +1266,11 @@ MonoBehaviour:
     path: 
     ext: 
     type: 
+  - name: FrameworkTodo
+    resourceType: 2
+    path: Todos
+    ext: asset
+    type: Jape.Todo, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   - name: ToolButtons
     resourceType: 1
     path: 
@@ -1362,6 +1367,41 @@ MonoBehaviour:
     path: Camera
     ext: asset
     type: Jape.Global, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: Joysticks
+    resourceType: 1
+    path: 
+    ext: 
+    type: 
+  - name: Axis
+    resourceType: 2
+    path: Joysticks
+    ext: prefab
+    type: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: Dynamic Joystick
+    resourceType: 2
+    path: Joysticks
+    ext: prefab
+    type: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: Fixed Joystick
+    resourceType: 2
+    path: Joysticks
+    ext: prefab
+    type: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: Floating Joystick
+    resourceType: 2
+    path: Joysticks
+    ext: prefab
+    type: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: Variable Joystick
+    resourceType: 2
+    path: Joysticks
+    ext: prefab
+    type: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   - name: Music
     resourceType: 1
     path: 
@@ -1646,6 +1686,11 @@ MonoBehaviour:
     path: Inputs
     ext: asset
     type: Jape.Input, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: PlayerInput
+    resourceType: 2
+    path: Inputs
+    ext: asset
+    type: Game.PlayerInput, Game.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   - name: Levels
     resourceType: 1
     path: 
@@ -1853,5 +1898,5 @@ MonoBehaviour:
     ext: asset
     type: TMPro.TMP_Settings, Unity.TextMeshPro, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  fileCount: 283
-  folderCount: 47
+  fileCount: 290
+  folderCount: 48

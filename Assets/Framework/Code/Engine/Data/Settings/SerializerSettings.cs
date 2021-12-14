@@ -14,6 +14,10 @@ namespace Jape
 
         [PropertySpace(8)]
 
+        public Serializer.StringEncoding stringEncoding;
+
+        [PropertySpace(8)]
+
         [ShowIf(nameof(mode), Serializer.Mode.Dynamic)]
         public int writerLimit = 4;
 

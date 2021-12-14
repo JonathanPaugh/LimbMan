@@ -21,7 +21,7 @@ namespace JapeNet
 
             public ServerBody(string id)
             {
-                key = NetManager.Settings.MasterServerKey();
+                key = NetManager.Settings.MasterKey;
                 this.id = id;
             }
         }
@@ -40,26 +40,28 @@ namespace JapeNet
         {
             public enum Mode { Datastore, Datacache }
 
-            public string id;
+            public string key;
             public byte index;
+            public string command;
 
-            protected DatabaseBody(string id, Mode mode)
+            protected DatabaseBody(string command, Mode mode)
             {
-                this.id = id;
+                key = NetManager.Settings.DatabaseKey;
+                this.command = command;
                 index = (byte)mode;
             }
         }
 
         public class DatacacheBody : DatabaseBody
         {
-            public DatacacheBody(string id) : base(id, Mode.Datacache) {}
+            public DatacacheBody(string command) : base(command, Mode.Datacache) {}
         }
 
         public class DatastoreBody : DatabaseBody
         {
             public string store;
 
-            public DatastoreBody(string id, string store) : base(id, Mode.Datastore)
+            public DatastoreBody(string command, string store) : base(command, Mode.Datastore)
             {
                 this.store = store;
             }

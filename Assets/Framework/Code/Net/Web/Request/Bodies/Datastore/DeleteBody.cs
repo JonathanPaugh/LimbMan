@@ -10,13 +10,13 @@ namespace JapeNet
             public class UpdateBody : DatastoreBody
             {
                 public string collection;
-                public string key;
+                public string id;
                 public string data;
 
-                public UpdateBody(string store, string collection, string key, string data) : base("Update", store)
+                public UpdateBody(string store, string collection, string id, string data) : base("Update", store)
                 {
                     this.collection = collection;
-                    this.key = key;
+                    this.id = id;
                     this.data = data;
                 }
             }

@@ -17,6 +17,8 @@ namespace Game
         public TMP_Text Timer => transform.Find("Timer").gameObject.GetComponent<TMP_Text>();
         public TMP_Text Record => transform.Find("Record").gameObject.GetComponent<TMP_Text>();
 
+        public TouchControls TouchControls => transform.Find("TouchControls").GetComponent<TouchControls>();
+
         public void ShowSettings()
         { 
             IconSettings.SetActive(false);
@@ -34,6 +36,11 @@ namespace Game
         public void ToggleTimer()
         { 
             Timer.gameObject.SetActive(!Timer.gameObject.activeSelf);
+        }
+
+        public void ToggleTouchControls()
+        {
+            TouchControls.Active = !TouchControls.Active;
         }
 
         public void RestartGame()

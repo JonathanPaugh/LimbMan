@@ -21,15 +21,16 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  masterServerIp: 143.198.49.211
-  masterServerPort: 80
-  serverName: JapetheapeFrameworkServer
-  serverIp: 127.0.0.1
-  serverPort: 1337
-  serverWebPort: 80
-  databaseIp: 143.198.49.211
-  databasePort: 1434
-  maxPlayers: 10
+  serverName: 
+  serverIp: 
+  serverPort: 0
+  masterServerProtocol: 1
+  masterServerIp: 
+  masterServerPort: 0
+  databaseProtocol: 1
+  databaseIp: 
+  databasePort: 0
+  maxPlayers: 0
   bufferSize: 4096
   clientStreamRate: 1
   serverStreamRate: 1

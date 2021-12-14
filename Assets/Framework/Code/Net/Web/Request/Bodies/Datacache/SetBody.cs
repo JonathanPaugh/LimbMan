@@ -8,12 +8,12 @@ namespace JapeNet
         {
             public class SetBody : DatacacheBody
             {
-                public string key;
+                public string id;
                 public string value;
 
-                public SetBody(string key, string value) : base("Set")
+                public SetBody(string id, string value) : base("Set")
                 {
-                    this.key = key;
+                    this.id = id;
                     this.value = value;
                 }
             }

@@ -1,14 +1,13 @@
 using System;
-using System.Linq;
-using Sirenix.Serialization;
-using UnityEngine;
 
 namespace Jape
 {
 	public static partial class Serializer
     {
         public enum Mode { Simple, Dynamic, Odin };
+
         public enum BitConverter { Default }
+        public enum StringEncoding { Ascii, Utf8, Utf32 }
 
         private static SerializerSettings settings;
         public static SerializerSettings Settings => settings ?? (settings = Game.Settings<SerializerSettings>());

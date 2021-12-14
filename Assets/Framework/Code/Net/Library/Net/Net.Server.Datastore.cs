@@ -32,7 +32,7 @@ namespace JapeNet
                     });
                 }
 
-                public static void Get(string store, string collection, string key, Action<string> response)
+                public static void Get(string store, string collection, string key, Action<string> response = null, Action error = null)
                 {
                     switch (NetManager.GetMode())
                     {
@@ -44,10 +44,9 @@ namespace JapeNet
 
                         case NetManager.Mode.Server:
                         {
-                            JapeNet.Datastore.Get(store, collection, key).Read(data =>
-                            {
-                                response?.Invoke(data);
-                            });
+                            JapeNet.Datastore.Get(store, collection, key)
+                                             .Read(response)
+                                             .Error(error);
                             return;
                         }
 
@@ -59,7 +58,7 @@ namespace JapeNet
                     }
                 }
 
-                public static void Insert(string store, string collection, string data, Action<string> response)
+                public static void Insert(string store, string collection, string data, Action<string> response = null, Action error = null)
                 {
                     switch (NetManager.GetMode())
                     {
@@ -71,10 +70,9 @@ namespace JapeNet
 
                         case NetManager.Mode.Server:
                         {
-                            JapeNet.Datastore.Insert(store, collection, data).Read(data =>
-                            {
-                                response?.Invoke(data);
-                            });
+                            JapeNet.Datastore.Insert(store, collection, data)
+                                             .Read(response)
+                                             .Error(error);
                             return;
                         }
 
@@ -86,7 +84,7 @@ namespace JapeNet
                     }
                 }
 
-                public static void Update(string store, string collection, string key, string data, Action<string> response)
+                public static void Update(string store, string collection, string key, string data, Action<string> response = null, Action error = null)
                 {
                     switch (NetManager.GetMode())
                     {
@@ -98,10 +96,9 @@ namespace JapeNet
 
                         case NetManager.Mode.Server:
                         {
-                            JapeNet.Datastore.Update(store, collection, key, data).Read(data =>
-                            {
-                                response?.Invoke(data);
-                            });
+                            JapeNet.Datastore.Update(store, collection, key, data)
+                                             .Read(response)
+                                             .Error(error);
                             return;
                         }
 
@@ -113,7 +110,7 @@ namespace JapeNet
                     }
                 }
 
-                public static void Remove(string store, string collection, string key, string[] data, Action<string> response)
+                public static void Remove(string store, string collection, string key, string[] data, Action<string> response = null, Action error = null)
                 {
                     switch (NetManager.GetMode())
                     {
@@ -125,10 +122,9 @@ namespace JapeNet
 
                         case NetManager.Mode.Server:
                         {
-                            JapeNet.Datastore.Remove(store, collection, key, data).Read(data =>
-                            {
-                                response?.Invoke(data);
-                            });
+                            JapeNet.Datastore.Remove(store, collection, key, data)
+                                             .Read(response)
+                                             .Error(error);
                             return;
                         }
 
@@ -140,7 +136,7 @@ namespace JapeNet
                     }
                 }
 
-                public static void Delete(string store, string collection, string key, Action<string> response)
+                public static void Delete(string store, string collection, string key, Action<string> response = null, Action error = null)
                 {
                     switch (NetManager.GetMode())
                     {
@@ -152,10 +148,9 @@ namespace JapeNet
 
                         case NetManager.Mode.Server:
                         {
-                            JapeNet.Datastore.Delete(store, collection, key).Read(data =>
-                            {
-                                response?.Invoke(data);
-                            });
+                            JapeNet.Datastore.Delete(store, collection, key)
+                                             .Read(response)
+                                             .Error(error);
                             return;
                         }
 

@@ -277,7 +277,6 @@ MonoBehaviour:
   team: {fileID: 0}
   tags:
   - {fileID: 11400000, guid: b1d8c354aba24b040a1fb788b8e26fa4, type: 2}
-  queryMovement: 0
   save: 0
   savePosition: 1
   savedElements: []
@@ -486,7 +485,7 @@ MonoBehaviour:
   JumpsRemaining: 0
   dodgeLimit: 1
   DodgeRemaining: 0
-  input: {fileID: 11400000, guid: 6d1dbe5f4425b2449a78381502e4e66a, type: 2}
+  input: {fileID: 11400000, guid: 9953702c1d8af8d49a118757d757739d, type: 2}
   MovementFilter:
     useTriggers: 0
     useLayerMask: 1

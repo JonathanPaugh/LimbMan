@@ -8,11 +8,11 @@ namespace JapeNet
         {
             public class RemoveBody : DatacacheBody
             {
-                public string key;
+                public string id;
 
-                public RemoveBody(string key) : base("Remove")
+                public RemoveBody(string id) : base("Remove")
                 {
-                    this.key = key;
+                    this.id = id;
                 }
             }
         }

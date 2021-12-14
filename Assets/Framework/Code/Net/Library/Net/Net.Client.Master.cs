@@ -12,16 +12,15 @@ namespace JapeNet
         {
             public static class Master
             {
-                public static void ServerCreate(Action<Response.CreateBody> response)
+                public static void ServerCreate(Action<Response.CreateBody> response = null, Action error = null)
                 {
                     switch (NetManager.GetMode())
                     {
                         case NetManager.Mode.Offline:
                         {
-                            JapeNet.Master.ServerCreate().ReadJson<Response.CreateBody>(data =>
-                            {
-                                response?.Invoke(data);
-                            });
+                            JapeNet.Master.ServerCreate()
+                                          .ReadJson(response)
+                                          .Error(error);
                             return;
                         }
 
@@ -39,22 +38,21 @@ namespace JapeNet
                     }
                 }
 
-                public static void ServerInfo(Action<Response.InfoBody> response)
+                public static void ServerInfo(Action<Response.InfoBody> response = null, Action error = null)
                 {
                     switch (NetManager.GetMode())
                     {
                         case NetManager.Mode.Offline:
                         {
-                            JapeNet.Master.ServerInfo().ReadJson<Response.InfoBody>(data =>
-                            {
-                                response?.Invoke(data);
-                            });
+                            JapeNet.Master.ServerInfo()
+                                          .ReadJson(response)
+                                          .Error(error);
                             return;
                         }
 
                         case NetManager.Mode.Client:
                         {
-                            JapeNet.Master.ServerInfo();
+                            Log.Write("Must request server info while offline");
                             return;
                         }
 
