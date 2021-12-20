@@ -64,6 +64,12 @@ namespace Game
             UI ui = Jape.Game.CloneGameObject(Database.LoadPrefab("UI")).GetComponent<UI>();
             ui.canvas.worldCamera = camera.UnityCamera;
             DontDestroyOnLoad(ui.gameObject);
+
+            if (Jape.Game.IsMobile)
+            {
+                ui.ToggleTouchControls();
+            }
+
             return ui;
         }
     }

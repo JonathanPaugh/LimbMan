@@ -75,6 +75,9 @@ namespace Jape
         private static extern void WebFree(int pointer);
 
         [DllImport("__Internal")]
+        private static extern bool WebMobile();
+
+        [DllImport("__Internal")]
         private static extern void WebSaveRequestSave(int profile, byte[] data, int length);
 
         [DllImport("__Internal")]
@@ -91,6 +94,11 @@ namespace Jape
 
         [DllImport("__Internal")]
         private static extern void WebSocketSend(byte[] data, int length);
+
+        public static bool IsMobile()
+        {
+            return WebMobile();
+        } 
 
         public static class Save
         {

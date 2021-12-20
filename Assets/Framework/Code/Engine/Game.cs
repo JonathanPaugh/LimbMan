@@ -28,6 +28,18 @@ namespace Jape
         public static bool IsBuild => !Application.isEditor;
         public static bool IsWeb => Application.platform == RuntimePlatform.WebGLPlayer;
         public static bool IsAOT => IsWeb || Application.platform == RuntimePlatform.IPhonePlayer;
+        public static bool IsMobile
+        {
+            get
+            {
+                if (IsWeb)
+                {
+                    return WebManager.IsMobile();
+                }
+
+                return Application.isMobilePlatform;
+            }
+        }
 
         public static Scene ActiveScene() { return SceneManager.GetActiveScene(); }
 

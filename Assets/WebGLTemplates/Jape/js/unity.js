@@ -4,13 +4,14 @@ if (exports.supported({failIfMajorPerformanceCaveat: true})) {
 	launchGame();
 } else {
 	hardwareError();
-	
 }
 
 function launchGame() {
 	let element = document.createElement("canvas");
 	element.id = "game";
 	document.body.prepend(element);
+	
+	updateGameHeight();
 
 	let loader = document.createElement("img");
 	loader.id = "loader";
@@ -35,7 +36,18 @@ function launchGame() {
 		productVersion: "{{{ PRODUCT_VERSION }}}",
 	}).then(instance => {
 		loader.remove();
+		onLaunch();
 	});
+}
+
+function onLaunch() {
+	window.addEventListener('resize', () => {
+		updateGameHeight();
+	});
+}
+
+function updateGameHeight() {
+	document.querySelector("#game").style.height = `${window.innerHeight}px`;
 }
 
 function hardwareError() {

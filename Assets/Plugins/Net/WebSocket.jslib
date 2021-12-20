@@ -3,12 +3,14 @@
 		connection: undefined,
 	},
 
-    WebSocketConnect: function() {
+    WebSocketConnect: function(domain) {
         if (Socket.connection != null) { return; }
 
 	    console.log("WebSocket Starting");
-	    
-	    Socket.connection = new WebSocket("ws://127.0.0.1:8000");
+
+	    protocol = window.location.protocol == "https:"  ? "wss://" : "ws://";
+
+	    Socket.connection = new WebSocket(protocol + Pointer_stringify(domain));
 	    Socket.connection.binaryType = "arraybuffer";
 
 	    Socket.connection.onopen = function() {
@@ -49,12 +51,12 @@
 
     $WebSocketReceive: function(data) {
 	    if (data.byteLength < 1) { return; }
+
 	    SendMessage("WebManager", "WebSocketReceiveOpen", data.byteLength);
 	    buffer = _malloc(data.byteLength);
 	    heap = new Uint8Array(HEAPU8.buffer, buffer, data.byteLength);
 	    heap.set(new Uint8Array(data));
 		SendMessage("WebManager", "WebSocketReceiveClose", buffer);
-		
     },
 };
 

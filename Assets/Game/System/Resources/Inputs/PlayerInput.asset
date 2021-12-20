@@ -301,4 +301,4 @@ MonoBehaviour:
       m_Groups: 
       m_Action: VerticalGL
       m_Flags: 8
-  useTouchControls: 1
+  useTouchControls: 0
