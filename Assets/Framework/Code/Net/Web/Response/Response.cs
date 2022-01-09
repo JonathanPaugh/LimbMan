@@ -39,7 +39,8 @@ namespace JapeNet
             }
         }
 
-        public Response ReadJson<T>(Action<T> response)
+        public Response ReadJson<T>(Action<T> response) => ReadJson(response, null);
+        public Response ReadJson<T>(Action<T> response, Func<string, string> modifyJson)
         {
             if (status == Status.Success) { Respond(); }
             else { onSuccess += Respond; }
@@ -48,7 +49,8 @@ namespace JapeNet
             void Respond()
             {
                 onSuccess -= Respond;
-                response?.Invoke(JsonUtility.FromJson<T>(value));
+                string temp = modifyJson == null ? value : modifyJson(value);
+                response?.Invoke(JsonUtility.FromJson<T>(temp));
             }
         }
 

@@ -11,7 +11,7 @@ namespace JapeNet
                 public string id;
                 public string value;
 
-                public SetBody(string id, string value) : base("Set")
+                public SetBody(string id, string value) : base("set")
                 {
                     this.id = id;
                     this.value = value;

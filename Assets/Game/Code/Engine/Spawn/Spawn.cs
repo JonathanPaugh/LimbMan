@@ -1,33 +1,45 @@
-﻿using Jape;
+﻿using Game;
+using Jape;
 using UnityEngine;
 
-public class Spawn : Element
+namespace Game
 {
-    public bool primary;
-
-    protected override void Touch(GameObject gameObject)
+    public class Spawn : Element
     {
-        if (!gameObject.HasTag(Tag.Find("Player"))) { return; }
-        UpdateSpawn();
-    }
+        public bool primary;
 
-    private void UpdateSpawn()
-    {
-        Jape.Status status = new Jape.Status
+        protected override void Activated()
         {
-            Key = "Spawn"
-        };
+            if (gameObject.HasTag(Tag.Find("GameStart"))) { return; }
+            if (Game.Settings<GameSettings>().Difficulty != Difficulty.Hardcore) { return; }
 
-        status.Write("Id", gameObject.Id());
-        status.Write("Scene", gameObject.scene.path);
+            Destroy(gameObject);
+        }
 
-        Status.Save(status);
+        protected override void Touch(GameObject gameObject)
+        {
+            if (!gameObject.HasTag(Tag.Find("Player"))) { return; }
+            UpdateSpawn();
+        }
 
-        Jape.Game.Save();
-    }
+        private void UpdateSpawn()
+        {
+            Jape.Status status = new Jape.Status
+            {
+                Key = "Spawn"
+            };
 
-    public Vector3 SpawnPosition()
-    {
-        return transform.position + new Vector3(0, 2, 0);
+            status.Write("Id", gameObject.Id());
+            status.Write("Scene", gameObject.scene.path);
+
+            Status.Save(status);
+
+            Jape.Game.Save();
+        }
+
+        public Vector3 SpawnPosition()
+        {
+            return transform.position + new Vector3(0, 2, 0);
+        }
     }
 }

@@ -13,7 +13,7 @@ namespace JapeNet
                 public string id;
                 public string[] data;
 
-                public RemoveBody(string store, string collection, string id, string[] data) : base("Remove", store)
+                public RemoveBody(string store, string collection, string id, string[] data) : base("remove", store)
                 {
                     this.collection = collection;
                     this.id = id;

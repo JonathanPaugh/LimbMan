@@ -41,6 +41,11 @@ namespace Game
         public void ToggleTouchControls()
         {
             TouchControls.Active = !TouchControls.Active;
+            switch (TouchControls.Active)
+            {
+                case true: Game.Settings<GameSettings>().Difficulty = Difficulty.Touch; break;
+                case false: Game.Settings<GameSettings>().Difficulty = Difficulty.Normal; break;
+            }
         }
 
         public void RestartGame()

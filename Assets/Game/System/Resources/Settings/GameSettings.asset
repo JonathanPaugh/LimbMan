@@ -20,5 +20,60 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes: []
+    SerializationNodes:
+    - Name: onDifficultyChange
+      Entry: 7
+      Data: 0|System.Action`1[[Game.Difficulty, Game.Engine]], mscorlib
+    - Name: target
+      Entry: 7
+      Data: 1|Game.GameSettings+<>c, Game.Engine
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: declaringType
+      Entry: 7
+      Data: 2|System.RuntimeType, mscorlib
+    - Name: 
+      Entry: 1
+      Data: Game.GameSettings+<>c, Game.Engine
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: methodName
+      Entry: 1
+      Data: <.ctor>b__6_0
+    - Name: delegateType
+      Entry: 7
+      Data: 3|System.RuntimeType, mscorlib
+    - Name: 
+      Entry: 1
+      Data: System.Action`1[[Game.Difficulty, Game.Engine]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: signature
+      Entry: 7
+      Data: 4|System.Type[], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 5|System.RuntimeType, mscorlib
+    - Name: 
+      Entry: 1
+      Data: Game.Difficulty, Game.Engine
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
   startingLevel: {fileID: 11400000, guid: 7eabb6fb72c1057419772f66c49b73ba, type: 2}
+  difficulty: 2

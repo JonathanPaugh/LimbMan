@@ -11,7 +11,7 @@ namespace JapeNet
                 public string channel;
                 public string value;
 
-                public PublishBody(string channel, string value) : base("Publish")
+                public PublishBody(string channel, string value) : base("publish")
                 {
                     this.channel = channel;
                     this.value = value;

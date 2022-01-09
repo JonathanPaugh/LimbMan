@@ -1,8 +1,5 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using Jape;
-using UnityEngine;
 
 namespace JapeNet
 {
@@ -14,15 +11,31 @@ namespace JapeNet
             {
                 public static void Test()
                 {
-                    Insert("Test", "Test", "{ 'UnityKey1': 'UnityValue1', 'UnityKey2': 'UnityValue2', 'UnityKey3': 'UnityValue3' }", key =>
+                    string insertData = "{ " 
+                                        + '"' + "UnityKey1" + '"' + ": " 
+                                        + '"' + "UnityValue1" + '"' + ", " 
+                                        + '"' + "UnityKey2" + '"' + ": " 
+                                        + '"' + "UnityValue2" + '"' + ", " 
+                                        + '"' + "UnityKey3" + '"' + ": " 
+                                        + '"' + "UnityValue3" + '"' 
+                                        + " }";
+
+                    string updateData = "{ " 
+                                        + '"' + "UnityKey1" + '"' + ": " 
+                                        + '"' + "UnityUpdate1" + '"' + ", " 
+                                        + '"' + "UnityKey3" + '"' + ": " 
+                                        + '"' + "UnityUpdate3" + '"' 
+                                        + " }";
+
+                    Insert("Test", "Test", insertData, id =>
                     {
-                        Update("Test", "Test", key, "{ 'UnityKey1': 'UnityUpdate1', 'UnityKey3': 'UnityUpdate3' }",  _ =>
+                        Update("Test", "Test", id.oid, updateData, _ =>
                         {
-                            Get("Test", "Test", key, _ =>
+                            Get("Test", "Test", id.oid, _ =>
                             {
-                                Remove("Test", "Test", key, new [] { "UnityKey2" }, _ =>
+                                Remove("Test", "Test", id.oid, new [] { "UnityKey2" }, _ =>
                                 {
-                                    Delete("Test", "Test", key, data =>
+                                    Delete("Test", "Test", id.oid, data =>
                                     {
                                         Log.Write(data);
                                     });
@@ -58,7 +71,7 @@ namespace JapeNet
                     }
                 }
 
-                public static void Insert(string store, string collection, string data, Action<string> response = null, Action error = null)
+                public static void Insert(string store, string collection, string data, Action<Response.IdBody> response = null, Action error = null)
                 {
                     switch (NetManager.GetMode())
                     {
@@ -71,7 +84,7 @@ namespace JapeNet
                         case NetManager.Mode.Server:
                         {
                             JapeNet.Datastore.Insert(store, collection, data)
-                                             .Read(response)
+                                             .ReadJson(response, json => json.Replace("$oid", "oid"))
                                              .Error(error);
                             return;
                         }

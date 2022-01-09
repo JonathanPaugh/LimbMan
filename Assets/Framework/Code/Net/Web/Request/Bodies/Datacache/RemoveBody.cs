@@ -10,7 +10,7 @@ namespace JapeNet
             {
                 public string id;
 
-                public RemoveBody(string id) : base("Remove")
+                public RemoveBody(string id) : base("remove")
                 {
                     this.id = id;
                 }

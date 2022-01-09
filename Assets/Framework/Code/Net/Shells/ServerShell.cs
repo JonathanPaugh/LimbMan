@@ -43,7 +43,7 @@ namespace JapeNet
         protected sealed override void OnGameSave() => base.OnGameSave();
         protected sealed override void OnGameLoad() => base.OnGameLoad();
 
-        protected virtual void OnStart() {}
+        protected virtual void OnStart() {} 
         protected virtual void OnStop() {}
 
         protected virtual void OnConnectFirst() {}

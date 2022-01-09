@@ -7,17 +7,15 @@ namespace JapeNet
     {
         public static partial class Datastore
         {
-            public class UpdateBody : DatastoreBody
+            public class DeleteBody : DatastoreBody
             {
                 public string collection;
                 public string id;
-                public string data;
 
-                public UpdateBody(string store, string collection, string id, string data) : base("Update", store)
+                public DeleteBody(string store, string collection, string id) : base("delete", store)
                 {
                     this.collection = collection;
                     this.id = id;
-                    this.data = data;
                 }
             }
         }

@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using Jape;
-using UnityEngine;
 
 namespace JapeNet
 {

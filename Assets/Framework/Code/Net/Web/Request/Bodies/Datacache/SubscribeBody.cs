@@ -13,7 +13,7 @@ namespace JapeNet
                 public string channel;
                 public byte mode;
 
-                public SubscribeBody(string channel, Mode mode) : base("Subscribe")
+                public SubscribeBody(string channel, Mode mode) : base("subscribe")
                 {
                     this.channel = channel;
                     this.mode = (byte)mode;

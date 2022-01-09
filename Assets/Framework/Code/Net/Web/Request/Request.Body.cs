@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Text;
@@ -11,7 +12,7 @@ namespace JapeNet
     {
         public class Body
         {
-            public string ToJson() => JsonUtility.ToJson(this);
+            public virtual string ToJson() => JsonUtility.ToJson(this);
         }
 
         public class ServerBody : Body
@@ -59,12 +60,58 @@ namespace JapeNet
 
         public class DatastoreBody : DatabaseBody
         {
-            public string store;
+            public string database;
 
             public DatastoreBody(string command, string store) : base(command, Mode.Datastore)
             {
-                this.store = store;
+                database = store;
             }
+
+            protected bool FindKey(string json, string key, out int valueIndex)
+            {
+                string matchKey = '"' + key + '"' + ':';
+                valueIndex = json.IndexOf(matchKey, StringComparison.InvariantCulture);
+                if (valueIndex >= 0)
+                {
+                    valueIndex += matchKey.Length;
+                    return true;
+                } 
+                return false;
+            }
+
+            protected string TryUnwrapObject(string json, string key)
+            {
+                if (!FindKey(json, key, out int valueIndex))
+                {
+                    return json;
+                }
+
+                string startMatch = '"' + "{";
+                string endMatch = "}" + '"';
+
+                int startIndex = json.IndexOf(startMatch, valueIndex, StringComparison.InvariantCulture);
+                int endIndex = json.IndexOf(endMatch, valueIndex, StringComparison.InvariantCulture);
+
+                string wrapped = json.Substring(startIndex, endIndex - startIndex + 2);
+                string unwrapped = wrapped.Replace(startMatch, "{").Replace(endMatch, "}").Replace(@"\" + '"', '"'.ToString());
+
+                return json.Replace(wrapped, unwrapped);
+            }
+
+            public override string ToJson()
+            {
+                string json = base.ToJson();
+
+                IEnumerator<string> unwrapFields = UnwrapFields();
+                while (unwrapFields.MoveNext())
+                {
+                    json = TryUnwrapObject(json, unwrapFields.Current);
+                }
+
+                return json;
+            }
+
+            protected virtual IEnumerator<string> UnwrapFields() { yield return null; }
         }
     }
 }

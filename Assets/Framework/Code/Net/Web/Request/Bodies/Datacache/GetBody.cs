@@ -8,7 +8,7 @@ namespace JapeNet
             {
                 public string id;
 
-                public GetBody(string id) : base("Get")
+                public GetBody(string id) : base("get")
                 {
                     this.id = id;
                 }

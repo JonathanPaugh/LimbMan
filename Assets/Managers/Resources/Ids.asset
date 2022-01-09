@@ -2311,3 +2311,115 @@ MonoBehaviour:
     map:
       sceneAsset: {fileID: 102900000, guid: 43efe485d3c965d428f9a8ff907cde85, type: 3}
       scenePath: Assets/Game/Scenes/Area1_2.unity
+  - properties: {fileID: 0}
+    position: {x: 177.25, y: 10.75, z: 0}
+    value: 1fc02630-05f9-4eae-b98a-427ccc8d2180
+    name: NormalBlock
+    map:
+      sceneAsset: {fileID: 102900000, guid: b4c1911de578b6a4880e6a26388cf031, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_1.unity
+  - properties: {fileID: 0}
+    position: {x: 177.25, y: 10.75, z: 0}
+    value: 20bbafe1-2faf-4e58-a1bf-3c7350f9ae49
+    name: EasyBlock
+    map:
+      sceneAsset: {fileID: 102900000, guid: b4c1911de578b6a4880e6a26388cf031, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_1.unity
+  - properties: {fileID: 0}
+    position: {x: 177.25, y: 10.75, z: 0}
+    value: f6d5e0b8-8bb0-413d-9bd1-ff5a2fa24bf8
+    name: Blocks
+    map:
+      sceneAsset: {fileID: 102900000, guid: b4c1911de578b6a4880e6a26388cf031, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_1.unity
+  - properties: {fileID: 0}
+    position: {x: 0, y: 0, z: 0}
+    value: e2651b95-43bd-448c-a963-b8951f6a1104
+    name: New Game Object
+    map:
+      sceneAsset: {fileID: 102900000, guid: b4c1911de578b6a4880e6a26388cf031, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_1.unity
+  - properties: {fileID: 0}
+    position: {x: 720.5, y: 11, z: 0}
+    value: 52ae4a78-ab26-43cf-94e9-5b903ebf891c
+    name: TowerNormal (1)
+    map:
+      sceneAsset: {fileID: 102900000, guid: b4c1911de578b6a4880e6a26388cf031, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_1.unity
+  - properties: {fileID: 0}
+    position: {x: 720.5, y: 11, z: 0}
+    value: 104ce766-b2d0-46df-b9cc-0d5dbcd3f188
+    name: TowerNormal (2)
+    map:
+      sceneAsset: {fileID: 102900000, guid: b4c1911de578b6a4880e6a26388cf031, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_1.unity
+  - properties: {fileID: 0}
+    position: {x: 739.75, y: 100.25, z: 0}
+    value: 4de00ade-fb67-42b3-b4ce-d14a8fe54da4
+    name: TowerEasy (1)
+    map:
+      sceneAsset: {fileID: 102900000, guid: b4c1911de578b6a4880e6a26388cf031, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_1.unity
+  - properties: {fileID: 0}
+    position: {x: 759.75, y: 100.25, z: 0}
+    value: 537e9047-ad29-4122-b429-2935795ba0f4
+    name: TowerEasy (2)
+    map:
+      sceneAsset: {fileID: 102900000, guid: b4c1911de578b6a4880e6a26388cf031, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_1.unity
+  - properties: {fileID: 0}
+    position: {x: 739.75, y: 100.25, z: 0}
+    value: 890c732f-9d24-4105-9f89-842c22edf2f9
+    name: TowerEasy (3)
+    map:
+      sceneAsset: {fileID: 102900000, guid: b4c1911de578b6a4880e6a26388cf031, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_1.unity
+  - properties: {fileID: 0}
+    position: {x: 727, y: 92.5, z: 0}
+    value: c27630e1-8698-4b62-909d-f5442c21f670
+    name: TowerEasy (4)
+    map:
+      sceneAsset: {fileID: 102900000, guid: b4c1911de578b6a4880e6a26388cf031, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_1.unity
+  - properties: {fileID: 0}
+    position: {x: 726, y: 68.75, z: 0}
+    value: 5cf9a0c1-8079-444f-96c7-15bc29890cfc
+    name: TowerEasy (5)
+    map:
+      sceneAsset: {fileID: 102900000, guid: b4c1911de578b6a4880e6a26388cf031, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_1.unity
+  - properties: {fileID: 0}
+    position: {x: 720.5, y: 11, z: 0}
+    value: 35b418ca-1670-40c7-9e9b-078725d5ca72
+    name: TowerNormal (2)
+    map:
+      sceneAsset: {fileID: 102900000, guid: b4c1911de578b6a4880e6a26388cf031, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_1.unity
+  - properties: {fileID: 0}
+    position: {x: 726, y: 68.75, z: 0}
+    value: d4e2feaf-bc4e-450d-af9e-eb150578ac5d
+    name: TowerEasy (6)
+    map:
+      sceneAsset: {fileID: 102900000, guid: b4c1911de578b6a4880e6a26388cf031, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_1.unity
+  - properties: {fileID: 0}
+    position: {x: 739.75, y: 100.25, z: 0}
+    value: 6ef64744-2d7c-4793-a93e-0fb14419ddb5
+    name: TowerEasy (7)
+    map:
+      sceneAsset: {fileID: 102900000, guid: b4c1911de578b6a4880e6a26388cf031, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_1.unity
+  - properties: {fileID: 0}
+    position: {x: 723.75, y: 45, z: 0}
+    value: 832d0e78-7757-42ea-bb4b-b8d2f54ada2b
+    name: TowerEasy (8)
+    map:
+      sceneAsset: {fileID: 102900000, guid: b4c1911de578b6a4880e6a26388cf031, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_1.unity
+  - properties: {fileID: 0}
+    position: {x: 420, y: 35, z: 0}
+    value: 15e76443-5649-4572-b94a-df737420bea5
+    name: Tower (1)
+    map:
+      sceneAsset: {fileID: 102900000, guid: b4c1911de578b6a4880e6a26388cf031, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_1.unity

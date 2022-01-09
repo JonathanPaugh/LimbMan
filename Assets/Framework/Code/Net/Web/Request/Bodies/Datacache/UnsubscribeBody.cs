@@ -10,7 +10,7 @@ namespace JapeNet
             {
                 public string subscription;
 
-                public UnsubscribeBody(string subscription) : base("Unsubscribe")
+                public UnsubscribeBody(string subscription) : base("unsubscribe")
                 {
                     this.subscription = subscription;
                 }

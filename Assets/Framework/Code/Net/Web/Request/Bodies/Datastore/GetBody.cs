@@ -9,7 +9,7 @@ namespace JapeNet
                 public string collection;
                 public string id;
 
-                public GetBody(string store, string collection, string id) : base("Get", store)
+                public GetBody(string store, string collection, string id) : base("get", store)
                 {
                     this.collection = collection;
                     this.id = id;

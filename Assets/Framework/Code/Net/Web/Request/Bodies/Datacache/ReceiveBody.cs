@@ -10,7 +10,7 @@ namespace JapeNet
             {
                 public string subscription;
 
-                public ReceiveBody(string subscription) : base("Receive")
+                public ReceiveBody(string subscription) : base("receive")
                 {
                     this.subscription = subscription;
                 }

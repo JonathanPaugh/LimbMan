@@ -1,9 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Net;
-using System.Text;
-using Jape;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace JapeNet
 {
@@ -11,7 +6,7 @@ namespace JapeNet
     {
         public class Body
         {
-            public string ToJson() => JsonUtility.ToJson(this);
+            public virtual string ToJson() => JsonUtility.ToJson(this);
         }
     }
 }

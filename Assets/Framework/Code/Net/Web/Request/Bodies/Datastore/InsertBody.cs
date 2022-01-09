@@ -12,11 +12,13 @@ namespace JapeNet
                 public string collection;
                 public string data;
 
-                public InsertBody(string store, string collection, string data) : base("Insert", store)
+                public InsertBody(string store, string collection, string data) : base("insert", store)
                 {
                     this.collection = collection;
                     this.data = data;
                 }
+
+                protected override IEnumerator<string> UnwrapFields() { yield return nameof(data); }
             }
         }
     }

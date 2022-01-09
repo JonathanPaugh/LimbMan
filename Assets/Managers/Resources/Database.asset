@@ -1676,6 +1676,16 @@ MonoBehaviour:
     ext: asset
     type: UnityEngine.ProBuilder.ColorPalette, Unity.ProBuilder, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  - name: Denums
+    resourceType: 1
+    path: 
+    ext: 
+    type: 
+  - name: Difficulty
+    resourceType: 2
+    path: Denums
+    ext: asset
+    type: Jape.Denum, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   - name: Inputs
     resourceType: 1
     path: 
@@ -1898,5 +1908,5 @@ MonoBehaviour:
     ext: asset
     type: TMPro.TMP_Settings, Unity.TextMeshPro, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  fileCount: 290
-  folderCount: 48
+  fileCount: 291
+  folderCount: 49
