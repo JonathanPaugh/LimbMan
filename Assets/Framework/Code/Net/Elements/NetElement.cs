@@ -2,10 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.InteropServices.ComTypes;
 using Jape;
-using Sirenix.OdinInspector;
-using Sirenix.Serialization;
 using UnityEngine;
 
 namespace JapeNet
@@ -17,9 +14,12 @@ namespace JapeNet
         protected virtual Type PairType => GetType();
         protected virtual Type[] PairComponents => null;
 
-        public virtual string PairKey => !string.IsNullOrEmpty(gameObject.Id()) ? 
-                                         $"{PairType.FullName}_{gameObject.Id()}" : 
-                                         $"{PairType.FullName}_{gameObject.Alias()}";
+        private Key cachedPairKey;
+        public virtual Key PairKey => cachedPairKey ??= GeneratePairKey();
+
+        protected virtual Key GeneratePairKey() => new Key(PairType, 
+                                                           gameObject.Identifier(), 
+                                                           gameObject.HasId() ? Key.IdentifierEncoding.Hex : Key.IdentifierEncoding.ASCII);
         
         protected NetStream stream;
 
@@ -141,7 +141,7 @@ namespace JapeNet
             switch (NetManager.GetMode())
             {
                 case NetManager.Mode.Offline:
-                    NetManager.Client.AccessElement(PairKey, e =>
+                    NetManager.Client.AccessElement(PairKey.Encode(), e =>
                     {
                         Member.Set(e, name, value);
                     });
@@ -165,7 +165,7 @@ namespace JapeNet
             switch (NetManager.GetMode())
             {
                 case NetManager.Mode.Offline:
-                    NetManager.Client.AccessElement(PairKey, e =>
+                    NetManager.Client.AccessElement(PairKey.Encode(), e =>
                     {
                         Member.Get(e, name, null, args);
                     });
@@ -197,7 +197,7 @@ namespace JapeNet
             switch (NetManager.GetMode())
             {
                 case NetManager.Mode.Offline:
-                    NetManager.Client.AccessElement(PairKey, e =>
+                    NetManager.Client.AccessElement(PairKey.Encode(), e =>
                     {
                         e.PushStreamData(PullStreamData());
                     });
@@ -310,7 +310,7 @@ namespace JapeNet
             switch (NetManager.GetMode())
             {
                 case NetManager.Mode.Offline:
-                    NetManager.Client.AccessElement(PairKey, e =>
+                    NetManager.Client.AccessElement(PairKey.Encode(), e =>
                     {
                         e.PushSyncData(data);
                     });

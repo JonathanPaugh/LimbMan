@@ -13,10 +13,12 @@ namespace Jape
         [Serializable]
         public class Generator<T> where T : BehaviourInstance
         {
+            private const Sector Sector = Jape.Sector.Game;
+
             protected string BehaviourLabel => $"{behaviourType.Type.CleanName()}";
             protected string ArgsLabel => $"{behaviour.name} Args";
 
-            protected virtual BehaviourType behaviourType { get { return FindAll<BehaviourType>().FirstOrDefault(b => b.Type == typeof(T)); }} 
+            protected virtual BehaviourType behaviourType => FindAll<BehaviourType>().FirstOrDefault(b => b.Type == typeof(T));
 
             [PropertySpace(0, SpaceAfter = 16)]
 
@@ -34,8 +36,12 @@ namespace Jape
             {
                 #if UNITY_EDITOR
                 Object selection = UnityEditor.Selection.activeObject;
-                behaviour = behaviourType.Create();
-                UnityEditor.Selection.activeObject = selection;
+                InputWindow.Call(input =>
+                {
+                    behaviour = behaviourType.CreateBehaviour(input, Sector);
+                    behaviour.Save();
+                    UnityEditor.Selection.activeObject = selection;
+                }, "Create Behaviour", "Create");
                 #endif
             }
 
@@ -43,7 +49,6 @@ namespace Jape
 
             [ShowInInspector]
             [ShowIf(nameof(IsSet))]
-            [ShowIf(Game.GameDeveloperMode)]
             [InlineEditor(ObjectFieldMode = InlineEditorObjectFieldModes.Hidden, Expanded = true)]
             private Behaviour selection
             {

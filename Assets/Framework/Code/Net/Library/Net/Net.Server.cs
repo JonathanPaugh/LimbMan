@@ -180,7 +180,7 @@ namespace JapeNet
                         GameObject clone = Clone();
                         foreach (JapeNet.Server.Server.Connection client in JapeNet.Server.Server.GetConnectedClients())
                         {
-                            SpawnLocal(client.id, clone.Id(), prefab, position, rotation, parent, player);
+                            SpawnLocal(client.id, clone.Identifier(), prefab, position, rotation, parent, player);
                         }
                         return clone;
                     }
@@ -213,7 +213,7 @@ namespace JapeNet
                         GameObject clone = Clone();
                         foreach (JapeNet.Server.Server.Connection client in JapeNet.Server.Server.GetConnectedClients())
                         {
-                            SpawnTemporaryLocal(client.id, clone.Id(), prefab, position, rotation, parent, player);
+                            SpawnTemporaryLocal(client.id, clone.Identifier(), prefab, position, rotation, parent, player);
                         }
                         return clone;
                     }
@@ -232,7 +232,7 @@ namespace JapeNet
                 }
             }
 
-            public static void DespawnLocal(int client, GameObject instance) { DespawnLocal(client, instance.Id()); }
+            public static void DespawnLocal(int client, GameObject instance) { DespawnLocal(client, instance.Identifier()); }
             public static void DespawnLocal(int client, string instanceId)
             {
                 switch (NetManager.GetMode())
@@ -257,7 +257,7 @@ namespace JapeNet
                 }
             }
 
-            public static void Despawn(GameObject instance) { Despawn(instance.Id()); }
+            public static void Despawn(GameObject instance) { Despawn(instance.Identifier()); }
             public static void Despawn(string instanceId)
             {
                 switch (NetManager.GetMode())
@@ -294,14 +294,14 @@ namespace JapeNet
                 {
                     case NetManager.Mode.Offline:
                     {
-                        NetManager.Parent(gameObject.Id(), parent.gameObject.Id());
+                        NetManager.Parent(gameObject.Identifier(), parent.gameObject.Identifier());
                         return;
                     }
 
                     case NetManager.Mode.Server:
                     {
-                        NetManager.Parent(gameObject.Id(), parent.gameObject.Id());
-                        JapeNet.Server.Server.Send.Parent(gameObject.Id(), parent.gameObject.Id());
+                        NetManager.Parent(gameObject.Identifier(), parent.gameObject.Identifier());
+                        JapeNet.Server.Server.Send.Parent(gameObject.Identifier(), parent.gameObject.Identifier());
                         return;
                     }
 
@@ -319,14 +319,14 @@ namespace JapeNet
                 {
                     case NetManager.Mode.Offline:
                     {
-                        NetManager.SetActive(gameObject.Id(), value);
+                        NetManager.SetActive(gameObject.Identifier(), value);
                         return;
                     }
 
                     case NetManager.Mode.Server:
                     {
-                        NetManager.SetActive(gameObject.Id(), value);
-                        JapeNet.Server.Server.Send.SetActive(gameObject.Id(), value);
+                        NetManager.SetActive(gameObject.Identifier(), value);
+                        JapeNet.Server.Server.Send.SetActive(gameObject.Identifier(), value);
                         return;
                     }
 

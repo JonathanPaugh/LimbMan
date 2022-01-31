@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
@@ -14,9 +13,7 @@ namespace Jape
     {
         internal static List<string> runtimeIds = new List<string>();
 
-        public string Key => !string.IsNullOrEmpty(gameObject.Id()) ? 
-                             $"{GetType().FullName}_{gameObject.Id()}" : 
-                             $"{GetType().FullName}_{gameObject.Alias()}";
+        public new string Key => $"{GetType().FullName}_{gameObject.Identifier()}";
 
         [OnInspectorInit(nameof(InitInspector))]
 
@@ -213,7 +210,7 @@ namespace Jape
 
         private bool CanSave()
         {
-            if (string.IsNullOrEmpty(gameObject.Id()) && string.IsNullOrEmpty(gameObject.Alias())) { return false; }
+            if (string.IsNullOrEmpty(gameObject.Identifier())) { return false; }
             return save;
         }
 

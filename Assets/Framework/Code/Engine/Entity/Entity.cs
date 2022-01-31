@@ -41,7 +41,11 @@ namespace Jape
         private Router router;
         public Router GetRouter() { return router ?? (router = new Router()); }
 
-        protected Texture GetIcon(string name) { return Database.GetAsset<Texture>(name).Load<Texture>(); }
+
+        protected Texture2D GetIcon(string name)
+        {
+            return Database.GetAsset<Texture2D>(name, true).Load<Texture2D>();
+        }
 
         protected virtual Type[] Components()
         {
@@ -59,7 +63,7 @@ namespace Jape
 
         public virtual Enum Outputs() { return null; }
 
-        public virtual IEnumerable<Send> Sends() { return new Send[0]; }
+        public virtual IEnumerable<Send> Sends() { return Array.Empty<Send>(); }
 
         internal IEnumerable<string> GetOutputs()
         {
@@ -137,6 +141,7 @@ namespace Jape
             base.OnEnable();
             if (Game.IsRunning) { return; }
             UnityEditor.EditorApplication.hierarchyWindowItemOnGUI += SetHierarchyIcon;
+            SetInspectorIcon(Icon);
         }
 
         internal override void OnDisable()
@@ -150,9 +155,14 @@ namespace Jape
         {
             base.Update();
             if (Game.IsRunning) { return; }
-            Singularize();
             Order();
-            SetInspectorIcon(Icon);
+        }
+
+        internal override void OnValidate()
+        {
+            base.OnValidate();
+            if (Game.IsRunning) { return; }
+            Singularize();
         }
 
         protected virtual void Singularize()
@@ -179,6 +189,13 @@ namespace Jape
             Enumeration.Repeat(index - 3, () => UnityEditorInternal.ComponentUtility.MoveComponentUp(this));
         }
 
+        private void SetInspectorIcon(Texture icon)
+        {
+            if (icon == null) { return; }
+            MethodInfo setIcon = typeof(UnityEditor.EditorGUIUtility).GetMethod("SetIconForObject", BindingFlags.Static | BindingFlags.NonPublic, null, new [] { typeof(UnityEngine.Object), typeof(Texture2D) }, null);
+            setIcon?.Invoke(null, new object[] { gameObject, icon });
+        }
+
         private void SetHierarchyIcon(int instanceID, Rect rect)
         {
             if (Icon == null) { return; }
@@ -189,13 +206,6 @@ namespace Jape
             rect.x = 32;
 
             GUI.Label(rect, Icon); 
-        }
-
-        private void SetInspectorIcon(Texture icon)
-        {
-            if (icon == null) { return; }
-            MethodInfo setIcon = typeof(UnityEditor.EditorGUIUtility).GetMethod("SetIconForObject", BindingFlags.Static | BindingFlags.NonPublic, null, new [] { typeof(UnityEngine.Object), typeof(Texture2D) }, null);
-            setIcon?.Invoke(null, new object[] { gameObject, icon });
         }
 
         #endif

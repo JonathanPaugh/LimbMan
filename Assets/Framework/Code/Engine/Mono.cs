@@ -10,7 +10,7 @@ using UnityEngine.SceneManagement;
 namespace Jape
 {
     [ExecuteAlways]
-	public class Mono : MonoBehaviour
+	public partial class Mono : MonoBehaviour
     {
         private bool activated;
         private bool alive;

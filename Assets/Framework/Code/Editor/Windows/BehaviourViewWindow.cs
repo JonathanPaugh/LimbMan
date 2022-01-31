@@ -33,7 +33,7 @@ namespace JapeEditor
         {
             BehaviourType behaviourType = (BehaviourType)parent;
             behaviourType.BehaviourName = Input;
-            behaviourType.Create();
+            behaviourType.CreateBehaviour();
         };
 
         protected override IEnumerable<object> ParentSelections()

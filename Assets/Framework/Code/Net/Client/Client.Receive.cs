@@ -1,13 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
 using System.Net;
 using Jape;
-using Sirenix.Serialization;
-using UnityEngine;
-using UnityEngine.SceneManagement;
-using Time = Jape.Time;
 
 namespace JapeNet.Client
 {
@@ -111,7 +105,7 @@ namespace JapeNet.Client
 
             internal static void Field(Packet packet)
             {
-                string key = packet.ReadString();
+                byte[] key = packet.ReadMonoKey();
                 string name = packet.ReadString();
 
                 NetManager.Client.AccessElement(key, e =>
@@ -122,7 +116,7 @@ namespace JapeNet.Client
 
             internal static void Call(Packet packet)
             {
-                string key = packet.ReadString();
+                byte[] key = packet.ReadMonoKey();
                 string name = packet.ReadString();
 
                 NetManager.Client.AccessElement(key, e =>
@@ -133,7 +127,7 @@ namespace JapeNet.Client
 
             internal static void Stream(Packet packet)
             {
-                string key = packet.ReadString();
+                byte[] key = packet.ReadMonoKey();
 
                 NetManager.Client.AccessElement(key, e =>
                 {
@@ -143,7 +137,7 @@ namespace JapeNet.Client
 
             internal static void Sync(Packet packet)
             {
-                string key = packet.ReadString();
+                byte[] key = packet.ReadMonoKey();
 
                 Dictionary<string, object> data = new Dictionary<string, object>();
 

@@ -1,16 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Jape;
-using JetBrains.Annotations;
-using Sirenix.Serialization;
-using Sirenix.Utilities;
 using UnityEngine;
 
 namespace Jape
 {
-    public partial class Pack : IDisposable
+    public partial class Package : IDisposable
     {
         private List<byte> bytes;
         private byte[] readableBytes;
@@ -18,7 +13,12 @@ namespace Jape
 
         private static List<Converter> converters = new List<Converter>
         {
-            new Converter(typeof(byte[]), null, null),
+            new Converter(typeof(byte[]), (b, o) =>
+            {
+                byte[] bytes = (byte[])o;
+                b.Write(bytes.Length);
+                b.Write(bytes);
+            }, b => b.ReadBytes(b.ReadInt())),
             new Converter(typeof(byte), (b, o) => b.Write((byte)o), b => b.ReadByte()),
             new Converter(typeof(sbyte), (b, o) => b.Write((sbyte)o), b => b.ReadSByte()),
             new Converter(typeof(bool), (b, o) => b.Write((bool)o), b => b.ReadBool()),
@@ -37,15 +37,16 @@ namespace Jape
             new Converter(typeof(Vector3), (b, o) => b.Write((Vector3)o), b => b.ReadVector3()),
             new Converter(typeof(Quaternion), (b, o) => b.Write((Quaternion)o), b => b.ReadQuaternion()),
             new Converter(typeof(Color), (b, o) => b.Write((Color)o), b => b.ReadColor()),
+            new Converter(typeof(Mono.Key), (b, o) => b.Write((Mono.Key)o), b => b.ReadColor()),
         };
 
-        public Pack()
+        public Package()
         {
             bytes = new List<byte>();
             position = 0;
         }
 
-        public Pack(byte[] data)
+        public Package(byte[] data)
         {
             bytes = new List<byte>();
             position = 0;
@@ -109,24 +110,13 @@ namespace Jape
             Type type = value.GetType();
             if (CanConvert(type))
             {
-                if (type == typeof(byte[]))
+                Write(true);
+                for (int i = 0; i < converters.Count; i++)
                 {
-                    Write(true);
-                    Write(0);
-                    byte[] bytes = (byte[])value;
-                    Write(bytes.Length);
-                    Write(bytes);
-                } 
-                else
-                {
-                    Write(true);
-                    for (int i = 0; i < converters.Count; i++)
-                    {
-                        if (converters[i].Type != type) { continue; }
-                        Write(i);
-                        converters[i].Write(this, value);
-                        break;
-                    }
+                    if (converters[i].Type != type) { continue; }
+                    Write(i);
+                    converters[i].Write(this, value);
+                    break;
                 }
             }
             else
@@ -145,7 +135,6 @@ namespace Jape
         }
 
         public void Write(byte[] value) { bytes.AddRange(value); }
-
         public void Write(byte value) { bytes.Add(value); }
         public void Write(sbyte value) { bytes.AddRange(Serializer.Bytes.Get(value)); }
         public void Write(bool value) { bytes.AddRange(Serializer.Bytes.Get(value)); }
@@ -193,6 +182,13 @@ namespace Jape
             Write(value.g);
             Write(value.b);
             Write(value.a);
+        }
+
+        public void Write(Mono.Key value)
+        {
+            byte[] bytes = value.Encode();
+            Write(bytes.Length);
+            Write(bytes);
         }
 
         public object ReadObject()
@@ -465,6 +461,11 @@ namespace Jape
         public Color ReadColor(bool moveNext = true)
         {
             return new Color(ReadFloat(moveNext), ReadFloat(moveNext), ReadFloat(moveNext), ReadFloat(moveNext));
+        }
+
+        public byte[] ReadMonoKey(bool moveNext = true)
+        {
+            return ReadBytes(ReadInt(), moveNext);
         }
 
         private bool disposed;

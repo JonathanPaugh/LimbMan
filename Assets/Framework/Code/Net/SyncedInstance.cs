@@ -18,7 +18,7 @@ namespace JapeNet
                 if (value != null)
                 {
                     sceneIndex = value.scene.buildIndex;
-                    key = value.Id();
+                    key = value.Identifier();
                     if (string.IsNullOrEmpty(key))
                     {
                         this.Log().Warning($"Invalid Key: {value}");
@@ -34,7 +34,7 @@ namespace JapeNet
         public int SceneIndex => Instance == null ? sceneIndex : instance.gameObject.scene.buildIndex;
 
         private string key;
-        public string Key => Instance == null ? key : instance.gameObject.Id();
+        public string Key => Instance == null ? key : instance.gameObject.Identifier();
 
         public State GetState() { return state; }
         public void SetState(State state) { this.state = state; }

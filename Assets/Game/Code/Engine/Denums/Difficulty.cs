@@ -9,8 +9,10 @@ namespace Game
 public enum Difficulty 
 { 
 Touch = 1, 
-Normal = 2, 
-Hardcore = 3 
+Easy = 2, 
+Normal = 3, 
+Intended = 4, 
+Hardcore = 5 
 };
 
 [Flags]

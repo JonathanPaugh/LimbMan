@@ -3,20 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using JetBrains.Annotations;
-using Sirenix.OdinInspector;
-using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Jape
 {
     public abstract partial class Element : Mono
     {
+        protected const char KeySplitChar = '_';
+
         public virtual bool Saved => false;
 
-        public virtual string Key => !string.IsNullOrEmpty(gameObject.Id()) ? 
-                                     $"{GetType().FullName}_{gameObject.Id()}" : 
-                                     $"{GetType().FullName}_{gameObject.Alias()}";
+        private Key cachedKey;
+        public new virtual Key Key => cachedKey ??= GenerateKey();
+
+        protected virtual Key GenerateKey() => new Key(GetType(), 
+                                                       gameObject.Identifier(), 
+                                                       gameObject.HasId() ? Key.IdentifierEncoding.Hex : Key.IdentifierEncoding.ASCII);
 
         internal List<Job> jobs = new List<Job>();
         internal List<Activity> activities = new List<Activity>();
@@ -26,11 +29,11 @@ namespace Jape
         internal void RemoveModifier(ModifierInstance modifier) { modifiers.Remove(modifier); }
         public bool HasModifier(ModifierInstance modifier) { return modifiers.Contains(modifier); }
 
-        protected virtual Status CreateStatus() => new Status { Key = Key };
+        protected virtual Status CreateStatus() => new Status { Key = Key.ToString() };
 
         private bool CanSave()
         {
-            if (string.IsNullOrEmpty(gameObject.Id()) && string.IsNullOrEmpty(gameObject.Alias())) { return false; }
+            if (string.IsNullOrEmpty(gameObject.Identifier())) { return false; }
             return Saved && gameObject.Properties().CanSaveElement(this);
         }
         
@@ -73,7 +76,7 @@ namespace Jape
         {
             if (!CanSave()) { return; }
 
-            Status status = Jape.Status.Load<Status>(Key);
+            Status status = Jape.Status.Load<Status>(Key.ToString());
 
             if (status == null) { return; }
 

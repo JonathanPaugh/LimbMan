@@ -41,7 +41,7 @@ namespace JapeEditor
 
         protected override Action<object> CreateAction => delegate(object selection)
         {
-            ((BehaviourType)selection).Create();
+            ((BehaviourType)selection).CreateBehaviour();
         };
     }
 }

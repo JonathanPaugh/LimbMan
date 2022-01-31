@@ -29,7 +29,7 @@ namespace Game
                 Key = "Spawn"
             };
 
-            status.Write("Id", gameObject.Id());
+            status.Write("Id", gameObject.Identifier());
             status.Write("Scene", gameObject.scene.path);
 
             Status.Save(status);

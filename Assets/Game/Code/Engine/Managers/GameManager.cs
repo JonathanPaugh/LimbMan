@@ -180,7 +180,7 @@ namespace Game
             
             if (id != null)
             {
-                spawn = spawns.FirstOrDefault(s => s.gameObject.Id() == id);
+                spawn = spawns.FirstOrDefault(s => s.gameObject.Identifier() == id);
             }
 
             if (spawn == null)

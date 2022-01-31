@@ -47,7 +47,7 @@ namespace Jape
         }
 
         [Route]
-        public new void Scale(float seconds, float x, float y, float z)
+        public void Scale(float seconds, float x, float y, float z)
         {
             if (resizeTimer.IsProcessing()) { this.Log().Response("Cannot scale when already scaling"); }
             Vector3 scale = transform.localScale;

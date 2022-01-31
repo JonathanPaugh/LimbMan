@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using Jape;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -14,8 +12,8 @@ namespace JapeNet
 
         protected override int ServerStreamRate => rate != 0 ? rate : NetManager.Settings.serverStreamRate;
 
-        public override string Key => pooled ? $"{PairType.FullName}_Pool_{pool}" : base.PairKey;
-        public override string PairKey => Key;
+        public override Key PairKey => Key;
+        protected override Key GenerateKey() => pooled ? new Key(PairType, pool.ToString(), Key.IdentifierEncoding.ASCII) : base.GenerateKey();
 
         private static Dictionary<int, List<Sync>> pools = new Dictionary<int, List<Sync>>();
 

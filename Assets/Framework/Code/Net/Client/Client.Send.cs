@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Globalization;
 using Jape;
-using Sirenix.Serialization;
-using UnityEngine;
-using Time = Jape.Time;
 
 namespace JapeNet.Client
 {
@@ -84,11 +80,11 @@ namespace JapeNet.Client
                 }
             }
 
-            internal static void Field(string key, string name, object value)
+            internal static void Field(Element.Key elementKey, string name, object value)
             {
                 using (Packet packet = new Packet((int)Packets.Field))
                 {
-                    packet.Write(key);
+                    packet.Write(elementKey);
                     packet.Write(name);
                     packet.Write(value);
 
@@ -96,11 +92,11 @@ namespace JapeNet.Client
                 }
             }
 
-            internal static void Call(string key, string name, params object[] args)
+            internal static void Call(Element.Key elementKey, string name, params object[] args)
             {
                 using (Packet packet = new Packet((int)Packets.Call))
                 {
-                    packet.Write(key);
+                    packet.Write(elementKey);
                     packet.Write(name);
                     packet.Write(args);
 
@@ -108,11 +104,11 @@ namespace JapeNet.Client
                 }
             }
 
-            internal static void Stream(string key, object[] streamData)
+            internal static void Stream(Element.Key elementKey, object[] streamData)
             {
                 using (Packet packet = new Packet((int)Packets.Stream))
                 {
-                    packet.Write(key);
+                    packet.Write(elementKey);
                     packet.Write(streamData);
 
                     SendUdp(packet);

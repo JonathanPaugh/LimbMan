@@ -17,20 +17,6 @@ MonoBehaviour:
     SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: 11400000}
-    - {fileID: 11400000, guid: d72be93331a86c4428e65a534b62ca2a, type: 2}
-    - {fileID: 11400000, guid: 7b60a409d0b3eda46a8cb33eb6a0dd0f, type: 2}
-    - {fileID: 11400000, guid: 3f7ce95f7050daf4193ae5d25197b92b, type: 2}
-    - {fileID: 11400000, guid: 39257de3b0c98394f83fb326e06f94ab, type: 2}
-    - {fileID: 11400000, guid: cd07d8be177ab324f971e2ff986f3942, type: 2}
-    - {fileID: 11400000, guid: a6a322d17524fcc498b59b50cf61270e, type: 2}
-    - {fileID: 11400000, guid: 67b52cf0f8a0dfa47bae245d1a870f7f, type: 2}
-    - {fileID: 11400000, guid: b3ea27cc2c020c742ab806872d70368f, type: 2}
-    - {fileID: 11400000, guid: bb931aad8097237489a6600e721faa12, type: 2}
-    - {fileID: 11400000, guid: c4de95ee59c9f334a8844a24d714b204, type: 2}
-    - {fileID: 11400000, guid: eec660576f1ee1647834a638f0cb28cb, type: 2}
-    - {fileID: 11400000, guid: 777a0c3d4743eeb409486de21350ab14, type: 2}
-    - {fileID: 11400000, guid: c57e75b14eee4c5458548a123520f76d, type: 2}
-    - {fileID: 11400000, guid: 2a565ba4a19ff59448ccab33fc075389, type: 2}
     - {fileID: 2800000, guid: 6485557a65451e04ca067d678b45bc3e, type: 3}
     - {fileID: 11400000, guid: b53173f8753a32d4baa0c756319a8994, type: 2}
     SerializedBytesString: 
@@ -38,67 +24,27 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: OrderList
+    - Name: Ordering
       Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[Jape.ToolButton, Jape.Engine]],
-        mscorlib
+      Data: 0|Jape.ToolButton[][], Jape.Engine
     - Name: 
       Entry: 12
-      Data: 18
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 1|Jape.ToolButton[], Jape.Engine
+    - Name: 
+      Entry: 12
+      Data: 1
     - Name: 
       Entry: 10
       Data: 0
     - Name: 
-      Entry: 10
-      Data: 1
+      Entry: 13
+      Data: 
     - Name: 
-      Entry: 10
-      Data: 2
-    - Name: 
-      Entry: 10
-      Data: 3
-    - Name: 
-      Entry: 10
-      Data: 4
-    - Name: 
-      Entry: 10
-      Data: 5
-    - Name: 
-      Entry: 10
-      Data: 6
-    - Name: 
-      Entry: 10
-      Data: 7
-    - Name: 
-      Entry: 10
-      Data: 4
-    - Name: 
-      Entry: 10
-      Data: 8
-    - Name: 
-      Entry: 10
-      Data: 9
-    - Name: 
-      Entry: 10
-      Data: 4
-    - Name: 
-      Entry: 10
-      Data: 10
-    - Name: 
-      Entry: 10
-      Data: 11
-    - Name: 
-      Entry: 10
-      Data: 12
-    - Name: 
-      Entry: 10
-      Data: 4
-    - Name: 
-      Entry: 10
-      Data: 13
-    - Name: 
-      Entry: 10
-      Data: 14
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 13
       Data: 
@@ -107,13 +53,13 @@ MonoBehaviour:
       Data: 
     - Name: button
       Entry: 7
-      Data: 1|Jape.ToolButton+Button, Jape.Engine
+      Data: 2|Jape.ToolButton+Button, Jape.Engine
     - Name: label
       Entry: 1
       Data: Create Poly
     - Name: icon
       Entry: 10
-      Data: 15
+      Data: 1
     - Name: badge
       Entry: 6
       Data: 
@@ -128,14 +74,14 @@ MonoBehaviour:
       Data: 
     - Name: behaviour
       Entry: 7
-      Data: 2|Jape.Behaviour+Generator`1[[Jape.GuiButtonBehaviour, Jape.Engine]],
+      Data: 3|Jape.Behaviour+Generator`1[[Jape.GuiButtonBehaviour, Jape.Engine]],
         Jape.Engine
     - Name: behaviour
       Entry: 10
-      Data: 16
+      Data: 2
     - Name: args
       Entry: 7
-      Data: 3|System.Collections.Generic.List`1[[Jape.Behaviour+Arg, Jape.Engine]],
+      Data: 4|System.Collections.Generic.List`1[[Jape.Behaviour+Arg, Jape.Engine]],
         mscorlib
     - Name: 
       Entry: 12
@@ -151,7 +97,7 @@ MonoBehaviour:
       Data: 
     - Name: behaviourInstance
       Entry: 7
-      Data: 4|JapeEditor._GuiButton_Poly, Jape.Editor
+      Data: 5|JapeEditor._GuiButton_Poly, Jape.Editor
     - Name: 
       Entry: 8
       Data: 
@@ -160,7 +106,7 @@ MonoBehaviour:
       Data: 
     - Name: modifier
       Entry: 7
-      Data: 5|Jape.ToolButton+Button, Jape.Engine
+      Data: 6|Jape.ToolButton+Button, Jape.Engine
     - Name: label
       Entry: 6
       Data: 

@@ -98,11 +98,11 @@ namespace JapeNet.Server
                 }
             }
 
-            internal static void Field(string key, string name, object value)
+            internal static void Field(Element.Key elementKey, string name, object value)
             {
                 using (Packet packet = new Packet((int)Packets.Field))
                 {
-                    packet.Write(key);
+                    packet.Write(elementKey);
                     packet.Write(name);
                     packet.Write(value);
 
@@ -110,11 +110,11 @@ namespace JapeNet.Server
                 }
             }
 
-            internal static void Call(string key, string name, params object[] args)
+            internal static void Call(Element.Key elementKey, string name, params object[] args)
             {
                 using (Packet packet = new Packet((int)Packets.Call))
                 {
-                    packet.Write(key);
+                    packet.Write(elementKey);
                     packet.Write(name);
                     packet.Write(args);
 
@@ -122,23 +122,22 @@ namespace JapeNet.Server
                 }
             }
 
-            internal static void Stream(string key, object[] streamData)
+            internal static void Stream(Element.Key elementKey, object[] streamData)
             {
                 using (Packet packet = new Packet((int)Packets.Stream))
                 {
-                    packet.Write(key);
+                    packet.Write(elementKey);
                     packet.Write(streamData);
 
                     SendUdpAll(packet);
                 }
             }
 
-            internal static void Sync(string key, Dictionary<string, object> syncData)
+            internal static void Sync(Element.Key elementKey, Dictionary<string, object> syncData)
             {
                 using (Packet packet = new Packet((int)Packets.Sync))
                 {
-                    packet.Write(key);
-
+                    packet.Write(elementKey);
                     packet.Write(syncData.Count);
                     foreach (KeyValuePair<string, object> data in syncData)
                     {

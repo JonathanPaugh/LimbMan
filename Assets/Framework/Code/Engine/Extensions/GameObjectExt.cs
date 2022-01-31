@@ -18,14 +18,13 @@ namespace Jape
             return Jape.Properties.Create(gameObject);
         }
 
+        public static bool HasId(this GameObject gameObject) => !string.IsNullOrEmpty(gameObject.Properties().Id);
         public static bool InScene(this GameObject gameObject) { return gameObject.scene.rootCount != 0; }
 
         public static void Send(this GameObject gameObject, Element.IReceivable receivable) { gameObject.Properties().Send(receivable); }
-
         public static void Save(this GameObject gameObject) { gameObject.Properties().SaveAll(); }
 
-        public static string Id(this GameObject gameObject) { return gameObject.Properties().Id; }
-        public static string Alias(this GameObject gameObject) { return gameObject.Properties().alias; }
+        public static string Identifier(this GameObject gameObject) => HasId(gameObject) ? gameObject.Properties().Id : gameObject.Properties().alias;
 
         public static void GenerateId(this GameObject gameObject)
         {

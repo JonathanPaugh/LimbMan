@@ -40,7 +40,7 @@ namespace JapeNet
                                         Log.Write(data);
                                     });
                                 });
-                            });
+                            }, () => Log.Write("Error"));
                         });
                     });
                 }

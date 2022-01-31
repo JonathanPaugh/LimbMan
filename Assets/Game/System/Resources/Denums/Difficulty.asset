@@ -27,13 +27,19 @@ MonoBehaviour:
         mscorlib]], System
     - Name: 
       Entry: 12
-      Data: 3
+      Data: 5
     - Name: 
       Entry: 1
       Data: Touch
     - Name: 
       Entry: 1
+      Data: Easy
+    - Name: 
+      Entry: 1
       Data: Normal
+    - Name: 
+      Entry: 1
+      Data: Intended
     - Name: 
       Entry: 1
       Data: Hardcore

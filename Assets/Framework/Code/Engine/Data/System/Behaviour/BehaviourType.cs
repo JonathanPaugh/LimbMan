@@ -1,5 +1,4 @@
 using Sirenix.OdinInspector;
-using Sirenix.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -59,7 +58,14 @@ namespace Jape
         [EnableIf(nameof(IsNameSet))]
         [LabelText("$" + nameof(ButtonName))]
         [Button(ButtonSizes.Large, DrawResult = false)]
-        public Behaviour Create()
+        public Behaviour CreateBehaviour()
+        {
+            Behaviour behaviour = CreateBehaviour(behaviourName, CurrentSector());
+            behaviourName = string.Empty;
+            return behaviour;
+        }
+
+        public Behaviour CreateBehaviour(string name, Sector sector)
         {
             // ReSharper disable JoinDeclarationAndInitializer
             Behaviour behaviour = null;
@@ -69,11 +75,9 @@ namespace Jape
 
             UnityEditor.Selection.activeObject = this;
 
-            string path = $"{GetPath(ScriptType, CurrentSector())}/{name}";
+            string path = $"{GetPath(ScriptType, sector)}/{this.name}";
 
-            behaviour = (Behaviour)CreateData(ScriptType, path, behaviourName);
-
-            behaviourName = string.Empty;
+            behaviour = (Behaviour)CreateData(ScriptType, path, name);
 
             behaviour.behaviourType = this;
 

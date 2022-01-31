@@ -68,7 +68,7 @@ namespace JapeNet.Server
 
             internal static void Field(int id, Packet packet)
             {
-                string key = packet.ReadString();
+                byte[] key = packet.ReadMonoKey();
                 string name = packet.ReadString();
 
                 NetManager.Server.AccessElement(id, key, e =>
@@ -79,7 +79,7 @@ namespace JapeNet.Server
 
             internal static void Call(int id, Packet packet)
             {
-                string key = packet.ReadString();
+                byte[] key = packet.ReadMonoKey();
                 string name = packet.ReadString();
 
                 NetManager.Server.AccessElement(id, key, e =>
@@ -90,7 +90,7 @@ namespace JapeNet.Server
 
             internal static void Stream(int id, Packet packet)
             {
-                string key = packet.ReadString();
+                byte[] key = packet.ReadMonoKey();
 
                 NetManager.Server.AccessElement(id, key, e =>
                 {

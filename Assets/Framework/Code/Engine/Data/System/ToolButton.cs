@@ -12,8 +12,8 @@ namespace Jape
     {
         protected new static string Path => "System/Resources/ToolButtons";
 
-        private const int MaxSize = 64;
-        private const int BadgeSize = 24;
+        private const int DefaultMaxSize = 64;
+        private const float BadgeProportion = 0.5f;
 
         public enum UseAction { Window, Behaviour, Separator };
 
@@ -24,7 +24,7 @@ namespace Jape
         
         [NonSerialized, OdinSerialize]
         [HideLabel, HideReferenceObjectPicker]
-        public Button button;
+        public Button button = new Button();
 
         [PropertySpace(8)]
 
@@ -37,25 +37,7 @@ namespace Jape
         [PropertyOrder(1)]
         [ShowIf(nameof(useModifier))]
         [HideLabel, HideReferenceObjectPicker]
-        public Button modifier;
-
-        [PropertySpace(16)]
-
-        [OdinSerialize, ShowInInspector]
-        [PropertyOrder(3)]
-        [LabelText("Order")]
-        [ListDrawerSettings(ShowPaging = false)]
-        public List<ToolButton> OrderList
-        {
-            get { return orderList; }
-            set { orderList = value; }
-        }
-
-        private static List<ToolButton> orderList;
-
-        public static List<ToolButton> GetOrder() { return orderList ?? (orderList = FindAll<ToolButton>().FirstOrDefault().OrderList); }
-
-        public int GetSize() { return (int)(size * MaxSize); }
+        public Button modifier = new Button();
 
         public Button GetButton()
         {
@@ -63,10 +45,13 @@ namespace Jape
             return button;
         }
 
-        public void Draw()
+        public void Draw(float maxSize = -1)
         {
             Button button = GetButton();
             GUIContent content = button.Content;
+
+            float size = GetSize();
+            float badgeSize = GetBadgeSize();
 
             switch (button.Action)
             {
@@ -83,12 +68,12 @@ namespace Jape
 
             GUILayout.FlexibleSpace();
 
-            button.value = button.Use(GUILayout.Toggle(button.value, content, GUI.skin.button, GUILayout.Width(GetSize()), GUILayout.Height(GetSize())));
+            button.value = button.Use(GUILayout.Toggle(button.value, content, GUI.skin.button, GUILayout.Width(size), GUILayout.Height(size)));
 
             if (button.badge != null)
             {
                 Rect rect = GUILayoutUtility.GetLastRect();
-                GUI.Label(new Rect((rect.x + GetSize()) - BadgeSize, rect.y, BadgeSize, BadgeSize), button.badge);
+                GUI.Label(new Rect(rect.x + size - badgeSize, rect.y, badgeSize, badgeSize), button.badge);
             }
 
             GUILayout.FlexibleSpace();
@@ -96,6 +81,18 @@ namespace Jape
             GUILayout.EndHorizontal();
 
             GUI.enabled = true;
+
+            float GetSize()
+            {
+                return maxSize >= 0 ? 
+                       this.size * maxSize : 
+                       this.size * DefaultMaxSize;
+            }
+
+            float GetBadgeSize()
+            {
+                return BadgeProportion * GetSize();
+            }
         }
 
         private static Type WindowClass() { return Member.Class(Assemblies.FrameworkEditor, "Window", WindowSolver); }
@@ -133,8 +130,16 @@ namespace Jape
                 get { return action; }
                 set
                 {
-                    if (value != UseAction.Window) { window = null; }
-                    if (value != UseAction.Behaviour) { behaviour = null; }
+                    if (action != value)
+                    {
+                        window = null;
+                        behaviour = null;
+                        behaviourInstance = null;
+                    }
+                    if (value == UseAction.Behaviour)
+                    {
+                        behaviour = new Behaviour.Generator<GuiButtonBehaviour>();
+                    }
                     action = value;
                 }
             }

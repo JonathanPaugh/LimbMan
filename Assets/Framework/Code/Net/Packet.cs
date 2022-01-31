@@ -2,7 +2,7 @@
 
 namespace JapeNet
 {
-    public class Packet : Pack
+    public class Packet : Package
     {
         public Packet() {}
 

@@ -4,7 +4,6 @@ using UnityEditor;
 using UnityEngine;
 using Jape;
 using Sirenix.OdinInspector;
-using UnityEngine.SceneManagement;
 
 namespace JapeEditor
 {

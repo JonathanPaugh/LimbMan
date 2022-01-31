@@ -1,8 +1,4 @@
 using System;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEditor;
-using Jape;
 using Sirenix.OdinInspector;
 
 namespace JapeEditor

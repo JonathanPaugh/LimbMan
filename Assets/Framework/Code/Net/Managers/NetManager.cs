@@ -226,7 +226,7 @@ namespace JapeNet
 
         internal static void Despawn(string id)
         {
-            GameObject instance =  Game.Find<GameObject>().FirstOrDefault(g => g.Id() == id);
+            GameObject instance =  Game.Find<GameObject>().FirstOrDefault(g => g.Identifier() == id);
 
             if (instance == null) { Log.Write("Could not find instance GameObject"); return; }
 
@@ -254,11 +254,11 @@ namespace JapeNet
 
         internal static void Parent(string id, string parentId)
         {
-            GameObject instance = Game.Find<GameObject>().FirstOrDefault(g => g.Id() == id);
+            GameObject instance = Game.Find<GameObject>().FirstOrDefault(g => g.Identifier() == id);
 
             if (instance == null) { Log.Write("Could not find instance GameObject"); return; }
 
-            GameObject parent = Game.Find<GameObject>().FirstOrDefault(g => g.Id() == parentId);
+            GameObject parent = Game.Find<GameObject>().FirstOrDefault(g => g.Identifier() == parentId);
 
             if (instance == null) { Log.Write("Could not find parent GameObject"); return; }
 
@@ -269,7 +269,7 @@ namespace JapeNet
 
         internal static void SetActive(string id, bool value)
         {
-            GameObject instance = Game.Find<GameObject>().FirstOrDefault(g => g.Id() == id);
+            GameObject instance = Game.Find<GameObject>().FirstOrDefault(g => g.Identifier() == id);
 
             if (instance == null) { Log.Write("Could not find instance GameObject"); return; }
 
@@ -287,13 +287,13 @@ namespace JapeNet
 
         internal static string GetParentId(Transform parent)
         {
-            return parent == null ? string.Empty : parent.gameObject.Id(); 
+            return parent == null ? string.Empty : parent.gameObject.Identifier(); 
         }
 
         internal static Transform TryGetParent(string id)
         {
             if (string.IsNullOrEmpty(id)) { return null; }
-            GameObject parent = Game.Find<GameObject>().FirstOrDefault(g => g.Id() == id);
+            GameObject parent = Game.Find<GameObject>().FirstOrDefault(g => g.Identifier() == id);
             if (parent == null)
             {
                 Log.Write($"Could not find parent: {id}");
@@ -304,30 +304,31 @@ namespace JapeNet
 
         internal static class Client
         {
-            internal static void AccessElement(string key, Action<NetElement> action)
+            internal static void AccessElement(byte[] elementKey, Action<NetElement> action)
             {
                 NetElement target = null;
                 foreach (NetElement element in Instance.runtimeNetElements)
                 {
-                    if (element.Key != key) { continue; }
+                    if (!element.Key.Compare(elementKey)) { continue; }
                     target = element;
                 }
-                if (target == null) { Instance.Log().Diagnostic($"Could not find element key: {key}"); return; }
+                if (target == null) { Instance.Log().Diagnostic($"Could not find element key: {elementKey}"); return; }
                 action.Invoke(target);
             }
         }
 
         internal static class Server
         {
-            internal static void AccessElement(int client, string key, Action<NetElement> action)
+            internal static void AccessElement(int client, byte[] elementKey, Action<NetElement> action)
             {
                 NetElement target = null;
                 foreach (NetElement element in Instance.runtimeNetElements)
                 {
-                    if (element.Key != key) { continue; }
+                    if (!element.Key.Compare(elementKey)) { continue; }
                     target = element;
+                    break;
                 }
-                if (target == null) { Instance.Log().Diagnostic($"Could not find element key: {key}"); return; }
+                if (target == null) { Instance.Log().Diagnostic($"Could not find element key: {elementKey}"); return; }
                 if (!target.CanAccess(client)) { Log.Write($"Player {client}: Can not access {target}"); return; }
                 action.Invoke(target);
             }

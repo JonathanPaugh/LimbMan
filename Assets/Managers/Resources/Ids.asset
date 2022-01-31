@@ -2423,3 +2423,101 @@ MonoBehaviour:
     map:
       sceneAsset: {fileID: 102900000, guid: b4c1911de578b6a4880e6a26388cf031, type: 3}
       scenePath: Assets/Game/Scenes/Area1_1.unity
+  - properties: {fileID: 0}
+    position: {x: 723.75, y: 45, z: 0}
+    value: 7ce78bf9-aeeb-4301-85d9-7349bdbf795b
+    name: TowerEasy (9)
+    map:
+      sceneAsset: {fileID: 102900000, guid: b4c1911de578b6a4880e6a26388cf031, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_1.unity
+  - properties: {fileID: 0}
+    position: {x: 727, y: 53, z: 0}
+    value: ceb2eb8f-39ee-4d02-8a1a-fee9191164dd
+    name: TowerEasy (10)
+    map:
+      sceneAsset: {fileID: 102900000, guid: b4c1911de578b6a4880e6a26388cf031, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_1.unity
+  - properties: {fileID: 0}
+    position: {x: 723.25, y: -12.75, z: 0}
+    value: 7b012ed7-46f5-47c0-a2ce-f993acf92f1b
+    name: TowerEasy (11)
+    map:
+      sceneAsset: {fileID: 102900000, guid: b4c1911de578b6a4880e6a26388cf031, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_1.unity
+  - properties: {fileID: 0}
+    position: {x: 0, y: 0, z: 0}
+    value: 6471a7da-056c-4423-910e-028bbb4a23fb
+    name: Spawn
+    map:
+      sceneAsset: {fileID: 102900000, guid: 43efe485d3c965d428f9a8ff907cde85, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_2.unity
+  - properties: {fileID: 0}
+    position: {x: 371, y: 15.5, z: 0}
+    value: 34219bc1-3012-47be-ae4a-5e16e640b4f8
+    name: Platform (1)
+    map:
+      sceneAsset: {fileID: 102900000, guid: 43efe485d3c965d428f9a8ff907cde85, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_2.unity
+  - properties: {fileID: 0}
+    position: {x: 387.5, y: 8, z: 0}
+    value: 89bccaab-98d5-4477-9fc0-33124c420eff
+    name: PlatformEasy (1)
+    map:
+      sceneAsset: {fileID: 102900000, guid: 43efe485d3c965d428f9a8ff907cde85, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_2.unity
+  - properties: {fileID: 0}
+    position: {x: 383.5, y: 8, z: 0}
+    value: 66be35d3-d135-4f1b-95cb-d48cf8c25217
+    name: PlatformEasy (2)
+    map:
+      sceneAsset: {fileID: 102900000, guid: 43efe485d3c965d428f9a8ff907cde85, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_2.unity
+  - properties: {fileID: 0}
+    position: {x: 373, y: 15.5, z: 0}
+    value: 767e12c2-962e-4bf3-b920-c2cb834a5e9a
+    name: PlatformEasy (3)
+    map:
+      sceneAsset: {fileID: 102900000, guid: 43efe485d3c965d428f9a8ff907cde85, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_2.unity
+  - properties: {fileID: 0}
+    position: {x: 399.5, y: 18.75, z: 0}
+    value: 9cbef5d5-8944-4482-82a4-f79c105102a7
+    name: PlatformEasy (4)
+    map:
+      sceneAsset: {fileID: 102900000, guid: 43efe485d3c965d428f9a8ff907cde85, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_2.unity
+  - properties: {fileID: 0}
+    position: {x: 394.25, y: 26.5, z: 0}
+    value: b10a2582-2894-437f-8fe3-a3d56f72d221
+    name: PlatformEasy (5)
+    map:
+      sceneAsset: {fileID: 102900000, guid: 43efe485d3c965d428f9a8ff907cde85, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_2.unity
+  - properties: {fileID: 0}
+    position: {x: 385, y: -20, z: 0}
+    value: 3f62b6fc-b80c-4094-8b4f-462db0d811f8
+    name: Spawn (1)
+    map:
+      sceneAsset: {fileID: 102900000, guid: 43efe485d3c965d428f9a8ff907cde85, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_2.unity
+  - properties: {fileID: 0}
+    position: {x: 383, y: 52.5, z: 0}
+    value: 7597ff86-f823-4038-9858-1235bfec1949
+    name: PlatformEasy (6)
+    map:
+      sceneAsset: {fileID: 102900000, guid: 43efe485d3c965d428f9a8ff907cde85, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_2.unity
+  - properties: {fileID: 0}
+    position: {x: 270, y: 107, z: 0}
+    value: 25809d41-51b9-42ad-b39b-1b128f860e6c
+    name: PlatformEasy (7)
+    map:
+      sceneAsset: {fileID: 102900000, guid: 43efe485d3c965d428f9a8ff907cde85, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_2.unity
+  - properties: {fileID: 0}
+    position: {x: 394.25, y: 26.5, z: 0}
+    value: 5648ea7e-3c9c-4221-b2de-41847b3c4d81
+    name: PlatformEasy (8)
+    map:
+      sceneAsset: {fileID: 102900000, guid: 43efe485d3c965d428f9a8ff907cde85, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_2.unity
