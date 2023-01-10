@@ -12,185 +12,129 @@ namespace JapeNet
         {
             public static void SuspendClient(int client)
             {
-                switch (NetManager.GetMode())
+                if (Mode.IsServer)
                 {
-                    case NetManager.Mode.Offline:
-                    {
-                        OfflineAccessError();
-                        return;
-                    }
-
-                    case NetManager.Mode.Server:
-                    {
-                        if (JapeNet.Server.Server.Clients[client].suspended) { Log.Write("Client already suspended"); return; }
-                        JapeNet.Server.Server.Clients[client].suspended = true;
-                        JapeNet.Server.Server.Send.Suspend(client);
-                        return;
-                    }
-
-                    default:
-                    {
-                        ClientAccessError();
-                        return;
-                    }
+                    if (JapeNet.Server.Server.GetClient(client).suspended) { Log.Write("Client already suspended"); return; }
+                    JapeNet.Server.Server.GetClient(client).suspended = true;
+                    JapeNet.Server.Server.Send.Suspend(client);
+                }
+                else if (Mode.IsClient)
+                {
+                    ClientAccessError();
+                } 
+                else
+                {
+                    OfflineAccessError();
                 }
             }
 
             public static void SuspendAll()
             {
-                switch (NetManager.GetMode())
+                if (Mode.IsServer)
                 {
-                    case NetManager.Mode.Offline:
+                    foreach (JapeNet.Server.Server.Connection client in JapeNet.Server.Server.GetRemoteClients())
                     {
-                        OfflineAccessError();
-                        return;
+                        SuspendClient(client.id);
                     }
-
-                    case NetManager.Mode.Server:
-                    {
-                        foreach (JapeNet.Server.Server.Connection client in JapeNet.Server.Server.GetConnectedClients())
-                        {
-                            SuspendClient(client.id);
-                        }
-                        return;
-                    }
-
-                    default:
-                    {
-                        ClientAccessError();
-                        return;
-                    }
+                }
+                else if (Mode.IsClient)
+                {
+                    ClientAccessError();
+                } 
+                else
+                {
+                    OfflineAccessError();
                 }
             }
 
             public static void RestoreClient(int client)
             {
-                switch (NetManager.GetMode())
+                if (Mode.IsServer)
                 {
-                    case NetManager.Mode.Offline:
-                    {
-                        OfflineAccessError();
-                        return;
-                    }
-
-                    case NetManager.Mode.Server:
-                    {
-                        if (!JapeNet.Server.Server.Clients[client].suspended) { Log.Write("Client not suspended"); return; }
-                        JapeNet.Server.Server.Clients[client].suspended = false;
-                        JapeNet.Server.Server.Send.Restore(client);
-                        return;
-                    }
-
-                    default:
-                    {
-                        ClientAccessError();
-                        return;
-                    }
+                    if (!JapeNet.Server.Server.GetClient(client).suspended) { Log.Write("Client not suspended"); return; }
+                    JapeNet.Server.Server.GetClient(client).suspended = false;
+                    JapeNet.Server.Server.Send.Restore(client);
+                }
+                else if (Mode.IsClient)
+                {
+                    ClientAccessError();
+                } 
+                else
+                {
+                    OfflineAccessError();
                 }
             }
 
             public static void RestoreAll()
             {
-                switch (NetManager.GetMode())
+                if (Mode.IsServer)
                 {
-                    case NetManager.Mode.Offline:
+                    foreach (JapeNet.Server.Server.Connection client in JapeNet.Server.Server.GetRemoteClients())
                     {
-                        OfflineAccessError();
-                        return;
+                        RestoreClient(client.id);
                     }
-
-                    case NetManager.Mode.Server:
-                    {
-                        foreach (JapeNet.Server.Server.Connection client in JapeNet.Server.Server.GetConnectedClients())
-                        {
-                            RestoreClient(client.id);
-                        }
-                        return;
-                    }
-
-                    default:
-                    {
-                        ClientAccessError();
-                        return;
-                    }
+                }
+                else if (Mode.IsClient)
+                {
+                    ClientAccessError();
+                } 
+                else
+                {
+                    OfflineAccessError();
                 }
             }
 
             public static void SpawnLocal(int client, string id, GameObject prefab, Vector3 position, Quaternion rotation, Transform parent = null, int player = 0, bool active = true)
             {
-                switch (NetManager.GetMode())
+                if (Mode.IsServer)
                 {
-                    case NetManager.Mode.Offline:
-                    {
-                        OfflineAccessError();
-                        return;
-                    }
-
-                    case NetManager.Mode.Server:
-                    {
-
-                        JapeNet.Server.Server.Send.Spawn(client, id, prefab, position, rotation, NetManager.GetParentId(parent), player, active, false);
-                        return;
-                    }
-
-                    default:
-                    {
-                        ClientAccessError();
-                        return;
-                    }
+                    JapeNet.Server.Server.Send.Spawn(client, id, prefab, position, rotation, NetManager.GetParentId(parent), player, active, false);
+                }
+                else if (Mode.IsClient)
+                {
+                    ClientAccessError();
+                } 
+                else
+                {
+                    OfflineAccessError();
                 }
             }
 
             public static void SpawnTemporaryLocal(int client, string id, GameObject prefab, Vector3 position, Quaternion rotation, Transform parent = null, int player = 0, bool active = true)
             {
-                switch (NetManager.GetMode())
+                if (Mode.IsServer)
                 {
-                    case NetManager.Mode.Offline:
-                    {
-                        OfflineAccessError();
-                        return;
-                    }
-
-                    case NetManager.Mode.Server:
-                    {
-
-                        JapeNet.Server.Server.Send.Spawn(client, id, prefab, position, rotation, NetManager.GetParentId(parent), player, active, true);
-                        return;
-                    }
-
-                    default:
-                    {
-                        ClientAccessError();
-                        return;
-                    }
+                    JapeNet.Server.Server.Send.Spawn(client, id, prefab, position, rotation, NetManager.GetParentId(parent), player, active, true);
+                }
+                else if (Mode.IsClient)
+                {
+                    ClientAccessError();
+                } 
+                else
+                {
+                    OfflineAccessError();
                 }
             }
 
             public static GameObject Spawn(GameObject prefab, Vector3 position, Quaternion rotation, Transform parent = null, int player = 0, bool active = true)
             {
-                switch (NetManager.GetMode())
+                if (Mode.IsServer)
                 {
-                    case NetManager.Mode.Offline:
+                    GameObject clone = Clone();
+                    foreach (JapeNet.Server.Server.Connection client in JapeNet.Server.Server.GetRemoteClients())
                     {
-                        return Clone();
+                        SpawnLocal(client.id, clone.Identifier(), prefab, position, rotation, parent, player);
                     }
-
-                    case NetManager.Mode.Server:
-                    {
-                        GameObject clone = Clone();
-                        foreach (JapeNet.Server.Server.Connection client in JapeNet.Server.Server.GetConnectedClients())
-                        {
-                            SpawnLocal(client.id, clone.Identifier(), prefab, position, rotation, parent, player);
-                        }
-                        return clone;
-                    }
-
-                    default:
-                    {
-                        ClientAccessError();
-                        return null;
-                    }
+                    return clone;
                 }
+
+                if (!Mode.IsOnline)
+                {
+                    return Clone();
+                } 
+
+                ClientAccessError();
+                return null;
 
                 GameObject Clone()
                 {
@@ -201,29 +145,23 @@ namespace JapeNet
 
             public static GameObject SpawnTemporary(GameObject prefab, Vector3 position, Quaternion rotation, Transform parent = null, int player = 0, bool active = true)
             {
-                switch (NetManager.GetMode())
+                if (Mode.IsServer)
                 {
-                    case NetManager.Mode.Offline:
+                    GameObject clone = Clone();
+                    foreach (JapeNet.Server.Server.Connection client in JapeNet.Server.Server.GetRemoteClients())
                     {
-                        return Clone();
+                        SpawnTemporaryLocal(client.id, clone.Identifier(), prefab, position, rotation, parent, player);
                     }
-
-                    case NetManager.Mode.Server:
-                    {
-                        GameObject clone = Clone();
-                        foreach (JapeNet.Server.Server.Connection client in JapeNet.Server.Server.GetConnectedClients())
-                        {
-                            SpawnTemporaryLocal(client.id, clone.Identifier(), prefab, position, rotation, parent, player);
-                        }
-                        return clone;
-                    }
-
-                    default:
-                    {
-                        ClientAccessError();
-                        return null;
-                    }
+                    return clone;
                 }
+
+                if (!Mode.IsOnline)
+                {
+                    return Clone();
+                } 
+
+                ClientAccessError();
+                return null;
 
                 GameObject Clone()
                 {
@@ -235,171 +173,125 @@ namespace JapeNet
             public static void DespawnLocal(int client, GameObject instance) { DespawnLocal(client, instance.Identifier()); }
             public static void DespawnLocal(int client, string instanceId)
             {
-                switch (NetManager.GetMode())
+                if (Mode.IsServer)
                 {
-                    case NetManager.Mode.Offline:
-                    {
-                        OfflineAccessError();
-                        return;
-                    }
-
-                    case NetManager.Mode.Server:
-                    {
-                        JapeNet.Server.Server.Send.Despawn(client, instanceId);
-                        return;
-                    }
-
-                    default:
-                    {
-                        ClientAccessError();
-                        return;
-                    }
+                    JapeNet.Server.Server.Send.Despawn(client, instanceId);
+                }
+                else if (Mode.IsClient)
+                {
+                    ClientAccessError();
+                } 
+                else
+                {
+                    OfflineAccessError();
                 }
             }
 
             public static void Despawn(GameObject instance) { Despawn(instance.Identifier()); }
             public static void Despawn(string instanceId)
             {
-                switch (NetManager.GetMode())
+                if (Mode.IsServer)
                 {
-                    case NetManager.Mode.Offline:
+                    NetManager.Despawn(instanceId);
+
+                    foreach (JapeNet.Server.Server.Connection client in JapeNet.Server.Server.GetRemoteClients())
                     {
-                        NetManager.Despawn(instanceId);
-                        return;
+                        DespawnLocal(client.id, instanceId);
                     }
-
-                    case NetManager.Mode.Server:
-                    {
-                        NetManager.Despawn(instanceId);
-
-                        foreach (JapeNet.Server.Server.Connection client in JapeNet.Server.Server.GetConnectedClients())
-                        {
-                            DespawnLocal(client.id, instanceId);
-                        }
-
-                        return;
-                    }
-
-                    default:
-                    {
-                        ClientAccessError();
-                        return;
-                    }
+                }
+                else if (!Mode.IsOnline)
+                {
+                    NetManager.Despawn(instanceId);
+                } 
+                else
+                {
+                    ClientAccessError();
                 }
             }
 
             public static void Parent(GameObject gameObject, Transform parent)
             {
-                switch (NetManager.GetMode())
+                if (Mode.IsServer)
                 {
-                    case NetManager.Mode.Offline:
-                    {
-                        NetManager.Parent(gameObject.Identifier(), parent.gameObject.Identifier());
-                        return;
-                    }
-
-                    case NetManager.Mode.Server:
-                    {
-                        NetManager.Parent(gameObject.Identifier(), parent.gameObject.Identifier());
-                        JapeNet.Server.Server.Send.Parent(gameObject.Identifier(), parent.gameObject.Identifier());
-                        return;
-                    }
-
-                    default:
-                    {
-                        ClientAccessError();
-                        return;
-                    }
+                    NetManager.Parent(gameObject.Identifier(), parent.gameObject.Identifier());
+                    JapeNet.Server.Server.Send.Parent(gameObject.Identifier(), parent.gameObject.Identifier());
+                }
+                else if (!Mode.IsOnline)
+                {
+                    NetManager.Parent(gameObject.Identifier(), parent.gameObject.Identifier());
+                } 
+                else
+                {
+                    ClientAccessError();
                 }
             }
 
             public static void SetActive(GameObject gameObject, bool value)
             {
-                switch (NetManager.GetMode())
+                if (Mode.IsServer)
                 {
-                    case NetManager.Mode.Offline:
-                    {
-                        NetManager.SetActive(gameObject.Identifier(), value);
-                        return;
-                    }
-
-                    case NetManager.Mode.Server:
-                    {
-                        NetManager.SetActive(gameObject.Identifier(), value);
-                        JapeNet.Server.Server.Send.SetActive(gameObject.Identifier(), value);
-                        return;
-                    }
-
-                    default:
-                    {
-                        ClientAccessError();
-                        return;
-                    }
+                    NetManager.SetActive(gameObject.Identifier(), value);
+                    JapeNet.Server.Server.Send.SetActive(gameObject.Identifier(), value);
+                }
+                else if (!Mode.IsOnline)
+                {
+                    NetManager.SetActive(gameObject.Identifier(), value);
+                } 
+                else
+                {
+                    ClientAccessError();
                 }
             }
 
             public static void SceneChange(string scenePath)
             {
-
-                switch (NetManager.GetMode())
+                if (Mode.IsServer)
                 {
-                    case NetManager.Mode.Offline:
+                    if (Game.ActiveScene().path == scenePath) { Log.Write("Scene already active"); return; }
+                    SuspendAll();
+                    NetManager.SceneChange(scenePath, () =>
                     {
-                        NetManager.SceneChange(scenePath, null);
-                        return;
-                    }
-
-                    case NetManager.Mode.Server:
-                    {
-                        if (Game.ActiveScene().path == scenePath) { Log.Write("Scene already active"); return; }
-                        SuspendAll();
-                        NetManager.SceneChange(scenePath, () =>
+                        foreach (JapeNet.Server.Server.Connection client in JapeNet.Server.Server.GetRemoteClients())
                         {
-                            foreach (JapeNet.Server.Server.Connection client in JapeNet.Server.Server.GetConnectedClients())
-                            {
-                                SceneChangeLocal(client.id, scenePath);
-                            }
-                        });
-                        return;
-                    }
-
-                    default:
-                    {
-                        ClientAccessError();
-                        return;
-                    }
+                            SceneChangeLocal(client.id, scenePath);
+                        }
+                    });
+                }
+                else if (!Mode.IsOnline)
+                {
+                    NetManager.SceneChange(scenePath, null);
+                } 
+                else
+                {
+                    ClientAccessError();
                 }
             }
 
             public static void SceneChangeLocal(int client, string scenePath)
             {
-
-                switch (NetManager.GetMode())
+                if (Mode.IsServer)
                 {
-                    case NetManager.Mode.Offline:
-                    {
-                        OfflineAccessError();
-                        return;
-                    }
-
-                    case NetManager.Mode.Server:
-                    {
-                        if (!JapeNet.Server.Server.Clients[client].suspended) { SuspendClient(client); }
-                        JapeNet.Server.Server.Send.SceneChange(client, scenePath);
-                        return;
-                    }
-
-                    default:
-                    {
-                        ClientAccessError();
-                        return;
-                    }
+                    if (!JapeNet.Server.Server.GetClient(client).suspended) { SuspendClient(client); }
+                    JapeNet.Server.Server.Send.SceneChange(client, scenePath);
+                }
+                else if (Mode.IsClient)
+                {
+                    ClientAccessError();
+                } 
+                else
+                {
+                    OfflineAccessError();
                 }
             }
 
             private static void ClientAccessError()
             {
                 Log.Write("Client cannot call server commands");
+            }
+
+            private static void DedicatedAccessError()
+            {
+                Log.Write("Must be a dedicated server to call this command");
             }
         }
     }

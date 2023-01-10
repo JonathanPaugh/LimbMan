@@ -7,38 +7,13 @@ namespace JapeNet
 {
     public abstract class ServerElement : NetElement
     {
-        protected override NetManager.Mode Mode => NetManager.Mode.Server;
+        internal override NetMode NetSide => NetMode.Server;
+        protected override Communication CommuncationMode => Communication.All;
         protected override Type PairType => typeof(ClientElement);
-
-        protected sealed override int ClientStreamRate => base.ClientStreamRate;
-
-        internal override void FixedUpdate()
-        {
-            if (Game.IsRunning)
-            {
-                if (NetManager.GetMode() == NetManager.Mode.Offline)
-                {
-                    ReadStream(Mode);
-                }
-            }
-
-            base.FixedUpdate();
-
-            if (Game.IsRunning)
-            {
-                if (NetManager.GetMode() == NetManager.Mode.Offline)
-                {
-                    IncrementStream(Mode);
-                    WriteStream(Mode);
-                    SendStreamData();
-
-                    WriteSync();
-                    SendSyncData();
-                }
-            }
-        }
 
         protected sealed override void ReceiveStream(NetStream.ClientReader stream) {}
         protected sealed override void SendStream(NetStream.ClientWriter stream) {}
+
+        protected override void ReadSync() {}
     }
 }

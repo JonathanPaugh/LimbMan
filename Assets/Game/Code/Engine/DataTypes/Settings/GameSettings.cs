@@ -8,7 +8,7 @@ namespace Game
     {
         public Level startingLevel;
 
-        [HideInInspector]
+        [HideInInspector, NonSerialized]
         public Action<Difficulty> onDifficultyChange = delegate {};
 
         [SerializeField, HideInInspector]

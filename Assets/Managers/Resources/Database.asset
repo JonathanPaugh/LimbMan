@@ -1271,6 +1271,36 @@ MonoBehaviour:
     path: Todos
     ext: asset
     type: Jape.Todo, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: FrameworkTodo2
+    resourceType: 2
+    path: Todos
+    ext: asset
+    type: Jape.Todo, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: FrameworkTodo3
+    resourceType: 2
+    path: Todos
+    ext: asset
+    type: Jape.Todo, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: FrameworkTodo4
+    resourceType: 2
+    path: Todos
+    ext: asset
+    type: Jape.Todo, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: FrameworkTodo5
+    resourceType: 2
+    path: Todos
+    ext: asset
+    type: Jape.Todo, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: FrameworkTodo6
+    resourceType: 2
+    path: Todos
+    ext: asset
+    type: Jape.Todo, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  - name: FrameworkTodo7
+    resourceType: 2
+    path: Todos
+    ext: asset
+    type: Jape.Todo, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   - name: ToolButtons
     resourceType: 1
     path: 
@@ -1431,6 +1461,17 @@ MonoBehaviour:
     path: 
     ext: 
     type: 
+  - name: Controls
+    resourceType: 1
+    path: Icons
+    ext: 
+    type: 
+  - name: IconControlSpace
+    resourceType: 2
+    path: Icons/Controls
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   - name: Tools
     resourceType: 1
     path: Icons
@@ -2303,5 +2344,5 @@ MonoBehaviour:
     ext: asset
     type: TMPro.TMP_Settings, Unity.TextMeshPro, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  fileCount: 345
-  folderCount: 65
+  fileCount: 352
+  folderCount: 66

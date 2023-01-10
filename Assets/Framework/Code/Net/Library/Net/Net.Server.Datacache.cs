@@ -58,184 +58,65 @@ namespace JapeNet
 
                 public static void Get(string key, Action<string> response = null, Action error = null)
                 {
-                    switch (NetManager.GetMode())
-                    {
-                        case NetManager.Mode.Offline:
-                        {
-                            OfflineAccessError();
-                            return;
-                        }
+                    if (!Mode.IsServerOnly) { DedicatedAccessError(); return; }
 
-                        case NetManager.Mode.Server:
-                        {
-                            JapeNet.Datacache.Get(key)
-                                             .Read(response)
-                                             .Error(error);
-                            return;
-                        }
-
-                        default:
-                        {
-                            ClientAccessError();
-                            return;
-                        }
-                    }
+                    JapeNet.Datacache.Get(key)
+                                     .Read(response)
+                                     .Error(error);
                 }
 
                 public static void Set(string key, string value, Action<bool> response = null, Action error = null)
                 {
-                    switch (NetManager.GetMode())
-                    {
-                        case NetManager.Mode.Offline:
-                        {
-                            OfflineAccessError();
-                            return;
-                        }
+                    if (!Mode.IsServerOnly) { DedicatedAccessError(); return; }
 
-                        case NetManager.Mode.Server:
-                        {
-                            JapeNet.Datacache.Set(key, value)
-                                             .Read(data => response?.Invoke(bool.Parse(data)))
-                                             .Error(error);
-                            return;
-                        }
-
-                        default:
-                        {
-                            ClientAccessError();
-                            return;
-                        }
-                    }
+                    JapeNet.Datacache.Set(key, value)
+                                     .Read(data => response?.Invoke(bool.Parse(data)))
+                                     .Error(error);
                 }
 
                 public static void Remove(string key, Action<bool> response = null, Action error = null)
                 {
-                    switch (NetManager.GetMode())
-                    {
-                        case NetManager.Mode.Offline:
-                        {
-                            OfflineAccessError();
-                            return;
-                        }
+                    if (!Mode.IsServerOnly) { DedicatedAccessError(); return; }
 
-                        case NetManager.Mode.Server:
-                        {
-                            JapeNet.Datacache.Remove(key)
-                                             .Read(data => response?.Invoke(bool.Parse(data)))
-                                             .Error(error);
-                            return;
-                        }
-
-                        default:
-                        {
-                            ClientAccessError();
-                            return;
-                        }
-                    }
+                    JapeNet.Datacache.Remove(key)
+                                     .Read(data => response?.Invoke(bool.Parse(data)))
+                                     .Error(error);
                 }
 
                 public static void Subscribe(string channel, Request.Datacache.SubscribeBody.Mode mode, Action<string> response = null, Action error = null)
                 {
-                    switch (NetManager.GetMode())
-                    {
-                        case NetManager.Mode.Offline:
-                        {
-                            OfflineAccessError();
-                            return;
-                        }
+                    if (!Mode.IsServerOnly) { DedicatedAccessError(); return; }
 
-                        case NetManager.Mode.Server:
-                        {
-                            JapeNet.Datacache.Subscribe(channel, mode)
-                                             .Read(response)
-                                             .Error(error);
-                            return;
-                        }
-
-                        default:
-                        {
-                            ClientAccessError();
-                            return;
-                        }
-                    }
+                    JapeNet.Datacache.Subscribe(channel, mode)
+                                     .Read(response)
+                                     .Error(error);
                 }
 
                 public static void Unsubscribe(string subscription, Action<string[]> response = null, Action error = null)
                 {
-                    switch (NetManager.GetMode())
-                    {
-                        case NetManager.Mode.Offline:
-                        {
-                            OfflineAccessError();
-                            return;
-                        }
+                    if (!Mode.IsServerOnly) { DedicatedAccessError(); return; }
 
-                        case NetManager.Mode.Server:
-                        {
-                            JapeNet.Datacache.Unsubscribe(subscription)
-                                             .Read(data => response?.Invoke(JsonUtility.FromJson<Response.SubscriptionBody>(data)?.values))
-                                             .Error(error);
-                            return;
-                        }
-
-                        default:
-                        {
-                            ClientAccessError();
-                            return;
-                        }
-                    }
+                    JapeNet.Datacache.Unsubscribe(subscription)
+                                     .Read(data => response?.Invoke(JsonUtility.FromJson<Response.SubscriptionBody>(data)?.values))
+                                     .Error(error);
                 }
 
                 public static void Publish(string channel, string value, Action<long> response = null, Action error = null)
                 {
-                    switch (NetManager.GetMode())
-                    {
-                        case NetManager.Mode.Offline:
-                        {
-                            OfflineAccessError();
-                            return;
-                        }
+                    if (!Mode.IsServerOnly) { DedicatedAccessError(); return; }
 
-                        case NetManager.Mode.Server:
-                        {
-                            JapeNet.Datacache.Publish(channel, value)
-                                             .Read(data => response?.Invoke(long.Parse(data)))
-                                             .Error(error);
-                            return;
-                        }
-
-                        default:
-                        {
-                            ClientAccessError();
-                            return;
-                        }
-                    }
+                    JapeNet.Datacache.Publish(channel, value)
+                                     .Read(data => response?.Invoke(long.Parse(data)))
+                                     .Error(error);
                 }
 
                 public static void Receive(string subscription, Action<string[]> response = null, Action error = null)
                 {
-                    switch (NetManager.GetMode())
-                    {
-                        case NetManager.Mode.Offline:
-                        {
-                            OfflineAccessError();
-                            return;
-                        }
+                    if (!Mode.IsServerOnly) { DedicatedAccessError(); return; }
 
-                        case NetManager.Mode.Server:
-                        {
-                            JapeNet.Datacache.Receive(subscription)
-                                             .Read(data => response?.Invoke(JsonUtility.FromJson<Response.SubscriptionBody>(data)?.values))
-                                             .Error(error);
-                            return;
-                        }
-
-                        default:
-                        {
-                            ClientAccessError();
-                            return;
-                        }
-                    }
+                    JapeNet.Datacache.Receive(subscription)
+                                     .Read(data => response?.Invoke(JsonUtility.FromJson<Response.SubscriptionBody>(data)?.values))
+                                     .Error(error);
                 }
             }
         }

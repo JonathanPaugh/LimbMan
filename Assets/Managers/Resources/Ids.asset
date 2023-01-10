@@ -2389,13 +2389,6 @@ MonoBehaviour:
       sceneAsset: {fileID: 102900000, guid: b4c1911de578b6a4880e6a26388cf031, type: 3}
       scenePath: Assets/Game/Scenes/Area1_1.unity
   - properties: {fileID: 0}
-    position: {x: 720.5, y: 11, z: 0}
-    value: 35b418ca-1670-40c7-9e9b-078725d5ca72
-    name: TowerNormal (2)
-    map:
-      sceneAsset: {fileID: 102900000, guid: b4c1911de578b6a4880e6a26388cf031, type: 3}
-      scenePath: Assets/Game/Scenes/Area1_1.unity
-  - properties: {fileID: 0}
     position: {x: 726, y: 68.75, z: 0}
     value: d4e2feaf-bc4e-450d-af9e-eb150578ac5d
     name: TowerEasy (6)

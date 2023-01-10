@@ -23,7 +23,7 @@ namespace Jape
 
         public static int Unix() { return (int)(DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds; }
 
-        public static float ConvertRate(int rate) { return (1f / rate); }
+        public static float ConvertRate(int rate) { return 1f / rate; }
         public static int ConvertInterval(float interval) { return ((int)(1f / interval)).RoundSpecial(); }
 
         public enum Counter { Frames, Seconds, Realtime }

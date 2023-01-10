@@ -15,7 +15,7 @@ namespace Jape
         public virtual bool Saved => false;
 
         private Key cachedKey;
-        public new virtual Key Key => cachedKey ??= GenerateKey();
+        public new virtual Key Key => cachedKey ?? (cachedKey = GenerateKey());
 
         protected virtual Key GenerateKey() => new Key(GetType(), 
                                                        gameObject.Identifier(), 

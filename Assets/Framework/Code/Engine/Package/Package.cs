@@ -107,8 +107,8 @@ namespace Jape
 
         public void Write(object value)
         {
-            Type type = value.GetType();
-            if (CanConvert(type))
+            Type type = value?.GetType();
+            if (type != null && CanConvert(type))
             {
                 Write(true);
                 for (int i = 0; i < converters.Count; i++)

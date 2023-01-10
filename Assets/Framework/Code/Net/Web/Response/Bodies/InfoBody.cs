@@ -13,7 +13,7 @@ namespace JapeNet
             {
                 switch (Jape.Game.IsWeb)
                 {
-                    case true: return domains.Length;
+                    default: return domains.Length;
                     case false: return ips.Length;
                 }
             }
@@ -22,7 +22,7 @@ namespace JapeNet
             {
                 switch (Jape.Game.IsWeb)
                 {
-                    case true: return domains;
+                    default: return domains;
                     case false: return ips;
                 }
             }

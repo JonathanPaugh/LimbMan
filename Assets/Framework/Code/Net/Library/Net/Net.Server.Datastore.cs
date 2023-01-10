@@ -29,11 +29,11 @@ namespace JapeNet
 
                     Insert("Test", "Test", insertData, id =>
                     {
-                        Update("Test", "Test", id.oid, updateData, _ =>
+                        Update("Test", "Test", id.oid, updateData, _1 =>
                         {
-                            Get("Test", "Test", id.oid, _ =>
+                            Get("Test", "Test", id.oid, _2 =>
                             {
-                                Remove("Test", "Test", id.oid, new [] { "UnityKey2" }, _ =>
+                                Remove("Test", "Test", id.oid, new [] { "UnityKey2" }, _3 =>
                                 {
                                     Delete("Test", "Test", id.oid, data =>
                                     {
@@ -47,132 +47,47 @@ namespace JapeNet
 
                 public static void Get(string store, string collection, string key, Action<string> response = null, Action error = null)
                 {
-                    switch (NetManager.GetMode())
-                    {
-                        case NetManager.Mode.Offline:
-                        {
-                            OfflineAccessError();
-                            return;
-                        }
+                    if (!Mode.IsServerOnly) { DedicatedAccessError(); return; }
 
-                        case NetManager.Mode.Server:
-                        {
-                            JapeNet.Datastore.Get(store, collection, key)
-                                             .Read(response)
-                                             .Error(error);
-                            return;
-                        }
-
-                        default:
-                        {
-                            ClientAccessError();
-                            return;
-                        }
-                    }
+                    JapeNet.Datastore.Get(store, collection, key)
+                                     .Read(response)
+                                     .Error(error);
                 }
 
                 public static void Insert(string store, string collection, string data, Action<Response.IdBody> response = null, Action error = null)
                 {
-                    switch (NetManager.GetMode())
-                    {
-                        case NetManager.Mode.Offline:
-                        {
-                            OfflineAccessError();
-                            return;
-                        }
+                    if (!Mode.IsServerOnly) { DedicatedAccessError(); return; }
 
-                        case NetManager.Mode.Server:
-                        {
-                            JapeNet.Datastore.Insert(store, collection, data)
-                                             .ReadJson(response, json => json.Replace("$oid", "oid"))
-                                             .Error(error);
-                            return;
-                        }
-
-                        default:
-                        {
-                            ClientAccessError();
-                            return;
-                        }
-                    }
+                    JapeNet.Datastore.Insert(store, collection, data)
+                                     .ReadJson(response, json => json.Replace("$oid", "oid"))
+                                     .Error(error);
                 }
 
                 public static void Update(string store, string collection, string key, string data, Action<string> response = null, Action error = null)
                 {
-                    switch (NetManager.GetMode())
-                    {
-                        case NetManager.Mode.Offline:
-                        {
-                            OfflineAccessError();
-                            return;
-                        }
+                    if (!Mode.IsServerOnly) { DedicatedAccessError(); return; }
 
-                        case NetManager.Mode.Server:
-                        {
-                            JapeNet.Datastore.Update(store, collection, key, data)
-                                             .Read(response)
-                                             .Error(error);
-                            return;
-                        }
-
-                        default:
-                        {
-                            ClientAccessError();
-                            return;
-                        }
-                    }
+                    JapeNet.Datastore.Update(store, collection, key, data)
+                                     .Read(response)
+                                     .Error(error);
                 }
 
                 public static void Remove(string store, string collection, string key, string[] data, Action<string> response = null, Action error = null)
                 {
-                    switch (NetManager.GetMode())
-                    {
-                        case NetManager.Mode.Offline:
-                        {
-                            OfflineAccessError();
-                            return;
-                        }
+                    if (!Mode.IsServerOnly) { DedicatedAccessError(); return; }
 
-                        case NetManager.Mode.Server:
-                        {
-                            JapeNet.Datastore.Remove(store, collection, key, data)
-                                             .Read(response)
-                                             .Error(error);
-                            return;
-                        }
-
-                        default:
-                        {
-                            ClientAccessError();
-                            return;
-                        }
-                    }
+                    JapeNet.Datastore.Remove(store, collection, key, data)
+                                     .Read(response)
+                                     .Error(error);
                 }
 
                 public static void Delete(string store, string collection, string key, Action<string> response = null, Action error = null)
                 {
-                    switch (NetManager.GetMode())
-                    {
-                        case NetManager.Mode.Offline:
-                        {
-                            OfflineAccessError();
-                            return;
-                        }
+                    if (!Mode.IsServerOnly) { DedicatedAccessError(); return; }
 
-                        case NetManager.Mode.Server:
-                        {
-                            JapeNet.Datastore.Delete(store, collection, key)
-                                             .Read(response)
-                                             .Error(error);
-                            return;
-                        }
-
-                        default:
-                        {
-                            ClientAccessError();
-                            return;
-                        }
-                    }
+                    JapeNet.Datastore.Delete(store, collection, key)
+                                     .Read(response)
+                                     .Error(error);
                 }
             }
         }

@@ -33,8 +33,8 @@ namespace Jape
         protected abstract void DestroyAction();
 
         protected virtual void Iteration() { onIteration.Trigger(this, EventArgs.Empty); }
-        protected virtual void Complete() { onComplete.Trigger(this, EventArgs.Empty); complete = true; }
-        protected virtual void Processed() { onProcessed.Trigger(this, EventArgs.Empty); processing = false; paused = false; }
+        protected virtual void Processed() { processing = false; paused = false; onProcessed.Trigger(this, EventArgs.Empty); }
+        protected virtual void Complete() { complete = true; onComplete.Trigger(this, EventArgs.Empty); }
         
         public bool IsProcessing() { return processing; }
         public bool IsRunning() { return processing && !paused; }

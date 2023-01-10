@@ -36,19 +36,24 @@ namespace Jape
         protected override void Activated() { timer = CreateTimer(); }
         protected override void Init() { if (autoStart) { EmitStart(); }}
 
+        protected virtual void Create()
+        {
+            Transform parent = this.parent ? transform : null;
+            Game.CloneGameObject(prefab, transform.position, transform.rotation, parent);
+        }
+
         [Route]
         public void EmitStart()
         {
             if (timer.IsProcessing()) { this.Log().Response("Cannot start when already emitting"); return; }
+            Spawn(amount);
             if (retrigger)
             {
-                Spawn(amount);
-                timer.Set(interval.Value(), interval.Counter).
-                      ChangeMode(Timer.Mode.Loop).
-                      IterationAction(() => Spawn(amount)).
-                      Start();
-            } 
-            else { Spawn(amount); }
+                timer.Set(interval.Value(), interval.Counter).ChangeMode(Timer.Mode.Loop).IterationAction(() =>
+                {
+                    Spawn(amount);
+                }).Start();
+            }
         }
 
         [Route]
@@ -60,8 +65,7 @@ namespace Jape
         private void Spawn(int amount)
         {
             if (prefab == null) { return; }
-            Transform parent = this.parent ? transform : null;
-            Enumeration.Repeat(amount, () => Game.CloneGameObject(prefab, transform.position, transform.rotation, parent));
+            Enumeration.Repeat(amount, Create);
         }
     }
 }

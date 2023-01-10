@@ -65,13 +65,11 @@ namespace Jape
         [TabGroup("Tabs", "General")]
 
         [SerializeField]
-        [HideIf(nameof(NoPlayer))]
         internal int player;
 
         [TabGroup("Tabs", "General")]
 
         [SerializeField]
-        [HideIf(nameof(NoTeam))]
         [ValueDropdown(nameof(GetTeams))]
         internal Team team;
 
@@ -358,8 +356,6 @@ namespace Jape
             UnityEditor.EditorUtility.SetDirty(this);
             #endif
         }
-
-        
         
         /// <summary>
         /// Generate and assign a unique id

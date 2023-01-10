@@ -17,13 +17,13 @@ namespace JapeNet
         internal Writer writer;
         internal Reader reader;
 
-        public NetStream(int clientRate, int serverRate)
+        public NetStream()
         {
-            writer = new Writer(Write, IsWriting, clientRate, serverRate);
+            writer = new Writer(Write, IsWriting);
             reader = new Reader(Read, IsReading, HasNext);
         }
 
-        internal bool CanSendData() { return writeData.Count > 0; }
+        internal bool CanSendData() { return WriteData.Count > 0; }
         internal bool HasNext() { return ReadData.Count > 0; }
 
         internal void PushData(object[] data)
@@ -62,8 +62,8 @@ namespace JapeNet
                     Log.Write("Stream is not running"); 
                     return;
 
-                case Mode.Writing:
-                    if (ReadData.Any(d => d.Count > 0)) { this.Log().Warning("Stream did not finish writing all data"); }
+                case Mode.Reading:
+                    if (ReadData.Any(d => d.Count > 0)) { this.Log().Warning("Stream did not finish reading all data"); }
                     break;
             }
 
@@ -72,86 +72,19 @@ namespace JapeNet
 
         public class Writer : ClientWriter, ServerWriter
         {
-            private enum Mode { None, Client, Server }
-            private Mode mode;
-
             private readonly Action<object> write;
             private readonly Func<bool> active;
 
-            public int ClientRate { get; }
-            public int ServerRate { get; }
-
-            public int ClientStep { get; private set; }
-            public int ServerStep { get; private set; }
-
-            internal Writer(Action<object> write, Func<bool> active, int clientRate, int serverRate)
+            internal Writer(Action<object> write, Func<bool> active)
             {
                 this.write = write;
                 this.active = active;
-
-                ClientRate = clientRate;
-                ServerRate = serverRate;
-            }
-
-            private bool IsRunning() => mode != Mode.None;
-
-            internal void StartClient()
-            {
-                if (IsRunning()) { this.Log().Response("Writer is already running"); return; }
-                mode = Mode.Client;
-            }
-
-            internal void StartServer()
-            {
-                if (IsRunning()) { this.Log().Response("Writer is already running"); return; }
-                mode = Mode.Server;
-            }
-
-            internal void Stop()
-            {
-                switch (mode)
-                {
-                    case Mode.None:
-                        Log.Write("Writer is not running"); 
-                        return;
-                }
-
-                mode = Mode.None;
             }
 
             public void Stream<T>(T value)
             {
                 if (!active()) { Log.Write("Stream is not writing"); return; }
-                if (!IsRunning()) { Log.Write("Writer is not running"); return; }
-                Write(value);
-            }
-
-            private void Write(object value)
-            {
-                switch (mode)
-                {
-                    case Mode.Client:
-                        if (ClientStep % ClientRate != 0) { return; }
-                        break;
-
-                    case Mode.Server:
-                        if (ServerStep % ServerRate != 0) { return; }
-                        break;
-                }
-                
                 write(value);
-            }
-
-            internal void IncrementClient()
-            {
-                if (ClientStep >= ClientRate) { ClientStep = 1; return; }
-                ClientStep++;
-            }
-
-            internal void IncrementServer()
-            {
-                if (ServerStep >= ServerRate) { ServerStep = 1; return; }
-                ServerStep++;
             }
         }
 
@@ -160,17 +93,8 @@ namespace JapeNet
             void Stream<T>(T value);
         }
 
-        public interface ClientWriter : IWriter
-        {
-            int ClientRate { get; }
-            int ClientStep { get; }
-        }
-
-        public interface ServerWriter : IWriter
-        {
-           int ServerRate { get; }
-           int ServerStep { get; }
-        }
+        public interface ClientWriter : IWriter {} 
+        public interface ServerWriter : IWriter {}
 
         public class Reader : ClientReader, ServerReader
         {
@@ -211,6 +135,7 @@ namespace JapeNet
             T StreamLast<T>();
             bool HasNext();
         }
+
         public interface ClientReader : IReader {} 
         public interface ServerReader : IReader {}
     }

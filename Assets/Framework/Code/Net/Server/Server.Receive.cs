@@ -30,28 +30,28 @@ namespace JapeNet.Server
             internal static void Registered(int id, Packet packet)
             {
                 int check = packet.ReadInt();
-                Log.Write($"Registered Player {id}: {Clients[id].tcp.socket.Client.RemoteEndPoint}");
+                Log.Write($"Registered Player {id}: {clients[id].tcp.socket.Client.RemoteEndPoint}");
                 if (id != check) { Log.Write($"Id Conflict: ({id})({check})"); };
-                Clients[id].mode = !packet.ReadBool() ? Connection.Mode.Default : Connection.Mode.Web;
-                Clients[id].Verify();
+                clients[id].mode = !packet.ReadBool() ? Connection.Mode.Default : Connection.Mode.Web;
+                clients[id].Verify();
             }
 
             internal static void VerifiedTcp(int id, Packet packet)
             {
-                Clients[id].connectedTcp = true;
-                Log.Write($"Verified Tcp: {Clients[id].tcp.socket.Client.RemoteEndPoint}");
+                clients[id].connectedTcp = true;
+                Log.Write($"Verified Tcp: {clients[id].tcp.socket.Client.RemoteEndPoint}");
             }
 
             internal static void VerifiedUdp(int id, Packet packet)
             {
-                Clients[id].connectedUdp = true;
-                Log.Write($"Verified Udp: {Clients[id].tcp.socket.Client.RemoteEndPoint}");
+                clients[id].connectedUdp = true;
+                Log.Write($"Verified Udp: {clients[id].tcp.socket.Client.RemoteEndPoint}");
             }
 
             internal static void Connected(int id, Packet packet)
             {
-                Clients[id].connected = true;
-                Log.Write($"Connected: {Clients[id].tcp.socket.Client.RemoteEndPoint}");
+                clients[id].connected = true;
+                Log.Write($"Connected: {clients[id].tcp.socket.Client.RemoteEndPoint}");
                 Send.PlayerConnect(id);
                 NetManager.PlayerConnectServer(id);
             }
@@ -94,7 +94,7 @@ namespace JapeNet.Server
 
                 NetManager.Server.AccessElement(id, key, e =>
                 {
-                    e.PushStreamData(packet.ReadObjects());
+                    e.PushClientStream(packet.ReadObjects());
                 });
             }
 
@@ -104,7 +104,7 @@ namespace JapeNet.Server
                 string key = packet.ReadString();
                 int index = packet.ReadInt();
 
-                Send.Response(id, index, NetTable.Get(player, key), true);
+                Send.Response(id, index, netTable.Get(player, key), true);
             }
 
             internal static void ListenStart(int id, Packet packet)
@@ -113,7 +113,7 @@ namespace JapeNet.Server
                 string key = packet.ReadString();
                 int index = packet.ReadInt();
 
-                NetTable.ListenStart(id, player, key, index);
+                netTable.ListenStart(id, player, key, index);
             }
 
             internal static void ListenStop(int id, Packet packet)
@@ -121,14 +121,14 @@ namespace JapeNet.Server
                 int player = packet.ReadInt();
                 string key = packet.ReadString();
 
-                NetTable.ListenStop(id, player, key);
+                netTable.ListenStop(id, player, key);
             }
 
             internal static void Invoke(int id, Packet packet)
             {
                 string key = packet.ReadString();
 
-                NetDelegator.Invoke(key, packet.ReadObjects());
+                netDelegator.Invoke(key, packet.ReadObjects());
             }
         }
     }

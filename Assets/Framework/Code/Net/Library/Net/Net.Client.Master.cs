@@ -14,54 +14,25 @@ namespace JapeNet
             {
                 public static void ServerCreate(Action<Response.CreateBody> response = null, Action error = null)
                 {
-                    switch (NetManager.GetMode())
-                    {
-                        case NetManager.Mode.Offline:
-                        {
-                            JapeNet.Master.ServerCreate()
-                                          .ReadJson(response)
-                                          .Error(error);
-                            return;
-                        }
+                    if (Mode.IsOnline) { OnlineAccessError(); return; }
 
-                        case NetManager.Mode.Client:
-                        {
-                            Log.Write("Must request server while offline");
-                            return;
-                        }
-
-                        default:
-                        {
-                            ServerAccessError();
-                            return;
-                        }
-                    }
+                    JapeNet.Master.ServerCreate()
+                                  .ReadJson(response)
+                                  .Error(error);
                 }
 
                 public static void ServerInfo(Action<Response.InfoBody> response = null, Action error = null)
                 {
-                    switch (NetManager.GetMode())
-                    {
-                        case NetManager.Mode.Offline:
-                        {
-                            JapeNet.Master.ServerInfo()
-                                          .ReadJson(response)
-                                          .Error(error);
-                            return;
-                        }
+                    if (Mode.IsOnline) { OnlineAccessError(); return; }
 
-                        case NetManager.Mode.Client:
-                        {
-                            Log.Write("Must request server info while offline");
-                            return;
-                        }
+                    JapeNet.Master.ServerInfo()
+                                  .ReadJson(response)
+                                  .Error(error);
+                }
 
-                        default:
-                        {
-                            ServerAccessError();
-                            return;
-                        }
-                    }
+                private static void OnlineAccessError()
+                {
+                    Log.Write("Must be offline to call client master commands");
                 }
             }
         }

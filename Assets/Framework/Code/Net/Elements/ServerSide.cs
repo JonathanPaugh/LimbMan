@@ -13,7 +13,7 @@ namespace JapeNet
         {
             if (Game.IsRunning)
             {
-                if (NetManager.GetMode() == NetManager.Mode.Client)
+                if (NetManager.GetMode().IsClientOnly)
                 {
                     for (int i = serverComponents.Length - 1; i >= 0; i--)
                     {

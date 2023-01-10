@@ -14,28 +14,11 @@ namespace JapeNet
             {
                 public static void ServerDestroy(Action response = null, Action error = null)
                 {
-                    switch (NetManager.GetMode())
-                    {
-                        case NetManager.Mode.Offline:
-                        {
-                            OfflineAccessError();
-                            return;
-                        }
+                    if (!Mode.IsServerOnly) { DedicatedAccessError(); return; }
 
-                        case NetManager.Mode.Server:
-                        {
-                            JapeNet.Master.ServerDestroy()
-                                          .Read(_ => response?.Invoke())
-                                          .Error(error);
-                            return;
-                        }
-
-                        default:
-                        {
-                            ClientAccessError();
-                            return;
-                        }
-                    }
+                    JapeNet.Master.ServerDestroy()
+                                  .Read(_ => response?.Invoke())
+                                  .Error(error);
                 }
             }
         }

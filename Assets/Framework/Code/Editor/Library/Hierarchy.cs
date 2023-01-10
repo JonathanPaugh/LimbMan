@@ -10,42 +10,15 @@ namespace JapeEditor
     [InitializeOnLoad]
 	public static class Hierarchy
     {
-        private static Map activeMap;
-        private static List<GameObject> activeGameObjects = new List<GameObject>();
-
         private static EditorSettings settings;
         public static EditorSettings Settings => settings ?? (settings = Jape.Game.Settings<EditorSettings>());
 
         static Hierarchy()
         {
-            EditorApplication.hierarchyChanged += OnChange;
             EditorApplication.hierarchyWindowItemOnGUI += OnGUI;
             EditorApplication.quitting += OnEditorQuit;
         }
 
-        private static void OnChange()
-        {
-            if (Jape.Game.IsRunning) { return; }
-
-            if (activeMap != Map.GetActive())
-            {
-                activeMap = Map.GetActive();
-                activeGameObjects.Clear();
-            }
-
-            foreach (GameObject gameObject in Resources.FindObjectsOfTypeAll<GameObject>().Where(g => !activeGameObjects.Contains(g)))
-            {
-                activeGameObjects.Add(gameObject);
-
-                if (Settings.autoProperty)
-                {
-                    if (!gameObject.HasComponent<Properties>(false))
-                    {
-                        Properties.Create(gameObject);
-                    }
-                }
-            }
-        }
 
         private static void OnGUI(int instanceID, Rect rect)
         {
@@ -70,7 +43,6 @@ namespace JapeEditor
         private static void OnEditorQuit()
         {
             EditorApplication.quitting -= OnEditorQuit;
-            EditorApplication.hierarchyChanged -= OnChange;
             EditorApplication.hierarchyWindowItemOnGUI -= OnGUI;
         }
     }

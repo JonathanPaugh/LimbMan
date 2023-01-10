@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
 using Jape;
-
+using Debug = UnityEngine.Debug;
 using Time = Jape.Time;
 
 namespace JapeNet.Server
@@ -147,8 +148,10 @@ namespace JapeNet.Server
                 public void Start(TcpClient socket)
                 {
                     this.socket = socket;
+
                     this.socket.ReceiveBufferSize = BufferSize;
                     this.socket.SendBufferSize = BufferSize;
+                    this.socket.NoDelay = !TcpBatching;
 
                     stream = this.socket.GetStream();
 
@@ -176,8 +179,8 @@ namespace JapeNet.Server
                     try
                     {
                         if (socket == null) { return; }
-                        if (!Clients[id].connected && !IsConnectPacket(packet.ToArray())) { return; }
-                        if (Clients[id].suspended && IsDataPacket(packet.ToArray())) { return; }
+                        if (!clients[id].connected && !IsConnectPacket(packet.ToArray())) { return; }
+                        if (clients[id].suspended && IsDataPacket(packet.ToArray())) { return; }
                         stream.BeginWrite(packet.ToArray(), 0, packet.Length(), null, null);
                     }
                     catch (Exception e)
@@ -193,7 +196,7 @@ namespace JapeNet.Server
                         int length = stream.EndRead(result);
                         if (length <= 0)
                         {
-                            Clients[id].Disconnect();
+                            clients[id].Disconnect();
                             return;
                         }
 
@@ -204,7 +207,7 @@ namespace JapeNet.Server
                     }
                     catch
                     {
-                        Clients[id].Disconnect();
+                        clients[id].Disconnect();
                     }
                 }
 
@@ -281,8 +284,8 @@ namespace JapeNet.Server
                     try
                     {
                         if (ip == null) { return; }
-                        if (!Clients[id].connected && !IsConnectPacket(packet.ToArray())) { return; }
-                        if (Clients[id].suspended && IsDataPacket(packet.ToArray())) { return; }
+                        if (!clients[id].connected && !IsConnectPacket(packet.ToArray())) { return; }
+                        if (clients[id].suspended && IsDataPacket(packet.ToArray())) { return; }
                         udpListener.BeginSend(packet.ToArray(), packet.Length(), ip, null, null);
                     }
                     catch (Exception e)

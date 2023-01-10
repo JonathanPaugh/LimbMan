@@ -92,13 +92,10 @@ namespace Jape
         [PropertyOrder(5)]
         public int bufferSize;
 
-        [Space(32)]
+        [Space(8)]
 
-        [PropertyOrder(6)]
-        public int clientStreamRate = 1;
-
-        [PropertyOrder(6)]
-        public int serverStreamRate = 1;
+        [PropertyOrder(5)]
+        public bool tcpBatching;
 
         public bool IsClient()
         {

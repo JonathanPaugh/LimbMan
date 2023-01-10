@@ -9,7 +9,19 @@ namespace JapeNet
 {
     public abstract class NetElement : Element
     {
-        protected virtual NetManager.Mode Mode => NetManager.GetMode();
+        private const int OfflinePlayer = 1;
+
+        protected enum Communication
+        {
+            None,
+            Remote,
+            All,
+        }
+
+        internal virtual NetMode NetSide => Mode;
+        protected virtual Communication CommuncationMode => Communication.Remote;
+
+        protected NetMode Mode => NetManager.GetMode();
         
         protected virtual Type PairType => GetType();
         protected virtual Type[] PairComponents => null;
@@ -17,49 +29,68 @@ namespace JapeNet
         private Key cachedPairKey;
         public virtual Key PairKey => cachedPairKey ??= GeneratePairKey();
 
-        protected virtual Key GeneratePairKey() => new Key(PairType, 
-                                                           gameObject.Identifier(), 
-                                                           gameObject.HasId() ? Key.IdentifierEncoding.Hex : Key.IdentifierEncoding.ASCII);
+        protected virtual Key GeneratePairKey() => new Key(
+            PairType, 
+            gameObject.Identifier(), 
+            gameObject.HasId() ? Key.IdentifierEncoding.Hex : Key.IdentifierEncoding.ASCII
+        );
         
-        protected NetStream stream;
-
-        protected virtual int ClientStreamRate => NetManager.Settings.clientStreamRate;
-        protected virtual int ServerStreamRate => NetManager.Settings.serverStreamRate;
+        protected NetStream clientToServerStream = new NetStream();
+        protected NetStream serverToClientStream = new NetStream();
 
         private Dictionary<string, SyncData> syncData = new Dictionary<string, SyncData>();
 
+        internal bool CanReceiveCommunication(NetMode mode)
+        {
+            switch (CommuncationMode)
+            {
+                case Communication.None: return false;
+                case Communication.Remote:
+                {
+                    if (mode.IsClient)
+                    {
+                        return Mode.IsClientOnly;
+                    }
+
+                    if (mode.IsServer)
+                    {
+                        return Client.Client.IsRemote(gameObject.Player());
+                    }
+
+                    throw new Exception("Unable to resolve communication mode");
+                }
+                default: return true;
+            }
+        }
+
         internal bool CanAccess(int player)
         {
-            switch (NetManager.GetMode())
-            {
-                case NetManager.Mode.Offline:
-                    return true;
-
-                default:
-                    if (gameObject.Player() == 0) { return true; }
-                    return gameObject.Player() == player;  
-            }
+            return gameObject.Player() == 0 || gameObject.Player() == player;
         }
 
         protected bool ClientAccess()
         {
-            if (NetManager.GetMode() == NetManager.Mode.Server) { return false; }
-            return CanAccess(Client.Client.server.id);
+            if (Mode.IsServerOnly) { return false; }
+            return Mode.IsOnline ? CanAccess(Client.Client.Id) : CanAccess(OfflinePlayer);
+        }
+        
+        protected bool ServerAccess()
+        {
+            return !Mode.IsClientOnly;
         }
 
         internal override void Awake()
         {
             if (Game.IsRunning)
             {
-                if (NetManager.GetMode() != NetManager.Mode.Offline)
+                if (Mode.IsOnline)
                 {
-                    if (NetManager.GetMode() != Mode)
+                    if (!Mode.HasFlag(NetSide))
                     {
                         DestroyImmediate(this);
+                        DestroyPairComponents();
                         return;
                     }
-
-                    DestroyPairComponents();
                 }
             } 
 
@@ -68,11 +99,6 @@ namespace JapeNet
             if (Game.IsRunning)
             {
                 NetManager.Instance.runtimeNetElements.Add(this);
-            }
-
-            if (Game.IsRunning)
-            {
-                stream = new NetStream(ClientStreamRate, ServerStreamRate);
             }
         }
 
@@ -90,9 +116,15 @@ namespace JapeNet
         {
             if (Game.IsRunning)
             {
-                if (NetManager.GetMode() == NetManager.Mode.Client)
+                if (Mode.IsClient)
                 {
-                    ReadStream(NetManager.Mode.Client);
+                    ReadStream(NetMode.Client);
+                    ReadSync();
+                }
+
+                if (!Mode.IsOnline)
+                {
+                    ReadStream(NetMode.Client);
                     ReadSync();
                 }
             }
@@ -101,11 +133,23 @@ namespace JapeNet
 
             if (Game.IsRunning) 
             {
-                if (NetManager.GetMode() == NetManager.Mode.Client)
+                if (Mode.IsClient)
                 {
-                    IncrementStream(NetManager.Mode.Client);
-                    WriteStream(NetManager.Mode.Client);
-                    SendStreamData();
+                    WriteStream(NetMode.Client);
+                    SendStreamData(NetMode.Client);
+                }
+
+                if (!Mode.IsOnline)
+                {
+                    WriteStream(NetMode.Client);
+
+                    if (clientToServerStream.CanSendData())
+                    {
+                        NetManager.Client.AccessElement(PairKey.Encode(), e =>
+                        {
+                            e.PushClientStream(PullClientStream());
+                        });
+                    }
                 }
             }
         }
@@ -114,9 +158,14 @@ namespace JapeNet
         {
             if (Game.IsRunning)
             {
-                if (NetManager.GetMode() == NetManager.Mode.Server)
+                if (Mode.IsServer)
                 {
-                    ReadStream(NetManager.Mode.Server);
+                    ReadStream(NetMode.Server);
+                }
+
+                if (!Mode.IsOnline)
+                {
+                    ReadStream(NetMode.Server);
                 }
             }
 
@@ -124,64 +173,79 @@ namespace JapeNet
 
             if (Game.IsRunning)
             {
-                if (NetManager.GetMode() == NetManager.Mode.Server)
+                if (Mode.IsServer)
                 {
-                    IncrementStream(NetManager.Mode.Server);
-                    WriteStream(NetManager.Mode.Server);
-                    SendStreamData();
+                    WriteStream(NetMode.Server);
+                    SendStreamData(NetMode.Server);
 
                     WriteSync();
-                    SendSyncData();
+                    SendSyncData(NetMode.Server);
+                }
+
+                if (!Mode.IsOnline)
+                {
+                    WriteStream(NetMode.Server);
+                        
+                    if (serverToClientStream.CanSendData())
+                    {
+                        NetManager.Client.AccessElement(PairKey.Encode(), e =>
+                        {
+                            e.PushServerStream(PullServerStream());
+                        });
+                    }
+
+                    WriteSync();
+                    SendSyncData(NetMode.Server);
                 }
             }
         }
 
         protected void SendField(string name, object value)
         {
-            switch (NetManager.GetMode())
-            {
-                case NetManager.Mode.Offline:
+            Mode.Branch
+            (
+                delegate
+                {
+                    if (!Client.Client.Connected) { return; }
+                    if (!CanAccess(Client.Client.Id)) { return; }
+                    Client.Client.Send.Field(PairKey, name, value);
+                },
+                delegate
+                {
+                    Server.Server.Send.Field(PairKey, name, value);
+                },
+                delegate
+                {
                     NetManager.Client.AccessElement(PairKey.Encode(), e =>
                     {
                         Member.Set(e, name, value);
                     });
-                    return;
-
-                case NetManager.Mode.Client: 
-                    if (Client.Client.server == null) { return; }
-                    if (!Client.Client.server.connected) { return; }
-                    if (!CanAccess(Client.Client.server.id)) { return; }
-                    Client.Client.Send.Field(PairKey, name, value);
-                    return;
-
-                case NetManager.Mode.Server: 
-                    Server.Server.Send.Field(PairKey, name, value);
-                    return;
-            }
+                }
+            );
         }
 
         protected void SendCall(string name, params object[] args)
         {
-            switch (NetManager.GetMode())
-            {
-                case NetManager.Mode.Offline:
+            Mode.Branch
+            (
+                delegate
+                {
+                    if (!Client.Client.Connected) { return; }
+                    if (!CanAccess(Client.Client.Id)) { return; }
+                    Client.Client.Send.Call(PairKey, name, args);
+                },
+                delegate
+                {
+                    Server.Server.Send.Call(PairKey, name, args);
+                },
+                delegate
+                {
                     NetManager.Client.AccessElement(PairKey.Encode(), e =>
                     {
                         Member.Get(e, name, null, args);
                     });
-                    return;
-
-                case NetManager.Mode.Client:
-                    if (Client.Client.server == null) { return; }
-                    if (!Client.Client.server.connected) { return; }
-                    if (!CanAccess(Client.Client.server.id)) { return; }
-                    Client.Client.Send.Call(PairKey, name, args);
-                    return;
-
-                case NetManager.Mode.Server: 
-                    Server.Server.Send.Call(PairKey, name, args);
-                    return;
-            }
+                }
+            );
         }
 
         internal void ReceiveCall(string name, object[] args)
@@ -189,31 +253,6 @@ namespace JapeNet
             Member member = new Member(this, name);
             if (!Attribute.IsDefined(member.Target, typeof(CallAttribute))) { return; }
             member.Get(args);
-        }
-
-        protected void SendStreamData()
-        {
-            if (!stream.CanSendData()) { return; }
-            switch (NetManager.GetMode())
-            {
-                case NetManager.Mode.Offline:
-                    NetManager.Client.AccessElement(PairKey.Encode(), e =>
-                    {
-                        e.PushStreamData(PullStreamData());
-                    });
-                    return;
-
-                case NetManager.Mode.Client: 
-                    if (Client.Client.server == null) { return; }
-                    if (!Client.Client.server.connected) { return; }
-                    if (!CanAccess(Client.Client.server.id)) { return; }
-                    Client.Client.Send.Stream(PairKey, PullStreamData()); 
-                    return;
-
-                case NetManager.Mode.Server: 
-                    Server.Server.Send.Stream(PairKey, PullStreamData()); 
-                    return;
-            }
         }
 
         /// <summary>
@@ -236,70 +275,94 @@ namespace JapeNet
         /// </summary>
         protected virtual void ReceiveStream(NetStream.ServerReader stream) {}
 
-        internal virtual void PushStreamData(object[] data) { stream.PushData(data); }
-        internal virtual object[] PullStreamData() { return stream.ToWriteDataArray(); }
+        internal virtual void PushClientStream(object[] data) { clientToServerStream.PushData(data); }
+        internal virtual object[] PullClientStream() { return clientToServerStream.ToWriteDataArray(); }
 
-        internal void ReadStream(NetManager.Mode mode)
+        internal virtual void PushServerStream(object[] data) { serverToClientStream.PushData(data); }
+        internal virtual object[] PullServerStream() { return serverToClientStream.ToWriteDataArray(); }
+
+        internal void ReadStream(NetMode mode)
         {
-            if (stream.ToReadDataArray().Length <= 0) { return; }
+            mode.Branch
+            (
+                delegate
+                {
+                    Read(serverToClientStream, stream =>
+                    {
+                        ReceiveStream((NetStream.ClientReader)stream.reader);
+                    });
+                },
+                delegate
+                {
+                    Read(clientToServerStream, stream =>
+                    {
+                        ReceiveStream((NetStream.ServerReader)stream.reader);
+                    });
+                }
+            );
 
-            stream.StartReading();
-
-            switch (mode)
+            static void Read(NetStream stream, Action<NetStream> onRead)
             {
-                case NetManager.Mode.Client:
-                    ReceiveStream((NetStream.ClientReader)stream.reader);
-                    break;
-
-                case NetManager.Mode.Server:
-                    ReceiveStream((NetStream.ServerReader)stream.reader);
-                    break;
+                if (stream.ToReadDataArray().Length <= 0) { return; }
+                stream.StartReading();
+                onRead(stream);
+                stream.Stop();
+                stream.ClearReadData();
             }
-            
-            stream.Stop();
-            stream.ClearReadData();
         }
 
-        internal void WriteStream(NetManager.Mode mode)
+        internal void WriteStream(NetMode mode)
         {
-            stream.ClearWriteData();
-            stream.StartWriting();
+            mode.Branch
+            (
+                delegate
+                {
+                    Write(clientToServerStream, stream =>
+                    {
+                        SendStream((NetStream.ClientWriter)stream.writer);
+                    });
+                },
+                delegate
+                {
+                    Write(serverToClientStream, stream =>
+                    {
+                        SendStream((NetStream.ServerWriter)stream.writer);
+                    });
+                }
+            );
 
-            switch (mode)
+            static void Write(NetStream stream, Action<NetStream> onWrite)
             {
-                case NetManager.Mode.Client:
-                    stream.writer.StartClient();
-                    SendStream((NetStream.ClientWriter)stream.writer);
-                    break;
-
-                case NetManager.Mode.Server:
-                    stream.writer.StartServer();
-                    SendStream((NetStream.ServerWriter)stream.writer);
-                    break;
+                stream.ClearWriteData();
+                stream.StartWriting();
+                onWrite(stream);
+                stream.Stop();
             }
-
-            stream.writer.Stop();
-            stream.Stop();
         }
 
-        internal void IncrementStream(NetManager.Mode mode)
+        protected void SendStreamData(NetMode mode)
         {
-            switch (mode)
-            {
-                case NetManager.Mode.Client:
-                    stream.writer.IncrementClient();
-                    break;
-
-                case NetManager.Mode.Server:
-                    stream.writer.IncrementServer();
-                    break;
-            }
+            mode.Branch
+            (
+                delegate
+                {
+                    if (!Client.Client.Connected) { return; }
+                    if (!CanAccess(Client.Client.Id)) { return; }
+                    if (!clientToServerStream.CanSendData()) { return; }
+                    Client.Client.Send.Stream(PairKey, PullClientStream()); 
+                },
+                delegate
+                {
+                    if (!serverToClientStream.CanSendData()) { return; }
+                    Server.Server.Send.Stream(PairKey, PullServerStream()); 
+                }
+            );
         }
 
         internal void PushSyncData(Dictionary<string, object> data) { syncData = data.ToDictionary(d => d.Key, d => new SyncData(d.Value)); }
         internal Dictionary<string, object> PullSyncData() { return syncData.Where(d => d.Value.CanSend()).ToDictionary(d => d.Key, d => d.Value.Send()); }
 
-        internal void SendSyncData()
+        internal void SendSyncData(NetMode mode)
         {
             if (!syncData.Any()) { return; }
 
@@ -307,39 +370,37 @@ namespace JapeNet
 
             if (!data.Any()) { return; }
 
-            switch (NetManager.GetMode())
-            {
-                case NetManager.Mode.Offline:
+            mode.Branch
+            (
+                null,
+                delegate
+                {
+                    Server.Server.Send.Sync(PairKey, data); 
+                },
+                delegate
+                {
                     NetManager.Client.AccessElement(PairKey.Encode(), e =>
                     {
                         e.PushSyncData(data);
                     });
-                    return;
-
-                case NetManager.Mode.Client:
-                    return;
-
-                case NetManager.Mode.Server:
-                    Server.Server.Send.Sync(PairKey, data); 
-                    return;
-            }
+                }
+            );
         }
 
-        protected void WriteSync()
+        protected virtual void WriteSync()
         {
-            if (NetManager.GetMode() == NetManager.Mode.Client) { return; }
             foreach (FieldInfo field in GetSyncedMembers())
             {
                 SyncAttribute attribute = field.GetCustomAttribute<SyncAttribute>();
                 string key = attribute.Key ?? field.Name;
-                if (syncData.ContainsKey(key)) { syncData[key].Set(field.GetValue(this)); } 
-                else { syncData.Add(key, new SyncData(field.GetValue(this))); }
+                object value = field.GetValue(this);
+                if (syncData.ContainsKey(key)) { syncData[key].Set(value); } 
+                else { syncData.Add(key, new SyncData(value)); }
             }
         }
 
-        protected void ReadSync()
+        protected virtual void ReadSync()
         {
-            if (NetManager.GetMode() == NetManager.Mode.Server) { return; }
             foreach (FieldInfo field in GetSyncedMembers())
             {
                 SyncAttribute attribute = field.GetCustomAttribute<SyncAttribute>();
@@ -364,6 +425,12 @@ namespace JapeNet
             {
                 DestroyImmediate(component);
             }
+        }
+
+        public enum SyncMode
+        {
+            ServerToClient,
+            ClientToServer,
         }
 
         public class SyncData

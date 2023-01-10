@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 namespace Jape
@@ -11,7 +13,7 @@ namespace Jape
         public static void Warning(params object[] inputs) { Process(inputs, s => Print(s, LogType.Warning)); } 
         public static void Error(params object[] inputs) { Process(inputs, s => Print(s, LogType.Error)); } 
 
-        private static string Format(object line1) { return LineStart() + line1.Filter() + NewLine() + LineStart(); }
+        private static string Format(object line1) { return LineStart() + line1.Filter(); }
         private static string Format(object line1, object line2) { return LineStart() + line1.Filter() + NewLine() + LineStart() + line2.Filter(); }
 
         private static string Filter(this object input) { return input == null ? "null" : input.ToString().RemoveSuffix(); }
@@ -54,14 +56,31 @@ namespace Jape
                              .ExtractStackTrace()
                              .Split(new [] { "\r\n", "\n" }, StringSplitOptions.None);
 
+            List<string> richStack = new List<string>();
+
             int i = stack.Length - 1;
             while (i >= 0)
             {
-                if (stack[i].Contains("Jape.Log")) { break; }
+                string stackLine = stack[i];
+
+                if (stackLine.Contains("Jape.Log")) { break; }
+
+                Regex pattern = new Regex(@"\(at (.*):(\d*)\)");
+                Match match = pattern.Match(stackLine);
+
+                if (match.Success)
+                {
+                    string path = match.Groups[1].Value;
+                    string lineNumber = match.Groups[2].Value;
+                    richStack.Insert(0, pattern.Replace(stackLine,"(" + $"<a href=\"{path}\" line=\"{lineNumber}\">{path}:{lineNumber}</a>" + ")"));
+                } else {
+                    richStack.Insert(0, stackLine);
+                }
+
                 i--;
             }
 
-            return string.Join(NewLine(), stack.Skip(i + 1));
+            return string.Join(NewLine(), richStack.ToArray());
         }
         
         public static string Timestamp()

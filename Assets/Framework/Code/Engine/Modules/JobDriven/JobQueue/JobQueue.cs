@@ -22,7 +22,7 @@ namespace Jape
         protected sealed override void StartAction() { Job.ForceStart(); }
         protected sealed override void StopAction() { foreach (Task task in activeTasks.Where(q => !q.Persistent())) { task.Job().Stop(); }}
         protected sealed override void PauseAction() { Job.Pause(); foreach (Task task in activeTasks) { task.Job().Pause(); }}
-        protected sealed override void ResumeAction() { Job.Resume(); foreach (Task task in activeTasks) { task.Job().Resume(); } }
+        protected sealed override void ResumeAction() { Job.Resume(); foreach (Task task in activeTasks) { task.Job().Resume(); }}
         protected sealed override void DestroyAction() { Kill(); }
 
         /// <summary>
@@ -226,7 +226,7 @@ namespace Jape
                     if (finishing) { Processed(); break; }
                     switch (mode)
                     {
-                        case Mode.Single: Iteration(); Complete(); Processed(); break;
+                        case Mode.Single: Iteration(); Processed(); Complete(); break;
                         case Mode.Constant: Iteration(); yield return Wait.Tick(); break;
                         case Mode.Loop: Iteration(); queue = new LinkedList<Task>(tempTasks); tempTasks.Clear(); break;
                     }

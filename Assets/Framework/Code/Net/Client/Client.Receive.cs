@@ -131,7 +131,7 @@ namespace JapeNet.Client
 
                 NetManager.Client.AccessElement(key, e =>
                 {
-                    e.PushStreamData(packet.ReadObjects());
+                    e.PushServerStream(packet.ReadObjects());
                 });
             }
 
@@ -157,17 +157,17 @@ namespace JapeNet.Client
             {
                 int index = packet.ReadInt();
 
-                NetListener.Receive(index).Invoke(packet.ReadObject());
+                netListener.Receive(index).Invoke(packet.ReadObject());
 
                 if (packet.ReadBool())
                 {
-                    NetListener.Close(index);
+                    netListener.Close(index);
                 }
             }
 
             internal static void ResponseClose(Packet packet)
             {
-                NetListener.Close(packet.ReadInt());
+                netListener.Close(packet.ReadInt());
             }
 
             internal static void PlayerConnect(Packet packet)

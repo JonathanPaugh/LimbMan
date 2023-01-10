@@ -69,14 +69,14 @@ namespace JapeNet
                     this.value = value;
                     foreach (KeyValuePair<int, int> listener in listeners)
                     {
-                        switch (NetManager.GetMode())
+                        NetMode mode = NetManager.GetMode();
+                        if (mode.IsLocal)
                         {
-                            case NetManager.Mode.Offline:
-                                Client.Client.NetListener.Receive(listener.Value).Invoke(this.value);
-                                break;
-                            case NetManager.Mode.Server:
-                                Server.Server.Send.Response(listener.Key, listener.Value, this.value, false);
-                                break;
+                            Client.Client.netListener.Receive(listener.Value).Invoke(this.value);
+                        } 
+                        else
+                        {
+                            Server.Server.Send.Response(listener.Key, listener.Value, this.value, false);
                         }
                     }
                 }

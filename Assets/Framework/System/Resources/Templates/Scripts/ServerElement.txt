@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 #DIRECTIVES#
+using JapeNet;
 
 namespace #NAMESPACE#
 {

@@ -10,8 +10,6 @@ namespace JapeNet
         public enum SyncMode { None, Local, Global }
         public enum SyncScaleMode { None, Local }
 
-        protected override int ServerStreamRate => rate != 0 ? rate : NetManager.Settings.serverStreamRate;
-
         public override Key PairKey => Key;
         protected override Key GenerateKey() => pooled ? new Key(PairType, pool.ToString(), Key.IdentifierEncoding.ASCII) : base.GenerateKey();
 
@@ -25,9 +23,6 @@ namespace JapeNet
         [PropertySpace(SpaceAfter = 8)]
 
         [SerializeField] 
-        private int rate = 0;
-
-        [SerializeField] 
         private bool always = true;
 
         [HorizontalGroup]
@@ -39,7 +34,7 @@ namespace JapeNet
         [ShowIf(nameof(pooled))]
         [HideLabel]
         [SerializeField]
-        private int pool = 0;
+        private int pool;
 
         private bool poolMaster;
 
@@ -50,13 +45,13 @@ namespace JapeNet
         protected override void Enabled() { AddPool(); }
         protected override void Disabled() { RemovePool(); }
 
-        internal override void PushStreamData(object[] data)
+        internal override void PushClientStream(object[] data)
         {
-            if (!pooled) { base.PushStreamData(data); return; }
+            if (!pooled) { base.PushClientStream(data); return; }
 
             foreach (Sync sync in pools[pool])
             {
-                sync.stream.PushData(data);
+                sync.clientToServerStream.PushData(data);
             }
         }
 

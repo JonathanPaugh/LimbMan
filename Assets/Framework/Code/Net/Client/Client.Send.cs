@@ -121,7 +121,7 @@ namespace JapeNet.Client
                 {
                     packet.Write(player);
                     packet.Write(key);
-                    packet.Write(NetListener.Open(action));
+                    packet.Write(netListener.Open(action));
 
                     SendTcp(packet);
                 }
@@ -134,7 +134,7 @@ namespace JapeNet.Client
                     packet.Write(player);
                     packet.Write(key);
 
-                    int index = NetListener.Open(action);
+                    int index = netListener.Open(action);
                     packet.Write(index);
 
                     SendTcp(packet);

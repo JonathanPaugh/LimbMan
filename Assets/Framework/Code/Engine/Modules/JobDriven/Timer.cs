@@ -41,6 +41,15 @@ namespace Jape
 
         internal Timer() { Init(this); }
 
+        protected override void Setup()
+        {
+            Job.onProcessed.Handler += OnProcessed;
+            Job.onComplete.Handler += OnComplete;
+        }
+
+        private void OnProcessed(object sender, EventArgs e) { Processed(); }
+        private void OnComplete(object sender, EventArgs e) { Complete(); }
+
         public float Progress() { return 1 - (timeRemaining / settings.timeTotal); }
         public float Inverse() { return timeRemaining / settings.timeTotal; }
 
@@ -62,8 +71,6 @@ namespace Jape
         public override Timer ForceStart()
         {
             if (settings == null) { this.Log().Response("Cant start because timer is not set"); return this; }
-            
-            timeRemaining = settings.timeTotal;
 
             return base.ForceStart();
         }
@@ -77,9 +84,7 @@ namespace Jape
 
             settings = new Settings(time, counter, interval);
             
-            timeRemaining = settings.timeTotal;
-
-            return base.ForceStart();
+            return ForceStart();
         }
 
         public Timer Set(float time, Time.Counter counter = Time.Counter.Seconds, float interval = -1)
@@ -111,7 +116,8 @@ namespace Jape
 
             timeRemaining = 0;
 
-            End();
+            Processed();
+            Complete();
 
             return this;
         }
@@ -162,9 +168,10 @@ namespace Jape
 
         protected sealed override IEnumerable Run()
         {
-            while (!complete)
+            do 
             {
-                if (timeRemaining > 0) 
+                timeRemaining = settings.timeTotal;
+                while (timeRemaining > 0) 
                 {
                     if (AutoInterval())
                     {
@@ -187,51 +194,39 @@ namespace Jape
                         timeRemaining -= settings.interval.Value();
                     }
                     intervalAction?.Invoke(this);
-                }
-                else
-                {
-                    timeRemaining = 0;
-                    if (!processing) { yield break; }
-                    switch (mode)
-                    {
-                        case Mode.Single:
-                            End();
-                            break;
+                } 
 
-                        case Mode.Loop:
-                            timeRemaining = settings.timeTotal;
-                            Iteration(); 
-                            break;
-                    }
-                }
-            }
+                timeRemaining = 0;
+
+                if (!processing) { yield break; }
+
+                Iteration(); 
+
+            } while (mode == Mode.Loop);
 
             bool AutoInterval() { return Mathf.Approximately(settings.interval.Value(), -1); }
         }
 
         protected override void Iteration()
         {
-            iterationAction?.Invoke(this);
             base.Iteration();
+            iterationAction?.Invoke(this);
         }
 
         protected override void Complete()
         {
-            completeAction?.Invoke(this);
+            if (complete) { return; }
+
             base.Complete();
+            completeAction?.Invoke(this);
         }
 
         protected override void Processed()
         {
-            processedAction?.Invoke(this);
-            base.Processed();
-        }
+            if (!processing) { return; }
 
-        private void End()
-        {
-            Iteration(); 
-            Complete(); 
-            Processed();
+            base.Processed();
+            processedAction?.Invoke(this);
         }
 
         [Serializable]

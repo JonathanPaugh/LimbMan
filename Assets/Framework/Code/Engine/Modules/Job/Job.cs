@@ -138,16 +138,16 @@ namespace Jape
             action.Invoke();
             
             Iteration();
-            Complete();
             Processed();
+            Complete();
         }
 
         protected IEnumerator Enumeration()
         {
-            SetEnumerator();
-            while (!complete)
+            do 
             {
-                if (enumerator.MoveNext())
+                SetEnumerator();
+                while (enumerator.MoveNext())
                 {
                     if (!Skip(enumerator.Current))
                     {
@@ -155,15 +155,11 @@ namespace Jape
                         yield return enumerator.Current;
                     }
                 }
-                else
-                {
-                    switch (mode)
-                    {
-                        case Mode.Single: Iteration(); Complete(); Processed(); break;
-                        case Mode.Loop: Iteration(); SetEnumerator(); break;
-                    }
-                }
-            }
+                Iteration();
+            } while (mode == Mode.Loop);
+
+            Processed(); 
+            Complete();
 
             bool Skip(object current)
             {

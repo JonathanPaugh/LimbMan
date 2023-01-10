@@ -4,36 +4,41 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using Jape;
+using Sirenix.Utilities;
 using UnityEngine;
 
 namespace JapeNet.Server
 {
     public static partial class Server
     {
-        public static int MaxPlayers => NetManager.Settings.maxPlayers;
-        public static int Port => NetManager.Settings.serverPort;
-        public static int BufferSize = NetManager.Settings.bufferSize;
+        private static NetSettings Settings => NetManager.Settings;
 
-        public static TcpListener tcpListener;
-        public static UdpClient udpListener;
+        private static int MaxPlayers => Settings.maxPlayers;
+        private static int Port => Settings.serverPort;
+        private static int BufferSize => Settings.bufferSize;
+        private static bool TcpBatching => Settings.tcpBatching;
 
-        public static Dictionary<int, Connection> Clients { get; } = new Dictionary<int, Connection>();
+        private static TcpListener tcpListener;
+        private static UdpClient udpListener;
 
-        public static NetTable NetTable { get; } = new NetTable();
-        public static NetDelegator NetDelegator { get; } = new NetDelegator();
+        public static readonly NetTable netTable = new NetTable();
+        public static readonly NetDelegator netDelegator = new NetDelegator();
+        private static readonly Dictionary<int, Connection> clients = new Dictionary<int, Connection>();
 
         public delegate void PacketHandler(int id, Packet packet);
 
         public static bool IsEmpty() { return GetConnectedClients().Length == 0; }
-        
-        public static int[] GetPlayers() { return Clients.Values.Where(c => c.connected).Select(c => c.id).ToArray(); }
-        internal static Connection[] GetConnectedClients() { return Clients.Values.Where(c => c.connected).ToArray(); }
+
+        public static int[] GetPlayers() { return clients.Values.Where(c => c.connected).Select(c => c.id).ToArray(); }
+        public static Connection[] GetConnectedClients() { return clients.Values.Where(c => c.connected).ToArray(); }
+        public static Connection[] GetRemoteClients() { return GetConnectedClients().Where(c => Client.Client.IsRemote(c.id)).ToArray(); }
+        public static Connection GetClient(int id) { return clients[id]; }
 
         internal static void Init()
         {
             for (int i = 1; i <= MaxPlayers; i++)
             {
-                Clients.Add(i, new Connection(i));
+                clients.Add(i, new Connection(i));
             }
         }
 
@@ -80,9 +85,9 @@ namespace JapeNet.Server
 
             for (int i = 1; i <= MaxPlayers; i++)
             {
-                if (Clients[i].tcp.socket == null)
+                if (clients[i].tcp.socket == null)
                 {
-                    Clients[i].Connect(client);
+                    clients[i].Connect(client);
                     return;
                 }
             }
@@ -93,7 +98,7 @@ namespace JapeNet.Server
         private static void SendTcp(int id, Packet packet)
         {
             packet.InsertLength();
-            Clients[id].tcp.Send(packet);
+            clients[id].tcp.Send(packet);
         }
 
         private static void SendTcpAll(Packet packet)
@@ -101,7 +106,7 @@ namespace JapeNet.Server
             packet.InsertLength();
             for (int i = 1; i <= MaxPlayers; i++)
             {
-                Clients[i].tcp.Send(packet);
+                clients[i].tcp.Send(packet);
             }
         }
 
@@ -112,7 +117,7 @@ namespace JapeNet.Server
             {
                 if (i != id)
                 {
-                    Clients[i].tcp.Send(packet);
+                    clients[i].tcp.Send(packet);
                 }
             }
         }
@@ -136,19 +141,19 @@ namespace JapeNet.Server
 
                     if (id == 0)
                     {
-                        ThreadManager.QueueFrame(() => Debug.Log("Client Unregistered"));
+                        ThreadManager.QueueFrame(() => Log.Write("Client Unregistered"));
                         return;
                     }
 
-                    if (Clients[id].udp.ip == null)
+                    if (clients[id].udp.ip == null)
                     {
-                        Clients[id].udp.Start(client);
+                        clients[id].udp.Start(client);
                         return;
                     }
 
-                    if (Clients[id].udp.ip.ToString() == client.ToString())
+                    if (clients[id].udp.ip.ToString() == client.ToString())
                     {
-                        Clients[id].udp.Read(packet);
+                        clients[id].udp.Read(packet);
                     }
                 }
             }
@@ -162,14 +167,14 @@ namespace JapeNet.Server
         {
             packet.InsertLength();
 
-            switch (Clients[id].mode)
+            switch (clients[id].mode)
             {
                 case Connection.Mode.Default:
-                    Clients[id].udp.Send(packet);
+                    clients[id].udp.Send(packet);
                     break;
 
                 case Connection.Mode.Web:
-                    Clients[id].tcp.Send(packet);
+                    clients[id].tcp.Send(packet);
                     break;
             }
         }
@@ -179,14 +184,14 @@ namespace JapeNet.Server
             packet.InsertLength();
             for (int i = 1; i <= MaxPlayers; i++)
             {
-                switch (Clients[i].mode)
+                switch (clients[i].mode)
                 {
                     case Connection.Mode.Default:
-                        Clients[i].udp.Send(packet);
+                        clients[i].udp.Send(packet);
                         break;
 
                     case Connection.Mode.Web:
-                        Clients[i].tcp.Send(packet);
+                        clients[i].tcp.Send(packet);
                         break;
                 }
             }
@@ -198,14 +203,14 @@ namespace JapeNet.Server
             for (int i = 1; i <= MaxPlayers; i++)
             {
                 if (i == id) { continue; }
-                switch (Clients[id].mode)
+                switch (clients[id].mode)
                 {
                     case Connection.Mode.Default:
-                        Clients[id].udp.Send(packet);
+                        clients[id].udp.Send(packet);
                         break;
 
                     case Connection.Mode.Web:
-                        Clients[id].tcp.Send(packet);
+                        clients[id].tcp.Send(packet);
                         break;
                 }
             }

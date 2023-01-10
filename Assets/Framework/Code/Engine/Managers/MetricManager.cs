@@ -11,7 +11,7 @@ namespace Jape
 
         private Input input;
 
-        private bool active = Game.IsBuild ? false : true;
+        private bool active = !Game.IsBuild;
 
         protected override void Init()
         {

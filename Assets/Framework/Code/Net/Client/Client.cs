@@ -7,13 +7,20 @@ namespace JapeNet.Client
 {
     public static partial class Client
     {
-        public static IPAddress Ip => IPAddress.Parse(NetManager.Settings.ServerIp);
-        public static int Port = NetManager.Settings.serverPort;
-        public static int BufferSize = NetManager.Settings.bufferSize;
+        private static NetSettings Settings => NetManager.Settings;
 
-        public static Connection server;
+        private static IPAddress Ip => IPAddress.Parse(Settings.ServerIp);
+        private static int Port => Settings.serverPort;
+        private static int BufferSize => Settings.bufferSize;
+        private static bool TcpBatching => Settings.tcpBatching;
 
-        public static NetListener NetListener { get; } = new NetListener();
+        internal static Connection server;
+        internal static readonly NetListener netListener = new NetListener();
+
+        public static int Id => server?.id ?? 0;
+        public static bool Connected => server?.connected ?? false;
+
+        public static bool IsRemote(int client) { return client != Id; }
 
         public delegate void PacketHandler(Packet packet);
 

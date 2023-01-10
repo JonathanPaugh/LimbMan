@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -23,21 +22,31 @@ namespace Jape
         [Eject]
         protected Timer.Settings settings;
 
+        [ShowInInspector]
+        [ShowIf(nameof(IsSet))]
+        [ShowIf(Game.GameIsRunning)]
+        private float Remaining => IsSet() ? timer.TimeRemaining : 0;
+
         private Timer timer;
-        private Job job;
 
         public override Enum Outputs() { return TimerOutputsFlags.OnTimer; }
 
+        private bool IsSet() => timer != null;
+
         protected override void Activated()
         {
-            timer = CreateTimer().Set(settings.timeTotal, settings.interval.Counter, settings.interval.Value()).ChangeMode(mode);
-            job = CreateJob().Set(TimerRoutine()).ChangeMode(Job.Mode.Loop).Start();
+            timer = CreateTimer();
+            timer.CompletedAction(() =>
+            {
+                Launch(TimerOutputs.OnTimer);
+                if (mode == Timer.Mode.Loop) { TimerStart(); }
+            });
         }
 
         protected override void Init() { if (autoStart) { TimerStart(); }}
 
         [Route]
-        public void TimerStart() { timer.Start(); }
+        public void TimerStart() { timer.Set(settings.timeTotal, settings.interval.Counter, settings.interval.Value()).Start(); }
 
         [Route]
         public void TimerStop() { timer.Stop(); }
@@ -54,10 +63,10 @@ namespace Jape
         [Route]
         public void TimerLoop() { timer.ChangeMode(Timer.Mode.Loop); }
 
-        private IEnumerable TimerRoutine()
-        {
-            yield return timer.onIteration.Wait();
-            Launch(TimerOutputs.OnTimer);
-        }
+        [Route]
+        public void TimerSetMax(float max) { settings.timeTotal = max; }
+
+        [Route]
+        public void TimerSetRemaining(float remaining) { timer.SetTimeRemaining(remaining); }
     }
 }

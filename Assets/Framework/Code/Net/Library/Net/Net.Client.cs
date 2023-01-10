@@ -12,31 +12,23 @@ namespace JapeNet
         {
             public static void Invoke(string value, params object[] args)
             {
-                switch (NetManager.GetMode())
+                if (Mode.IsClient)
                 {
-                    case NetManager.Mode.Offline:
-                    {
-                        OfflineAccessError();
-                        return;
-                    }
-
-                    case NetManager.Mode.Client:
-                    {
-                        JapeNet.Client.Client.Send.Invoke(value, args);
-                        return;
-                    }
-
-                    default:
-                    {
-                        ServerAccessError();
-                        return;
-                    }
+                    JapeNet.Client.Client.Send.Invoke(value, args);
+                }
+                else if (Mode.IsServer)
+                {
+                    ServerAccessError();
+                } 
+                else
+                {
+                    OfflineAccessError();
                 }
             }
 
             private static void ServerAccessError()
             {
-                Log.Write("Server cannot call server commands");
+                Log.Write("Server cannot call client commands");
             }
         }
     }

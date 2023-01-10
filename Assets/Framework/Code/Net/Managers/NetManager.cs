@@ -11,10 +11,8 @@ namespace JapeNet
     {
         private new static bool InitOnLoad => true;
 
-        public enum Mode { Offline, Client, Server }
-
         private static NetSettings settings;
-        public static NetSettings Settings = settings ?? (settings = Game.Settings<NetSettings>());
+        public static NetSettings Settings => settings ??= Game.Settings<NetSettings>();
 
         internal List<NetElement> runtimeNetElements = new List<NetElement>();
 
@@ -35,7 +33,7 @@ namespace JapeNet
 
         public List<SyncedInstance> SyncedInstances { get; } = new List<SyncedInstance>();
 
-        private Mode mode;
+        private NetMode mode;
 
         private static SyncedInstance UpdateInstance(GameObject instance)
         {
@@ -69,7 +67,7 @@ namespace JapeNet
             foreach (SyncedInstance instance in syncedInstances) { DesyncInstance(instance); }
         }
 
-        public static Mode GetMode() => IsQuitting() ? Mode.Offline : Instance.mode;
+        public static NetMode GetMode() => IsQuitting() ? NetMode.Offline : Instance.mode;
 
         protected override void Init()
         {
@@ -85,45 +83,30 @@ namespace JapeNet
             if (!EngineManager.Instance.TryGetComponent(out NetShell shell)) { return; }
             foreach (KeyValuePair<string, Action<object[]>> @delegate in shell.Delegates)
             {
-                JapeNet.Server.Server.NetDelegator.Add(@delegate.Key, @delegate.Value);
+                JapeNet.Server.Server.netDelegator.Add(@delegate.Key, @delegate.Value);
             }
         }
 
-        public static void Connect(int timeout, Action success, Action error)
+        internal static void Connect(NetMode mode, int timeout, Action success, Action error)
         {
-            Instance.mode = Settings.IsServer() ? 
-                            Mode.Server :
-                            Mode.Client;
+            Instance.mode = mode;
 
-            switch (Instance.mode)
-            {
-                case Mode.Client:
-                    JapeNet.Client.Client.Start(success, error, timeout);
-                    break;
-
-                case Mode.Server:
-                    JapeNet.Server.Server.Start(success, error);
-                    break;
-            }
+            mode.Branch
+            (
+                () => JapeNet.Client.Client.Start(success, error, timeout), 
+                () => JapeNet.Server.Server.Start(success, error)
+            );
         }
 
-        public static void Connect(Action success, Action error) { Connect(0, success, error); }
-        public static void Connect(int timeout = 0) { Connect(timeout, null, null); }
-
-        public static void Disconnect()
+        internal static void Disconnect()
         {
-            switch (Instance.mode)
-            {
-                case Mode.Client:
-                    JapeNet.Client.Client.Stop();
-                    break;
+            Instance.mode.Branch
+            (
+                JapeNet.Client.Client.Stop, 
+                JapeNet.Server.Server.Stop
+            );
 
-                case Mode.Server:
-                    JapeNet.Server.Server.Stop();
-                    break;
-            }
-
-            Instance.mode = Mode.Offline;
+            Instance.mode = NetMode.Offline;
         }
 
         protected override void PreQuit()
@@ -195,8 +178,11 @@ namespace JapeNet
 
         internal static void PlayerSceneChangeServer(int id)
         {
-            Net.Server.RestoreClient(id);
-            Server.Sync(id);
+            if (JapeNet.Client.Client.IsRemote(id))
+            {
+                Net.Server.RestoreClient(id);
+                Server.Sync(id);
+            }
             Instance.OnPlayerSceneChangeServer.Invoke(id);
         }
 
@@ -313,6 +299,7 @@ namespace JapeNet
                     target = element;
                 }
                 if (target == null) { Instance.Log().Diagnostic($"Could not find element key: {elementKey}"); return; }
+                if (!target.CanReceiveCommunication(NetMode.Client)) { return; }
                 action.Invoke(target);
             }
         }
@@ -330,6 +317,7 @@ namespace JapeNet
                 }
                 if (target == null) { Instance.Log().Diagnostic($"Could not find element key: {elementKey}"); return; }
                 if (!target.CanAccess(client)) { Log.Write($"Player {client}: Can not access {target}"); return; }
+                if (!target.CanReceiveCommunication(NetMode.Server)) { return; }
                 action.Invoke(target);
             }
 

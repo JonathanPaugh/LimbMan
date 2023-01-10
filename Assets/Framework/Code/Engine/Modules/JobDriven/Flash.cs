@@ -97,8 +97,8 @@ namespace Jape
             SetCurrentColor(defaultColor);
 
             Iteration(); 
-            Complete(); 
             Processed();
+            Complete();
         }
 
         public class Instance

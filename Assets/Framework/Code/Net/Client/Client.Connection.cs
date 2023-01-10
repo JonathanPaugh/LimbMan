@@ -218,7 +218,8 @@ namespace JapeNet.Client
                     socket = new TcpClient
                     {
                         ReceiveBufferSize = BufferSize,
-                        SendBufferSize = BufferSize
+                        SendBufferSize = BufferSize,
+                        NoDelay = !TcpBatching
                     };
 
                     receiveBuffer = new byte[BufferSize];

@@ -124,6 +124,8 @@ namespace JapeNet.Server
 
             internal static void Stream(Element.Key elementKey, object[] streamData)
             {
+                //Log.Write(elementKey.ToString());
+
                 using (Packet packet = new Packet((int)Packets.Stream))
                 {
                     packet.Write(elementKey);

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 17a788d9a1bbc264ca55214318afcaf1, type: 3}
-  m_Name: FrameworkTodo
+  m_Name: FrameworkTodo4
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -22,6 +22,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   label: 
-  text: 'Fix web requests responding successfully when aborted
+  text: 'Rework Netstream to be cleaner
 
-    (Check if done)'
+
+    Add back netstream rate'

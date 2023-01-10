@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Linq;
-using UnityEngine;
 
 namespace Jape
 {
@@ -28,7 +27,13 @@ namespace Jape
             }
         }
 
-        internal void SetJob(Job job) { this.job = job.Set(Run()); }
+        protected virtual void Setup() {}
+
+        internal void SetJob(Job job)
+        {
+            this.job = job.Set(Run());
+            Setup();
+        }
 
         protected override void StartAction() { Job.Start(); }
         protected override void StopAction() { Job.Stop(); }
