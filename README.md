@@ -1,5 +1,5 @@
 # LimbMan
 
-Physics-based platformer project
+Physics-based platformer game project
 
 [Try it out](https://jape.games/LimbMan/)
