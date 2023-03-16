@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5cf464ea3196ef45aa850c00d371bf4, type: 3}
+  m_Name: Script
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  size:
+    value: 1
+  button:
+    label: Create Script
+    icon:
+      color: {r: 1, g: 1, b: 1, a: 1}
+      texture: {fileID: 2800000, guid: c8cc1d41957812b49ac5e5011896cbc0, type: 3}
+    badge:
+      color: {r: 1, g: 1, b: 1, a: 0.5019608}
+      texture: {fileID: 2800000, guid: 37988894ccee91b4db72e2eb1972a3c3, type: 3}
+    value: 0
+    action: 0
+    window: JapeEditor.ScriptCreateWindow, Jape.Editor, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+    behaviour:
+      behaviour: {fileID: 0}
+      args: []
+  useModifier: 1
+  modifier:
+    label: View Scripts
+    icon:
+      color: {r: 1, g: 1, b: 1, a: 1}
+      texture: {fileID: 2800000, guid: c8cc1d41957812b49ac5e5011896cbc0, type: 3}
+    badge:
+      color: {r: 1, g: 1, b: 1, a: 0.5019608}
+      texture: {fileID: 2800000, guid: 3a7d18b66a8d2ad46a4e5f6a73f295ba, type: 3}
+    value: 0
+    action: 0
+    window: JapeEditor.ScriptViewWindow, Jape.Editor, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+    behaviour:
+      behaviour: {fileID: 0}
+      args: []

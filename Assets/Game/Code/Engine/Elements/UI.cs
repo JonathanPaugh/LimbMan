@@ -43,8 +43,8 @@ namespace Game
             TouchControls.Active = !TouchControls.Active;
             switch (TouchControls.Active)
             {
-                case true: Game.Settings<GameSettings>().Difficulty = Difficulty.Touch; break;
-                case false: Game.Settings<GameSettings>().Difficulty = Difficulty.Normal; break;
+                case true: Game.Settings.Difficulty = Difficulty.Touch; break;
+                case false: Game.Settings.Difficulty = Difficulty.Normal; break;
             }
         }
 

@@ -8,6 +8,8 @@ namespace Game
         public static UI UI => GameManager.Instance.UI;
         public static GameManager.SpeedTimer Timer => GameManager.Instance.Timer;
 
+        public static GameSettings Settings => Framework.Settings<GameSettings>();
+
         public new static void Pause()
         {
             if (pauseTimescale > -1)

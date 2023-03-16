@@ -1,0 +1,13 @@
+﻿#DIRECTIVES#
+
+namespace #NAMESPACE#
+{
+	public class #SCRIPTNAME# : #INJECT0#
+	{
+		protected override bool OnUse(bool value)
+		{
+			if (!value) { return false; }
+			return false;
+		}
+	}
+}

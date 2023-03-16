@@ -1,0 +1,25 @@
+{
+    "name": "Jape.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:08160977f7542bd4eac777b818078b92",
+        "GUID:f8509312f3ec98640b3c37384f802cb9",
+        "GUID:71738e653946f414baea8445961a4350",
+        "GUID:1826c0224c0d048b88112c79bbb0cd85",
+        "GUID:03ca3ee4acaf74592bc6d299ca86aa27",
+        "GUID:caccfbdb442cdc64fa722b4c5585521f",
+        "GUID:bfbb4a459210651499d21f444f9b55fd",
+        "GUID:478a2357cc57436488a56e564b08d223"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

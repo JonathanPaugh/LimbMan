@@ -1,0 +1,11 @@
+using System;
+#DIRECTIVES#
+
+/* DO NOT MODIFY DIRECTLY */
+
+namespace #NAMESPACE#
+{
+#INJECT0#
+
+#INJECT1#
+}

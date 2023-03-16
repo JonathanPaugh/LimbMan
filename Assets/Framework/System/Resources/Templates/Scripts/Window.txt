@@ -1,0 +1,10 @@
+﻿using UnityEngine;
+#DIRECTIVES#
+
+namespace #NAMESPACE#
+{
+    public class #SCRIPTNAME# : Window
+    {
+        protected override string Title => "#SCRIPTNAME#";
+    }
+}

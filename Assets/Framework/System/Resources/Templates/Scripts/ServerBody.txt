@@ -1,0 +1,10 @@
+﻿using UnityEngine;
+#DIRECTIVES#
+
+namespace #NAMESPACE#
+{
+    public partial class Request
+    {
+        public class #SCRIPTNAME# : ServerBody {}
+    }
+}

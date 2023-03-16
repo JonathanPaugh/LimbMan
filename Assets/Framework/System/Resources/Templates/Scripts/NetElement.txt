@@ -1,0 +1,8 @@
+﻿using UnityEngine;
+#DIRECTIVES#
+using JapeNet;
+
+namespace #NAMESPACE#
+{
+    public class #SCRIPTNAME# : NetElement {}
+}

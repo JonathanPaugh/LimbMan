@@ -160,6 +160,12 @@ MonoBehaviour:
     ext: png
     type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  - name: IconBadge
+    resourceType: 2
+    path: Icons/Badges
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   - name: IconView
     resourceType: 2
     path: Icons/Badges
@@ -428,6 +434,12 @@ MonoBehaviour:
     ext: png
     type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  - name: IconInspect
+    resourceType: 2
+    path: Icons
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   - name: IconLink
     resourceType: 2
     path: Icons
@@ -446,7 +458,19 @@ MonoBehaviour:
     ext: png
     type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  - name: IconPlus
+    resourceType: 2
+    path: Icons
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   - name: IconProperty
+    resourceType: 2
+    path: Icons
+    ext: png
+    type: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  - name: IconQuestion
     resourceType: 2
     path: Icons
     ext: png
@@ -788,31 +812,6 @@ MonoBehaviour:
   - name: TrackOutputs
     resourceType: 2
     path: Denums/Outputs
-    ext: asset
-    type: Jape.Denum, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  - name: Dimension
-    resourceType: 2
-    path: Denums
-    ext: asset
-    type: Jape.Denum, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  - name: EntityType
-    resourceType: 2
-    path: Denums
-    ext: asset
-    type: Jape.Denum, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  - name: Positioning
-    resourceType: 2
-    path: Denums
-    ext: asset
-    type: Jape.Denum, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  - name: Primitive
-    resourceType: 2
-    path: Denums
-    ext: asset
-    type: Jape.Denum, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  - name: Protocol
-    resourceType: 2
-    path: Denums
     ext: asset
     type: Jape.Denum, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   - name: Inputs
@@ -1266,37 +1265,7 @@ MonoBehaviour:
     path: 
     ext: 
     type: 
-  - name: FrameworkTodo
-    resourceType: 2
-    path: Todos
-    ext: asset
-    type: Jape.Todo, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  - name: FrameworkTodo2
-    resourceType: 2
-    path: Todos
-    ext: asset
-    type: Jape.Todo, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   - name: FrameworkTodo3
-    resourceType: 2
-    path: Todos
-    ext: asset
-    type: Jape.Todo, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  - name: FrameworkTodo4
-    resourceType: 2
-    path: Todos
-    ext: asset
-    type: Jape.Todo, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  - name: FrameworkTodo5
-    resourceType: 2
-    path: Todos
-    ext: asset
-    type: Jape.Todo, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  - name: FrameworkTodo6
-    resourceType: 2
-    path: Todos
-    ext: asset
-    type: Jape.Todo, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  - name: FrameworkTodo7
     resourceType: 2
     path: Todos
     ext: asset
@@ -2133,11 +2102,6 @@ MonoBehaviour:
     path: 
     ext: 
     type: 
-  - name: CacheSettings
-    resourceType: 2
-    path: Settings
-    ext: asset
-    type: Jape.CacheSettings, Jape.Engine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   - name: EditorSettings
     resourceType: 2
     path: Settings
@@ -2344,5 +2308,5 @@ MonoBehaviour:
     ext: asset
     type: TMPro.TMP_Settings, Unity.TextMeshPro, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  fileCount: 352
+  fileCount: 344
   folderCount: 66

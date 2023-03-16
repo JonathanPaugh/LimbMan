@@ -37,6 +37,19 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 1|Jape.ToolChain+Column, Jape.Engine
+    - Name: size
+      Entry: 7
+      Data: 2|Jape.Probability, Jape.Engine
+    - Name: value
+      Entry: 4
+      Data: 0.9
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: buttons
+      Entry: 7
+      Data: 3|System.Collections.Generic.List`1[[Jape.ToolButton, Jape.Engine]],
+        mscorlib
     - Name: 
       Entry: 12
       Data: 3
@@ -51,6 +64,9 @@ MonoBehaviour:
       Data: 3
     - Name: 
       Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
       Data: 
     - Name: 
       Entry: 8

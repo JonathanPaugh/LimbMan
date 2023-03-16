@@ -33,13 +33,18 @@ namespace Game
         [HideInInspector]
         public GameAnimation.AnimationClipOverrides animatorClips;
 
-        protected Receiver<Damage> damageReceiver = Receive(delegate(Element element, Damage damage)
-        {
-            ((Player)element).Die();
-        });
+        protected override IReceiver[] Receivers { get; set; }
 
         protected override void Init()
         {
+            Receivers = new IReceiver[]
+            {
+                Receive<Damage>(_ =>
+                {
+                    Die();
+                })
+            };
+
             movement = GetComponent<Movement>();
             rigidbody = GetComponent<Rigidbody2D>();
             collider = GetComponent<BoxCollider2D>();
@@ -53,6 +58,8 @@ namespace Game
             }
 
             Jape.Game.DefaultCamera.GetComponent<Camera>().SetTarget(this);
+
+
         }
 
         public void Die()

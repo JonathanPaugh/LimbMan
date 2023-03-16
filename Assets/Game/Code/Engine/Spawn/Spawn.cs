@@ -11,7 +11,7 @@ namespace Game
         protected override void Activated()
         {
             if (gameObject.HasTag(Tag.Find("GameStart"))) { return; }
-            if (Game.Settings<GameSettings>().Difficulty != Difficulty.Hardcore) { return; }
+            if (Game.Settings.Difficulty != Difficulty.Hardcore) { return; }
 
             Destroy(gameObject);
         }

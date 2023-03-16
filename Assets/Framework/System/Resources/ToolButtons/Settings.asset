@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5cf464ea3196ef45aa850c00d371bf4, type: 3}
+  m_Name: Settings
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  size:
+    value: 1
+  button:
+    label: Settings
+    icon:
+      color: {r: 1, g: 1, b: 1, a: 1}
+      texture: {fileID: 2800000, guid: 4ea73b69d33db684997fd475ac4b50ef, type: 3}
+    badge:
+      color: {r: 0, g: 0, b: 0, a: 0}
+      texture: {fileID: 0}
+    value: 0
+    action: 0
+    window: JapeEditor.SettingsWindow, Jape.Editor, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+    behaviour:
+      behaviour: {fileID: 0}
+      args: []
+  useModifier: 0
+  modifier:
+    label: 
+    icon:
+      color: {r: 0, g: 0, b: 0, a: 0}
+      texture: {fileID: 0}
+    badge:
+      color: {r: 0, g: 0, b: 0, a: 0}
+      texture: {fileID: 0}
+    value: 0
+    action: 0
+    window: 
+    behaviour:
+      behaviour: {fileID: 0}
+      args: []

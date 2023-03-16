@@ -19,20 +19,16 @@ namespace Game
         protected override void Activated()
         {
             if (!Game.IsRunning) { return; } 
-            
-            GameSettings gameSettings = Game.Settings<GameSettings>();
 
-            Difficulty difficultySetting = gameSettings.Difficulty;
+            Difficulty difficultySetting = Game.Settings.Difficulty;
             Change(difficultySetting);
 
-            gameSettings.onDifficultyChange += Change;
+            Game.Settings.onDifficultyChange += Change;
         }
 
         protected override void Destroyed()
         {
-            GameSettings gameSettings = Game.Settings<GameSettings>();
-
-            gameSettings.onDifficultyChange -= Change;
+            Game.Settings.onDifficultyChange -= Change;
         }
 
         private void Change(Difficulty difficulty)

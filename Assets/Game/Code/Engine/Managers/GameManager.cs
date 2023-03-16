@@ -17,7 +17,10 @@ namespace Game
 
         public new static void Init()
         {
-            Instance.UI = UI.Create(Jape.Game.DefaultCamera);
+            Camera camera = Game.CloneGameObject(Database.LoadPrefab("Camera")).GetComponent<Camera>();
+            DontDestroyOnLoad(camera);
+
+            Instance.UI = UI.Create(camera);
             Instance.Timer = new SpeedTimer();
             Instance.Timer.Log().ToggleDiagnostics();
             Jape.Game.Load(loaded =>
@@ -36,11 +39,11 @@ namespace Game
 
         private static void NewGame()
         {
-            string scene = Jape.Game.IsBuild ? Jape.Game.Settings<GameSettings>().startingLevel.Map : Jape.Game.ActiveScene().name;
+            string scene = Jape.Game.IsBuild ? Game.Settings.startingLevel.Map : Jape.Game.ActiveScene().name;
             Jape.Game.ChangeScene(scene);
             Setup(Create);
 
-            void Create()
+            static void Create()
             {
                 CreatePlayer();
                 MoveToSpawn(null);

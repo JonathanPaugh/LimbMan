@@ -57,7 +57,7 @@ namespace Game
         [SerializeField] 
         private bool DebugMovement = false;
 
-        private new Player Player;
+        private Player Player;
 
         private BoxCollider2D Collider;
         private Vector2 ColliderSize;
