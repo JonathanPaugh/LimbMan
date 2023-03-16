@@ -1,6 +1,0 @@
-#DIRECTIVES#
-
-namespace #NAMESPACE#
-{
-	public class #SCRIPTNAME# : #INJECT0# {}
-}

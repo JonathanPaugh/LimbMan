@@ -2514,3 +2514,122 @@ MonoBehaviour:
     map:
       sceneAsset: {fileID: 102900000, guid: 43efe485d3c965d428f9a8ff907cde85, type: 3}
       scenePath: Assets/Game/Scenes/Area1_2.unity
+  - properties: {fileID: 0}
+    position: {x: 0, y: 0, z: 0}
+    value: 9e2dcd48-a81f-4c6a-bd05-2328ac39c91a
+    name: New Game Object
+    map:
+      sceneAsset: {fileID: 102900000, guid: b4c1911de578b6a4880e6a26388cf031, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_1.unity
+  - properties: {fileID: 0}
+    position: {x: -20, y: 10, z: 0}
+    value: 24705e8a-0024-42dd-ab61-3dec8085664c
+    name: TutorialMove (1)
+    map:
+      sceneAsset: {fileID: 102900000, guid: b4c1911de578b6a4880e6a26388cf031, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_1.unity
+  - properties: {fileID: 0}
+    position: {x: 0, y: 0, z: 0}
+    value: b4e78622-4e63-4f4b-93f4-f98223c24fa9
+    name: IconControlSpace
+    map:
+      sceneAsset: {fileID: 102900000, guid: b4c1911de578b6a4880e6a26388cf031, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_1.unity
+  - properties: {fileID: 0}
+    position: {x: 0, y: 0, z: 0}
+    value: 1b60f377-e230-40b1-a16f-b257ddd9cc27
+    name: New Game Object
+    map:
+      sceneAsset: {fileID: 102900000, guid: b4c1911de578b6a4880e6a26388cf031, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_1.unity
+  - properties: {fileID: 0}
+    position: {x: -2, y: 10, z: 0}
+    value: c91d1250-9a2c-4aed-9908-de428048aae6
+    name: IconControlSpace
+    map:
+      sceneAsset: {fileID: 102900000, guid: b4c1911de578b6a4880e6a26388cf031, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_1.unity
+  - properties: {fileID: 0}
+    position: {x: -2, y: 10, z: 0}
+    value: 0d147e3d-1a5c-401b-aea5-8446f34580d8
+    name: Text
+    map:
+      sceneAsset: {fileID: 102900000, guid: b4c1911de578b6a4880e6a26388cf031, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_1.unity
+  - properties: {fileID: 0}
+    position: {x: -2, y: 10, z: 0}
+    value: 6594eb19-6f6e-4457-89fc-6f7ea2393316
+    name: TutorialJump (1)
+    map:
+      sceneAsset: {fileID: 102900000, guid: b4c1911de578b6a4880e6a26388cf031, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_1.unity
+  - properties: {fileID: 0}
+    position: {x: -20, y: 7, z: 0}
+    value: 477aba48-e9bc-4aa0-a848-602f1878aef0
+    name: TutorialMove (1)
+    map:
+      sceneAsset: {fileID: 102900000, guid: b4c1911de578b6a4880e6a26388cf031, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_1.unity
+  - properties: {fileID: 0}
+    position: {x: 52, y: 7, z: 0}
+    value: ee1297f4-6ef0-4823-97fa-befe06048687
+    name: TutorialSlide (1)
+    map:
+      sceneAsset: {fileID: 102900000, guid: b4c1911de578b6a4880e6a26388cf031, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_1.unity
+  - properties: {fileID: 0}
+    position: {x: 0, y: 0, z: 0}
+    value: 428f55ce-752b-46de-9edd-8297c58fe61b
+    name: New Game Object
+    map:
+      sceneAsset: {fileID: 102900000, guid: b4c1911de578b6a4880e6a26388cf031, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_1.unity
+  - properties: {fileID: 0}
+    position: {x: 0, y: 0, z: 0}
+    value: 97977ff3-9fa5-4493-aa96-ed13e02bf9ea
+    name: New Game Object
+    map:
+      sceneAsset: {fileID: 102900000, guid: b4c1911de578b6a4880e6a26388cf031, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_1.unity
+  - properties: {fileID: 0}
+    position: {x: 0, y: 0, z: 0}
+    value: 4a5aa189-84c2-4759-8aa9-ef7d10457225
+    name: New Game Object
+    map:
+      sceneAsset: {fileID: 102900000, guid: b4c1911de578b6a4880e6a26388cf031, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_1.unity
+  - properties: {fileID: 0}
+    position: {x: 380, y: 20.35, z: 0}
+    value: 292010bd-8dbf-475a-941d-286a5d08d901
+    name: IconControlKey
+    map:
+      sceneAsset: {fileID: 102900000, guid: b4c1911de578b6a4880e6a26388cf031, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_1.unity
+  - properties: {fileID: 0}
+    position: {x: 205.23, y: 7.25, z: 0}
+    value: bfc27543-2bdd-466d-9c5e-e9178ae57750
+    name: IconControlKey (1)
+    map:
+      sceneAsset: {fileID: 102900000, guid: b4c1911de578b6a4880e6a26388cf031, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_1.unity
+  - properties: {fileID: 0}
+    position: {x: 206.6, y: 7.25, z: 0}
+    value: 0200a35b-c7ea-4775-afce-5dab56e0135e
+    name: IconControlKey (1)
+    map:
+      sceneAsset: {fileID: 102900000, guid: b4c1911de578b6a4880e6a26388cf031, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_1.unity
+  - properties: {fileID: 0}
+    position: {x: 205.06, y: 7.25, z: 0}
+    value: e142cf12-ce5c-47d5-b23b-fa67f1320e66
+    name: IconControlKey
+    map:
+      sceneAsset: {fileID: 102900000, guid: b4c1911de578b6a4880e6a26388cf031, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_1.unity
+  - properties: {fileID: 0}
+    position: {x: 205.06, y: 7.25, z: 0}
+    value: d280b60d-1bc0-425f-8322-c33cb9da0d0c
+    name: IconControlKey
+    map:
+      sceneAsset: {fileID: 102900000, guid: b4c1911de578b6a4880e6a26388cf031, type: 3}
+      scenePath: Assets/Game/Scenes/Area1_1.unity

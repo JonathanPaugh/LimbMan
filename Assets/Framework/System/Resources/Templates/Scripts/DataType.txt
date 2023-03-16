@@ -1,7 +1,0 @@
-﻿using UnityEngine;
-#DIRECTIVES#
-
-namespace #NAMESPACE#
-{
-	public abstract class #SCRIPTNAME# : BehaviourType {}
-}

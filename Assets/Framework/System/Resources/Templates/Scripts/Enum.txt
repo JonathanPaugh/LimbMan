@@ -1,4 +1,0 @@
-﻿namespace #NAMESPACE#
-{
-    public enum #SCRIPTNAME# { None }
-}

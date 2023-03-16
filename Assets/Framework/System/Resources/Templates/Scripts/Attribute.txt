@@ -1,9 +1,0 @@
-﻿using System;
-using UnityEngine;
-#DIRECTIVES#
-
-namespace #NAMESPACE#
-{
-    [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
-    public class #SCRIPTNAME# : Attribute {}
-}
